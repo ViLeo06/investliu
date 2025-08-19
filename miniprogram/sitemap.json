@@ -1,0 +1,24 @@
+{
+  "desc": "关于老刘投资决策小程序",
+  "rules": [{
+    "action": "allow",
+    "page": "pages/index/index",
+    "params": ["*"]
+  }, {
+    "action": "allow", 
+    "page": "pages/stocks/stocks",
+    "params": ["*"]
+  }, {
+    "action": "allow",
+    "page": "pages/analysis/analysis", 
+    "params": ["*"]
+  }, {
+    "action": "allow",
+    "page": "pages/portfolio/portfolio",
+    "params": ["*"]
+  }, {
+    "action": "allow",
+    "page": "pages/settings/settings",
+    "params": ["*"]
+  }]
+}

@@ -1,0 +1,81 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # 每天北京时间9点运行（UTC时间1点）
+    - cron: '0 1 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Create config file
+      run: |
+        cat > config.py << EOF
+        # GitHub Actions 配置
+        BAIDU_OCR_APP_ID = "${{ secrets.BAIDU_OCR_APP_ID }}"
+        BAIDU_OCR_API_KEY = "${{ secrets.BAIDU_OCR_API_KEY }}"
+        BAIDU_OCR_SECRET_KEY = "${{ secrets.BAIDU_OCR_SECRET_KEY }}"
+        
+        # 其他配置使用默认值
+        SINA_API_BASE = "https://hq.sinajs.cn/list="
+        EASTMONEY_API_BASE = "https://push2.eastmoney.com/api/qt/clist/get"
+        
+        UPDATE_INTERVAL = 24
+        MAX_RECOMMEND_STOCKS = 10
+        MIN_MARKET_CAP = 50
+        MAX_PE_RATIO = 30
+        MIN_ROE = 0.1
+        MAX_DEBT_RATIO = 0.6
+        EOF
+    
+    - name: Run data update
+      run: |
+        python update_data.py
+    
+    - name: Verify data files
+      run: |
+        echo "生成的文件列表："
+        ls -la static_data/
+        echo "验证关键文件..."
+        test -f static_data/summary.json && echo "✓ summary.json 存在"
+        test -f static_data/stocks_a_recommendations.json && echo "✓ A股推荐文件存在"
+        test -f static_data/stocks_hk_recommendations.json && echo "✓ 港股推荐文件存在"
+        test -f static_data/miniprogram_config.json && echo "✓ 小程序配置文件存在"
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./static_data
+        publish_branch: gh-pages
+        force_orphan: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: '🤖 自动更新投资数据 ${{ github.sha }}'
+    
+    - name: Upload logs as artifact
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: update-logs
+        path: logs/
+        retention-days: 7

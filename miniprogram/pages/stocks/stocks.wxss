@@ -1,0 +1,205 @@
+/* 市场切换标签 */
+.market-tabs {
+  display: flex;
+  background: #fff;
+  border-radius: 12rpx;
+  margin: 20rpx;
+  padding: 8rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+  border-radius: 8rpx;
+  transition: all 0.3s;
+}
+
+.tab.active {
+  background: #1296db;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 筛选栏 */
+.filter-bar {
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  background: #fff;
+  border-radius: 24rpx;
+  font-size: 26rpx;
+  color: #666;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn .icon {
+  margin-right: 8rpx;
+  font-size: 24rpx;
+}
+
+/* 筛选面板 */
+.filters-panel {
+  background: #fff;
+  margin: 0 20rpx 20rpx;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s, padding 0.3s;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.filters-panel.show {
+  max-height: 800rpx;
+  padding: 30rpx;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.filter-label {
+  width: 140rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.filter-input {
+  flex: 1;
+  padding: 16rpx;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  margin: 0 10rpx;
+}
+
+.separator {
+  font-size: 24rpx;
+  color: #999;
+  margin: 0 10rpx;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+/* 股票列表 */
+.stock-list {
+  background: #fff;
+  border-radius: 12rpx;
+  margin: 0 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+.stock-item:last-child {
+  border-bottom: none;
+}
+
+.stock-item:active {
+  background-color: #f5f5f5;
+}
+
+.stock-info {
+  flex: 1;
+}
+
+.stock-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.stock-code {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 15rpx;
+}
+
+.stock-tags {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.stock-price {
+  text-align: right;
+  min-width: 200rpx;
+}
+
+.price {
+  font-size: 36rpx;
+  font-weight: 600;
+  margin-bottom: 8rpx;
+}
+
+.change {
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+}
+
+.recommendation {
+  font-size: 20rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 12rpx;
+  display: inline-block;
+  min-width: 80rpx;
+}
+
+/* 刷新指示器 */
+.refresh-indicator {
+  position: fixed;
+  top: 200rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 20rpx 40rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  z-index: 1000;
+}
+
+/* 评分样式 */
+.score {
+  font-size: 22rpx;
+  font-weight: 600;
+  padding: 4rpx 12rpx;
+  border-radius: 16rpx;
+}
+
+/* 加载和空状态 */
+.loading, .empty {
+  text-align: center;
+  padding: 80rpx;
+  color: #999;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 20rpx;
+}

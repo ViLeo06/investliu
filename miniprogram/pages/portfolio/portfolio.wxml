@@ -1,0 +1,8 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+  <view wx:else>
+    <text>投资组合页面</text>
+  </view>
+</view>

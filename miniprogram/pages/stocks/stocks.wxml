@@ -1,0 +1,88 @@
+<view class="container">
+  <!-- 市场切换 -->
+  <view class="market-tabs">
+    <view class="tab {{selectedMarket === 'a' ? 'active' : ''}}" bindtap="switchMarket" data-market="a">
+      A股
+    </view>
+    <view class="tab {{selectedMarket === 'hk' ? 'active' : ''}}" bindtap="switchMarket" data-market="hk">
+      港股
+    </view>
+  </view>
+
+  <!-- 筛选按钮 -->
+  <view class="filter-bar">
+    <view class="filter-btn" bindtap="toggleFilters">
+      <text class="icon">🔍</text>
+      <text>筛选</text>
+    </view>
+  </view>
+
+  <!-- 筛选条件面板 -->
+  <view class="filters-panel {{showFilters ? 'show' : ''}}">
+    <view class="filter-row">
+      <text class="filter-label">价格区间:</text>
+      <input class="filter-input" placeholder="最低价" type="digit" bindinput="onFilterInput" data-field="minPrice" value="{{filters.minPrice}}" />
+      <text class="separator">-</text>
+      <input class="filter-input" placeholder="最高价" type="digit" bindinput="onFilterInput" data-field="maxPrice" value="{{filters.maxPrice}}" />
+    </view>
+    
+    <view class="filter-row">
+      <text class="filter-label">PE区间:</text>
+      <input class="filter-input" placeholder="最小PE" type="digit" bindinput="onFilterInput" data-field="minPE" value="{{filters.minPE}}" />
+      <text class="separator">-</text>
+      <input class="filter-input" placeholder="最大PE" type="digit" bindinput="onFilterInput" data-field="maxPE" value="{{filters.maxPE}}" />
+    </view>
+    
+    <view class="filter-row">
+      <text class="filter-label">最小ROE:</text>
+      <input class="filter-input" placeholder="ROE%" type="digit" bindinput="onFilterInput" data-field="minROE" value="{{filters.minROE}}" />
+    </view>
+    
+    <view class="filter-actions">
+      <button class="btn btn-secondary btn-small" bindtap="clearFilters">清空</button>
+      <button class="btn btn-primary btn-small" bindtap="applyFilters">应用</button>
+    </view>
+  </view>
+
+  <!-- 股票列表 -->
+  <view class="stock-list">
+    <view wx:if="{{loading}}" class="loading">
+      <text>加载中...</text>
+    </view>
+    
+    <view wx:elif="{{stockList.length === 0}}" class="empty">
+      <view class="empty-icon">📊</view>
+      <text>暂无数据</text>
+    </view>
+    
+    <view wx:else>
+      <view class="stock-item" wx:for="{{stockList}}" wx:key="code" bindtap="viewStockDetail" data-stock="{{item}}">
+        <view class="stock-info">
+          <view class="stock-name">{{item.name}}</view>
+          <view class="stock-code">{{item.code}}</view>
+          <view class="stock-tags">
+            <text class="tag tag-info" wx:if="{{item.industry}}">{{item.industry}}</text>
+            <text class="score {{getScoreClass(item.score)}}">{{item.score}}分</text>
+          </view>
+        </view>
+        
+        <view class="stock-price">
+          <view class="price {{item.change >= 0 ? 'text-red' : 'text-green'}}">
+            ¥{{item.price}}
+          </view>
+          <view class="change {{item.change >= 0 ? 'text-red' : 'text-green'}}">
+            {{item.change >= 0 ? '+' : ''}}{{item.change}}%
+          </view>
+          <view class="recommendation {{getRecommendationClass(item.recommendation)}}">
+            {{item.recommendation}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 刷新提示 -->
+  <view wx:if="{{refreshing}}" class="refresh-indicator">
+    <text>刷新中...</text>
+  </view>
+</view>

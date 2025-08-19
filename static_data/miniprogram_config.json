@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "app_name": "老刘投资决策",
+  "update_frequency": "daily",
+  "data_sources": [
+    "新浪财经",
+    "腾讯财经", 
+    "东方财富"
+  ],
+  "api_endpoints": {
+    "summary": "/summary.json",
+    "market_timing": "/market_timing.json",
+    "stocks_a": "/stocks_a.json",
+    "stocks_hk": "/stocks_hk.json"
+  },
+  "cache_duration": {
+    "summary": 3600,
+    "market_timing": 1800,
+    "stocks": 3600
+  },
+  "risk_levels": {
+    "low": {
+      "name": "保守型",
+      "max_position": 0.3,
+      "min_pe_filter": true,
+      "dividend_focus": true
+    },
+    "medium": {
+      "name": "平衡型", 
+      "max_position": 0.6,
+      "min_pe_filter": false,
+      "dividend_focus": false
+    },
+    "high": {
+      "name": "激进型",
+      "max_position": 0.9,
+      "min_pe_filter": false,
+      "dividend_focus": false
+    }
+  },
+  "disclaimer": "本系统基于历史数据和个人经验，仅供参考，不构成投资建议。投资有风险，入市需谨慎。",
+  "contact": {
+    "support": "noreply@example.com",
+    "feedback": "feedback@example.com"
+  }
+}

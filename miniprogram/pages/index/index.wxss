@@ -1,0 +1,156 @@
+/* 首页样式 */
+
+.market-status {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.status-item {
+  text-align: center;
+  flex: 1;
+}
+
+.status-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.status-value {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.market-signals {
+  margin-top: 20rpx;
+}
+
+.signal {
+  padding: 5rpx 0;
+  color: #666;
+}
+
+/* 推荐标签 */
+.recommend-tabs {
+  display: flex;
+  border-bottom: 1rpx solid #f0f0f0;
+  margin-bottom: 20rpx;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #1296db;
+  font-weight: 600;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background: #1296db;
+  border-radius: 2rpx;
+}
+
+/* 股票项样式 */
+.stock-item {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stock-item:last-child {
+  border-bottom: none;
+}
+
+.stock-item:active {
+  background: #f7f9ff;
+}
+
+.stock-info {
+  flex: 1;
+}
+
+.stock-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.stock-code {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.stock-score .score {
+  font-size: 22rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 12rpx;
+}
+
+.stock-price {
+  text-align: right;
+  min-width: 160rpx;
+}
+
+.price {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.recommendation {
+  font-size: 22rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 8rpx;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* 更多按钮 */
+.more-btn {
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+/* 投资建议 */
+.suggestion-item {
+  padding: 8rpx 0;
+  color: #666;
+  line-height: 1.5;
+}
+
+.risk-level {
+  display: flex;
+  align-items: center;
+  padding-top: 10rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+/* 免责声明 */
+.disclaimer {
+  margin: 40rpx 20rpx 20rpx;
+  padding: 20rpx;
+  background: #fafafa;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 1.6;
+}

@@ -1,0 +1,91 @@
+{
+  "update_time": "2025-08-19 21:30:00",
+  "market_status": {
+    "sentiment": "neutral",
+    "position_suggestion": 0.5,
+    "signals": [
+      "上证指数在3000点附近震荡",
+      "成交量相比上周略有增加", 
+      "银行股表现相对稳定"
+    ]
+  },
+  "recommendations_count": {
+    "a_stocks": 8,
+    "hk_stocks": 5,
+    "total": 13
+  },
+  "top_picks": {
+    "a_stocks": [
+      {
+        "code": "000001",
+        "name": "平安银行",
+        "current_price": 13.25,
+        "change_percent": 1.2,
+        "recommendation": "buy",
+        "total_score": 0.75,
+        "pe_ratio": 5.2,
+        "pb_ratio": 0.68,
+        "roe": 12.8,
+        "reason": "PE估值偏低，ROE稳定，银行股配置价值显现"
+      },
+      {
+        "code": "600036",
+        "name": "招商银行",
+        "current_price": 42.80,
+        "change_percent": 0.8,
+        "recommendation": "buy",
+        "total_score": 0.82,
+        "pe_ratio": 6.1,
+        "pb_ratio": 1.05,
+        "roe": 16.2,
+        "reason": "银行业龙头，资产质量优秀，分红稳定"
+      },
+      {
+        "code": "000858",
+        "name": "五粮液",
+        "current_price": 162.50,
+        "change_percent": -0.5,
+        "recommendation": "hold",
+        "total_score": 0.68,
+        "pe_ratio": 28.5,
+        "pb_ratio": 5.2,
+        "roe": 24.1,
+        "reason": "白酒龙头，品牌价值突出，但估值偏高"
+      }
+    ],
+    "hk_stocks": [
+      {
+        "code": "00700",
+        "name": "腾讯控股",
+        "current_price": 368.20,
+        "change_percent": 2.1,
+        "recommendation": "buy",
+        "total_score": 0.78,
+        "pe_ratio": 15.6,
+        "pb_ratio": 3.2,
+        "roe": 18.9,
+        "reason": "互联网龙头，游戏业务复苏，AI布局积极"
+      },
+      {
+        "code": "00941",
+        "name": "中国移动",
+        "current_price": 72.15,
+        "change_percent": 1.5,
+        "recommendation": "buy",
+        "total_score": 0.71,
+        "pe_ratio": 12.8,
+        "pb_ratio": 1.1,
+        "roe": 8.6,
+        "reason": "运营商龙头，5G建设受益，分红收益率高"
+      }
+    ]
+  },
+  "portfolio_risk": "medium",
+  "investment_suggestions": [
+    "当前市场情绪中性，建议保持5成仓位",
+    "重点关注估值偏低的银行股配置机会",
+    "港股腾讯等科技股出现反弹信号",
+    "控制单一股票仓位不超过总资金20%",
+    "密切关注美联储政策变化对A股的影响"
+  ]
+}
