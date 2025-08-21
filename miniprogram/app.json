@@ -8,16 +8,18 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#1296db",
+    "navigationBarBackgroundColor": "#667eea",
     "navigationBarTitleText": "老刘投资决策",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#f5f5f5"
+    "backgroundColor": "#f8fafc"
   },
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#1296db",
-    "borderStyle": "black",
+    "color": "#7f8c8d",
+    "selectedColor": "#667eea",
+    "borderStyle": "white",
     "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "custom": false,
     "list": [
       {
         "pagePath": "pages/index/index",

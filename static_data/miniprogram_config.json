@@ -4,7 +4,7 @@
   "update_frequency": "daily",
   "data_sources": [
     "新浪财经",
-    "腾讯财经", 
+    "腾讯财经",
     "东方财富"
   ],
   "api_endpoints": {
@@ -26,7 +26,7 @@
       "dividend_focus": true
     },
     "medium": {
-      "name": "平衡型", 
+      "name": "平衡型",
       "max_position": 0.6,
       "min_pe_filter": false,
       "dividend_focus": false

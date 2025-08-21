@@ -5,7 +5,20 @@
       "Bash(mkdir:*)",
       "WebFetch(domain:developers.weixin.qq.com)",
       "WebFetch(domain:medium.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(python:*)",
+      "Bash(cp:*)",
+      "Bash(bash:*)",
+      "WebFetch(domain:bailian.console.aliyun.com)",
+      "WebFetch(domain:help.aliyun.com)",
+      "Bash(pip:*)",
+      "Bash(sudo apt update)",
+      "Bash(sudo:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

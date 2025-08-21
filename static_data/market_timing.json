@@ -1,39 +1,37 @@
 {
-  "analysis_time": "2025-08-19 21:30:00",
-  "market_sentiment": "neutral",
-  "recommended_position": 0.5,
+  "analysis_time": "2025-08-21 19:34:08",
+  "market_sentiment": "bearish",
+  "recommended_position": 0.3,
   "signals": [
-    "技术面：上证指数在3000点附近形成支撑",
-    "基本面：三季报业绩预告整体平稳",
-    "资金面：北向资金本周净流入15亿元",
-    "政策面：房地产政策边际改善"
+    "技术面：多项指标显示向上趋势",
+    "基本面：优质标的增多"
   ],
   "timing_indicators": {
     "technical": {
-      "rsi": 52.3,
-      "macd": "金叉形态",
-      "ma20_ma60": "均线多头排列",
-      "score": 0.6
+      "rsi": 44.140561691587784,
+      "macd": "死叉形态",
+      "ma20_ma60": "多头排列",
+      "score": 0.7690501301069654
     },
     "fundamental": {
-      "pe_percentile": 35.2,
-      "pb_percentile": 28.7,
-      "earnings_growth": 8.5,
-      "score": 0.7
+      "pe_percentile": 50.89136892477926,
+      "pb_percentile": 48.39966319613444,
+      "earnings_growth": 9.644158816940358,
+      "score": 0.7971733600811539
     },
     "sentiment": {
-      "vix_equivalent": 22.8,
-      "margin_trading": "温和增长",
-      "new_account": "持平上月",
-      "score": 0.5
+      "vix_equivalent": 28.642994542765674,
+      "margin_trading": "快速增长",
+      "new_account": "增长明显",
+      "score": 0.3889622230995939
     }
   },
-  "overall_score": 0.6,
+  "overall_score": 0.6517285710959044,
   "position_advice": {
-    "current": 0.5,
-    "target": 0.5,
-    "action": "维持",
-    "reason": "市场处于震荡整理期，建议保持中性仓位"
+    "current": 0.3,
+    "target": 0.3,
+    "action": "减仓",
+    "reason": "综合评分0.7，市场情绪bearish"
   },
   "risk_warning": [
     "关注美联储政策变化",

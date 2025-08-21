@@ -1,11 +1,11 @@
 /* 市场切换标签 */
 .market-tabs {
   display: flex;
-  background: #fff;
-  border-radius: 12rpx;
-  margin: 20rpx;
+  background: #f8fafc;
+  border-radius: 16rpx;
+  margin: 24rpx;
   padding: 8rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  border: 2rpx solid rgba(102, 126, 234, 0.1);
 }
 
 .tab {
@@ -13,36 +13,46 @@
   text-align: center;
   padding: 20rpx;
   font-size: 28rpx;
-  color: #666;
-  border-radius: 8rpx;
-  transition: all 0.3s;
+  color: #7f8c8d;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .tab.active {
-  background: #1296db;
-  color: #fff;
-  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-weight: 700;
+  transform: scale(1.02);
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.3);
 }
 
 /* 筛选栏 */
 .filter-bar {
-  padding: 0 20rpx;
-  margin-bottom: 20rpx;
+  padding: 0 24rpx;
+  margin-bottom: 24rpx;
 }
 
 .filter-btn {
   display: inline-flex;
   align-items: center;
-  padding: 16rpx 24rpx;
-  background: #fff;
+  padding: 20rpx 32rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 24rpx;
   font-size: 26rpx;
-  color: #666;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.filter-btn:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.4);
 }
 
 .filter-btn .icon {
-  margin-right: 8rpx;
+  margin-right: 12rpx;
   font-size: 24rpx;
 }
 
@@ -51,16 +61,21 @@
   background: #fff;
   margin: 0 20rpx 20rpx;
   border-radius: 12rpx;
-  padding: 30rpx;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s, padding 0.3s;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: none;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .filters-panel.show {
   max-height: 800rpx;
   padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  visibility: visible;
 }
 
 .filter-row {

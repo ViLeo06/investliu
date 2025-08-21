@@ -1,325 +1,225 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-投资规则提取器
-从OCR识别的文本中提取投资决策规则
+规则提取器 - 生成基于老刘经验的投资建议
 """
 
-import re
-import json
-import jieba
-import pandas as pd
-from collections import defaultdict
-import logging
+from typing import Dict, List, Any
+from datetime import datetime
 
-logger = logging.getLogger(__name__)
-
-class InvestmentRuleExtractor:
+class RuleExtractor:
     def __init__(self):
-        self.stock_keywords = [
-            '买入', '卖出', '持有', '观望', '减仓', '加仓', '止损',
-            'PE', 'PB', 'ROE', 'ROA', '市盈率', '市净率', '净资产收益率',
-            '营收', '利润', '现金流', '负债率', '毛利率', '净利率',
-            '估值', '价值', '成长', '分红', '股息', '业绩', '财报'
+        """初始化规则提取器"""
+        # 老刘的投资理念和建议模板
+        self.investment_philosophies = [
+            "价值投资需要耐心等待",
+            "优质企业的时间价值",
+            "分散投资降低风险",
+            "不要把鸡蛋放在一个篮子里",
+            "投资要有安全边际"
         ]
         
-        self.timing_keywords = [
-            '大盘', '趋势', '牛市', '熊市', '震荡', '突破', '支撑', '压力',
-            '均线', 'MACD', 'KDJ', 'RSI', '成交量', '换手率',
-            '政策', '降准', '降息', '加息', '印花税'
-        ]
-        
-        self.position_keywords = [
-            '仓位', '满仓', '空仓', '半仓', '轻仓', '重仓', '分散', '集中',
-            '风险', '止损', '止盈', '回撤', '波动'
-        ]
-    
-    def extract_rules_from_text(self, text):
-        """从文本中提取投资规则"""
-        rules = {
-            'selection_rules': [],    # 选股规则
-            'timing_rules': [],       # 择时规则
-            'position_rules': [],     # 仓位规则
-            'risk_rules': [],         # 风险控制规则
-            'insights': []            # 投资感悟
+        self.market_timing_rules = {
+            'bullish': [
+                "市场情绪乐观，可适当加仓",
+                "优质标的增多，选择余地大",
+                "注意不要追高，保持理性"
+            ],
+            'bearish': [
+                "市场调整期，控制仓位",
+                "寻找超跌优质股机会",
+                "现金为王，耐心等待"
+            ],
+            'neutral': [
+                "市场震荡，保持平衡仓位",
+                "精选个股，注重质量",
+                "分批建仓，降低成本"
+            ]
         }
         
-        # 按段落处理
-        paragraphs = text.split('\n')
-        
-        for paragraph in paragraphs:
-            paragraph = paragraph.strip()
-            if not paragraph:
-                continue
-            
-            # 提取选股规则
-            if self._contains_keywords(paragraph, self.stock_keywords):
-                rule = self._extract_selection_rule(paragraph)
-                if rule:
-                    rules['selection_rules'].append(rule)
-            
-            # 提取择时规则
-            if self._contains_keywords(paragraph, self.timing_keywords):
-                rule = self._extract_timing_rule(paragraph)
-                if rule:
-                    rules['timing_rules'].append(rule)
-            
-            # 提取仓位规则
-            if self._contains_keywords(paragraph, self.position_keywords):
-                rule = self._extract_position_rule(paragraph)
-                if rule:
-                    rules['position_rules'].append(rule)
-            
-            # 提取投资感悟
-            if self._is_insight(paragraph):
-                rules['insights'].append({
-                    'content': paragraph,
-                    'type': 'experience',
-                    'confidence': 0.7
-                })
-        
-        return rules
+        print("规则提取器初始化完成")
     
-    def _contains_keywords(self, text, keywords):
-        """检查文本是否包含关键词"""
-        return any(keyword in text for keyword in keywords)
-    
-    def _extract_selection_rule(self, text):
-        """提取选股规则"""
-        rule = {
-            'type': 'selection',
-            'content': text,
-            'conditions': [],
-            'action': '',
-            'confidence': 0.5
-        }
+    def generate_investment_suggestions(self, timing_analysis: Dict, 
+                                      a_recommendations: Dict, hk_recommendations: Dict) -> List[str]:
+        """生成投资建议"""
+        suggestions = []
         
-        # 提取数值条件
-        pe_match = re.search(r'PE[<>≤≥]?(\d+)', text)
-        if pe_match:
-            rule['conditions'].append({
-                'indicator': 'PE',
-                'operator': self._extract_operator(text, 'PE'),
-                'value': float(pe_match.group(1))
-            })
-            rule['confidence'] += 0.2
+        # 基于市场择时的建议
+        market_sentiment = timing_analysis.get('market_sentiment', 'neutral')
+        position = timing_analysis.get('recommended_position', 0.5)
         
-        pb_match = re.search(r'PB[<>≤≥]?(\d+\.?\d*)', text)
-        if pb_match:
-            rule['conditions'].append({
-                'indicator': 'PB',
-                'operator': self._extract_operator(text, 'PB'),
-                'value': float(pb_match.group(1))
-            })
-            rule['confidence'] += 0.2
-        
-        roe_match = re.search(r'ROE[>≥]?(\d+\.?\d*)%?', text)
-        if roe_match:
-            rule['conditions'].append({
-                'indicator': 'ROE',
-                'operator': self._extract_operator(text, 'ROE'),
-                'value': float(roe_match.group(1)) / 100 if '%' in text else float(roe_match.group(1))
-            })
-            rule['confidence'] += 0.2
-        
-        # 提取行动
-        if '买入' in text:
-            rule['action'] = 'buy'
-        elif '卖出' in text:
-            rule['action'] = 'sell'
-        elif '观望' in text:
-            rule['action'] = 'hold'
-        
-        return rule if rule['conditions'] or rule['action'] else None
-    
-    def _extract_timing_rule(self, text):
-        """提取择时规则"""
-        rule = {
-            'type': 'timing',
-            'content': text,
-            'signal': '',
-            'action': '',
-            'confidence': 0.5
-        }
-        
-        # 识别技术指标信号
-        if 'MACD' in text:
-            if '金叉' in text or '向上' in text:
-                rule['signal'] = 'macd_bullish'
-                rule['action'] = 'buy'
-            elif '死叉' in text or '向下' in text:
-                rule['signal'] = 'macd_bearish'
-                rule['action'] = 'sell'
-            rule['confidence'] += 0.2
-        
-        if '突破' in text:
-            rule['signal'] = 'breakout'
-            rule['action'] = 'buy'
-            rule['confidence'] += 0.2
-        
-        if '跌破' in text:
-            rule['signal'] = 'breakdown'
-            rule['action'] = 'sell'
-            rule['confidence'] += 0.2
-        
-        # 识别市场情绪
-        if '恐慌' in text:
-            rule['signal'] = 'panic'
-            rule['action'] = 'buy'  # 恐慌时买入
-        elif '贪婪' in text:
-            rule['signal'] = 'greed'
-            rule['action'] = 'sell'  # 贪婪时卖出
-        
-        return rule if rule['signal'] else None
-    
-    def _extract_position_rule(self, text):
-        """提取仓位规则"""
-        rule = {
-            'type': 'position',
-            'content': text,
-            'condition': '',
-            'position': 0,
-            'confidence': 0.5
-        }
-        
-        # 提取仓位比例
-        position_match = re.search(r'(\d+)成仓', text)
-        if position_match:
-            rule['position'] = float(position_match.group(1)) / 10
-            rule['confidence'] += 0.3
-        
-        half_position_words = ['半仓', '5成', '50%']
-        if any(word in text for word in half_position_words):
-            rule['position'] = 0.5
-            rule['confidence'] += 0.2
-        
-        # 提取条件
-        if '牛市' in text:
-            rule['condition'] = 'bull_market'
-        elif '熊市' in text:
-            rule['condition'] = 'bear_market'
-        elif '震荡' in text:
-            rule['condition'] = 'sideways_market'
-        
-        return rule if rule['position'] > 0 else None
-    
-    def _extract_operator(self, text, indicator):
-        """提取操作符"""
-        indicator_pos = text.find(indicator)
-        if indicator_pos == -1:
-            return '='
-        
-        # 查看指标后面的字符
-        after_indicator = text[indicator_pos + len(indicator):indicator_pos + len(indicator) + 5]
-        
-        if '<' in after_indicator or '小于' in after_indicator:
-            return '<'
-        elif '>' in after_indicator or '大于' in after_indicator:
-            return '>'
-        elif '≤' in after_indicator or '不超过' in after_indicator:
-            return '<='
-        elif '≥' in after_indicator or '不少于' in after_indicator:
-            return '>='
+        # 仓位建议
+        if position >= 0.7:
+            suggestions.append(f"当前市场情绪{market_sentiment}，建议保持{int(position*100)}%仓位")
+        elif position <= 0.3:
+            suggestions.append(f"市场风险较大，建议降低仓位至{int(position*100)}%")
         else:
-            return '='
-    
-    def _is_insight(self, text):
-        """判断是否为投资感悟"""
-        insight_keywords = [
-            '经验', '教训', '感悟', '心得', '体会', '反思',
-            '重要', '关键', '核心', '本质', '原则'
-        ]
-        return any(keyword in text for keyword in insight_keywords)
-    
-    def process_notes_folder(self, notes_folder):
-        """处理笔记文件夹，提取所有规则"""
-        import os
+            suggestions.append(f"市场情绪中性，建议保持{int(position*100)}%仓位")
         
-        all_rules = {
-            'selection_rules': [],
-            'timing_rules': [],
-            'position_rules': [],
-            'risk_rules': [],
-            'insights': []
+        # 基于股票质量的建议
+        a_stocks = a_recommendations.get('stocks', [])
+        hk_stocks = hk_recommendations.get('stocks', [])
+        
+        high_score_a = len([s for s in a_stocks if s.get('total_score', 0) > 0.7])
+        high_score_hk = len([s for s in hk_stocks if s.get('total_score', 0) > 0.7])
+        
+        if high_score_a > 3:
+            suggestions.append("A股发现多个优质标的，重点关注银行和消费股")
+        if high_score_hk > 2:
+            suggestions.append("港股腾讯等科技股出现反弹信号")
+        
+        # 风险控制建议
+        suggestions.extend([
+            "控制单一股票仓位不超过总资金20%",
+            "密切关注宏观政策变化对市场的影响"
+        ])
+        
+        # 添加市场相关建议
+        timing_suggestions = self.market_timing_rules.get(market_sentiment, [])
+        if timing_suggestions:
+            suggestions.extend(timing_suggestions[:2])  # 最多添加2条
+        
+        return suggestions[:5]  # 最多返回5条建议
+    
+    def extract_stock_insights(self, stock: Dict) -> Dict:
+        """提取单只股票的投资洞察"""
+        insights = {
+            'strengths': [],
+            'weaknesses': [],
+            'opportunities': [],
+            'threats': []
         }
         
-        # 读取汇总文件
-        summary_file = os.path.join(notes_folder, 'summary.txt')
-        if os.path.exists(summary_file):
-            with open(summary_file, 'r', encoding='utf-8') as f:
-                text = f.read()
-            
-            rules = self.extract_rules_from_text(text)
-            
-            # 合并规则
-            for category in all_rules:
-                all_rules[category].extend(rules.get(category, []))
+        # 分析优势
+        if stock.get('pe_ratio', 0) < 15:
+            insights['strengths'].append('估值偏低，安全边际较高')
         
-        # 去重和排序
-        all_rules = self._deduplicate_rules(all_rules)
+        if stock.get('roe', 0) > 15:
+            insights['strengths'].append('盈利能力强，ROE表现优秀')
         
-        # 保存提取的规则
-        output_file = os.path.join(notes_folder, 'extracted_rules.json')
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(all_rules, f, ensure_ascii=False, indent=2)
+        if stock.get('dividend_yield', 0) > 3:
+            insights['strengths'].append('分红收益率较高，现金回报稳定')
         
-        logger.info(f"规则提取完成，保存到: {output_file}")
-        return all_rules
+        # 分析劣势
+        if stock.get('debt_ratio', 0) > 0.7:
+            insights['weaknesses'].append('负债率偏高，财务风险需关注')
+        
+        if stock.get('pe_ratio', 0) > 30:
+            insights['weaknesses'].append('估值偏高，存在回调风险')
+        
+        # 分析机会
+        industry = stock.get('industry', '')
+        if industry in ['银行', '保险']:
+            insights['opportunities'].append('金融板块估值修复机会')
+        elif industry in ['食品饮料']:
+            insights['opportunities'].append('消费升级长期受益')
+        
+        # 分析威胁
+        change_percent = abs(stock.get('change_percent', 0))
+        if change_percent > 5:
+            insights['threats'].append('短期波动较大，需控制风险')
+        
+        return insights
     
-    def _deduplicate_rules(self, rules):
-        """去重和排序规则"""
-        for category in rules:
-            # 按置信度降序排序
-            rules[category] = sorted(rules[category], 
-                                   key=lambda x: x.get('confidence', 0), 
-                                   reverse=True)
-            
-            # 简单去重（基于内容相似度）
-            unique_rules = []
-            for rule in rules[category]:
-                is_duplicate = False
-                for existing_rule in unique_rules:
-                    if self._is_similar_rule(rule, existing_rule):
-                        is_duplicate = True
-                        break
-                if not is_duplicate:
-                    unique_rules.append(rule)
-            
-            rules[category] = unique_rules
+    def generate_portfolio_advice(self, stocks: List[Dict]) -> Dict:
+        """生成投资组合建议"""
+        if not stocks:
+            return {
+                'allocation_advice': '暂无合适标的',
+                'risk_level': 'high',
+                'suggestions': ['等待更好的投资机会']
+            }
         
-        return rules
-    
-    def _is_similar_rule(self, rule1, rule2):
-        """判断两个规则是否相似"""
-        content1 = rule1.get('content', '')
-        content2 = rule2.get('content', '')
+        # 按行业分类
+        industry_groups = {}
+        for stock in stocks:
+            industry = stock.get('industry', '其他')
+            if industry not in industry_groups:
+                industry_groups[industry] = []
+            industry_groups[industry].append(stock)
         
-        # 简单的相似度判断
-        if len(content1) == 0 or len(content2) == 0:
-            return False
+        # 生成配置建议
+        allocation_advice = []
+        total_industries = len(industry_groups)
         
-        common_chars = set(content1) & set(content2)
-        similarity = len(common_chars) / max(len(set(content1)), len(set(content2)))
+        for industry, industry_stocks in industry_groups.items():
+            count = len(industry_stocks)
+            if count > 1:
+                allocation_advice.append(f"{industry}板块可配置{count}只股票，分散风险")
+            else:
+                allocation_advice.append(f"{industry}板块重点关注{industry_stocks[0]['name']}")
         
-        return similarity > 0.7
-
-def main():
-    """主函数"""
-    extractor = InvestmentRuleExtractor()
+        # 评估风险等级
+        avg_score = sum(stock.get('total_score', 0.5) for stock in stocks) / len(stocks)
+        if avg_score > 0.7:
+            risk_level = 'low'
+        elif avg_score > 0.5:
+            risk_level = 'medium'
+        else:
+            risk_level = 'high'
+        
+        # 生成具体建议
+        suggestions = []
+        if total_industries >= 3:
+            suggestions.append('投资组合行业分散度良好')
+        else:
+            suggestions.append('建议增加行业分散度，降低集中风险')
+        
+        if avg_score > 0.6:
+            suggestions.append('整体标的质量较高，可适当增加仓位')
+        else:
+            suggestions.append('标的质量一般，建议控制仓位')
+        
+        return {
+            'allocation_advice': allocation_advice,
+            'risk_level': risk_level,
+            'suggestions': suggestions
+        }
     
-    # 处理笔记文件夹
-    notes_folder = "notes/processed"
+    def get_market_outlook(self, timing_analysis: Dict) -> str:
+        """获取市场展望"""
+        sentiment = timing_analysis.get('market_sentiment', 'neutral')
+        overall_score = timing_analysis.get('overall_score', 0.5)
+        
+        if sentiment == 'bullish' and overall_score > 0.6:
+            return "市场短期向好，可关注优质成长股机会"
+        elif sentiment == 'bearish' and overall_score < 0.4:
+            return "市场面临调整压力，建议控制仓位等待机会"
+        else:
+            return "市场处于震荡格局，建议精选个股，保持耐心"
     
-    if not os.path.exists(notes_folder):
-        logger.error(f"笔记文件夹不存在: {notes_folder}")
-        logger.info("请先运行OCR处理脚本")
-        return
-    
-    # 提取规则
-    rules = extractor.process_notes_folder(notes_folder)
-    
-    # 输出统计信息
-    for category, rule_list in rules.items():
-        logger.info(f"{category}: {len(rule_list)} 条规则")
-
-if __name__ == "__main__":
-    import os
-    main()
+    def generate_daily_summary(self, all_data: Dict) -> Dict:
+        """生成每日投资总结"""
+        current_time = datetime.now().strftime("%Y-%m-%d")
+        
+        summary = {
+            'date': current_time,
+            'market_outlook': self.get_market_outlook(all_data.get('timing_analysis', {})),
+            'key_recommendations': [],
+            'risk_alerts': [],
+            'philosophy': self.investment_philosophies[hash(current_time) % len(self.investment_philosophies)]
+        }
+        
+        # 提取关键推荐
+        a_stocks = all_data.get('a_recommendations', {}).get('stocks', [])
+        hk_stocks = all_data.get('hk_recommendations', {}).get('stocks', [])
+        
+        top_stocks = sorted(a_stocks + hk_stocks, key=lambda x: x.get('total_score', 0), reverse=True)[:3]
+        
+        for stock in top_stocks:
+            summary['key_recommendations'].append({
+                'name': stock.get('name', ''),
+                'code': stock.get('code', ''),
+                'reason': stock.get('reason', ''),
+                'score': stock.get('total_score', 0)
+            })
+        
+        # 风险提醒
+        timing = all_data.get('timing_analysis', {})
+        if timing.get('recommended_position', 0.5) < 0.4:
+            summary['risk_alerts'].append('市场风险较高，建议控制仓位')
+        
+        risk_warnings = timing.get('risk_warning', [])
+        summary['risk_alerts'].extend(risk_warnings[:2])
+        
+        return summary

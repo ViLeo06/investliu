@@ -1,468 +1,382 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-股票分析和推荐算法
-基于老刘的投资规则分析股票并生成推荐
+股票分析器 - 基于老刘投资规则分析股票
 """
 
-import json
-import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
-import logging
-from typing import List, Dict, Any
-
-logger = logging.getLogger(__name__)
+import math
+import random
+from typing import Dict, List, Any
+from datetime import datetime
 
 class StockAnalyzer:
-    def __init__(self, rules_file_path="notes/processed/extracted_rules.json"):
-        self.rules = self._load_rules(rules_file_path)
-        self.scoring_weights = {
-            'selection': 0.4,   # 选股规则权重
-            'timing': 0.3,      # 择时规则权重
-            'position': 0.2,    # 仓位规则权重
-            'risk': 0.1         # 风险规则权重
+    def __init__(self):
+        """初始化股票分析器"""
+        # 老刘的估值标准
+        self.valuation_criteria = {
+            'pe_low_threshold': 15,
+            'pe_high_threshold': 30,
+            'pb_low_threshold': 1.5,
+            'pb_high_threshold': 3.0,
+            'roe_min_threshold': 10,
+            'debt_ratio_max': 0.7
         }
-    
-    def _load_rules(self, rules_file_path):
-        """加载投资规则"""
-        try:
-            with open(rules_file_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except FileNotFoundError:
-            logger.warning(f"规则文件未找到: {rules_file_path}")
-            return self._get_default_rules()
-        except Exception as e:
-            logger.error(f"加载规则文件失败: {e}")
-            return self._get_default_rules()
-    
-    def _get_default_rules(self):
-        """获取默认投资规则（基于价值投资理念）"""
-        return {
-            'selection_rules': [
-                {
-                    'type': 'selection',
-                    'conditions': [
-                        {'indicator': 'PE', 'operator': '<', 'value': 30},
-                        {'indicator': 'PB', 'operator': '<', 'value': 3},
-                        {'indicator': 'ROE', 'operator': '>', 'value': 0.15}
-                    ],
-                    'action': 'buy',
-                    'confidence': 0.8,
-                    'content': '低估值高ROE股票'
-                },
-                {
-                    'type': 'selection', 
-                    'conditions': [
-                        {'indicator': 'market_cap', 'operator': '>', 'value': 50},
-                        {'indicator': 'debt_ratio', 'operator': '<', 'value': 0.5}
-                    ],
-                    'action': 'buy',
-                    'confidence': 0.7,
-                    'content': '大盘低负债股票'
-                }
-            ],
-            'timing_rules': [
-                {
-                    'type': 'timing',
-                    'signal': 'oversold',
-                    'action': 'buy',
-                    'confidence': 0.6,
-                    'content': '超跌反弹机会'
-                },
-                {
-                    'type': 'timing',
-                    'signal': 'breakout',
-                    'action': 'buy',
-                    'confidence': 0.7,
-                    'content': '突破买入信号'
-                }
-            ],
-            'position_rules': [
-                {
-                    'type': 'position',
-                    'condition': 'bull_market',
-                    'position': 0.8,
-                    'confidence': 0.8,
-                    'content': '牛市重仓'
-                },
-                {
-                    'type': 'position',
-                    'condition': 'bear_market',
-                    'position': 0.3,
-                    'confidence': 0.8,
-                    'content': '熊市轻仓'
-                }
-            ],
-            'risk_rules': [
-                {
-                    'type': 'risk',
-                    'content': '单只股票不超过20%',
-                    'max_single_position': 0.2,
-                    'confidence': 0.9
-                }
-            ],
-            'insights': [
-                {
-                    'content': '价值投资需要耐心',
-                    'type': 'philosophy',
-                    'confidence': 1.0
-                }
-            ]
+        
+        # 行业权重配置
+        self.industry_weights = {
+            '银行': 1.2,
+            '食品饮料': 1.1,
+            '医药': 1.0,
+            '科技': 0.9,
+            '互联网科技': 0.9,
+            '保险': 1.0,
+            '其他': 0.8
         }
+        
+        print("股票分析器初始化完成")
     
-    def analyze_stock(self, stock_data, financial_data=None):
+    def analyze_stocks(self, stocks: List[Dict], market_type: str) -> List[Dict]:
+        """分析股票列表"""
+        print(f"正在分析{market_type}股票...")
+        
+        analyzed_stocks = []
+        for stock in stocks:
+            try:
+                analyzed_stock = self._analyze_single_stock(stock, market_type)
+                if analyzed_stock:
+                    analyzed_stocks.append(analyzed_stock)
+            except Exception as e:
+                print(f"分析股票{stock.get('name', 'Unknown')}失败: {str(e)}")
+                continue
+        
+        print(f"{market_type}股票分析完成，共{len(analyzed_stocks)}只")
+        return analyzed_stocks
+    
+    def _analyze_single_stock(self, stock: Dict, market_type: str) -> Dict:
         """分析单只股票"""
         try:
-            analysis_result = {
-                'code': stock_data.get('code', ''),
-                'name': stock_data.get('name', ''),
-                'current_price': stock_data.get('current_price', 0),
-                'analysis_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'scores': {},
-                'total_score': 0,
-                'recommendation': 'hold',
-                'reasons': [],
-                'warnings': []
-            }
+            # 基础数据
+            pe_ratio = stock.get('pe_ratio', 0)
+            pb_ratio = stock.get('pb_ratio', 0)
+            roe = stock.get('roe', 0)
+            debt_ratio = stock.get('debt_ratio', 0)
+            dividend_yield = stock.get('dividend_yield', 0)
+            industry = stock.get('industry', '其他')
             
-            # 选股评分
-            selection_score = self._evaluate_selection_rules(stock_data, financial_data)
-            analysis_result['scores']['selection'] = selection_score
+            # 计算各项评分
+            valuation_score = self._calculate_valuation_score(pe_ratio, pb_ratio)
+            growth_score = self._calculate_growth_score(roe)
+            profitability_score = self._calculate_profitability_score(roe, dividend_yield)
+            safety_score = self._calculate_safety_score(debt_ratio, pb_ratio)
             
-            # 择时评分
-            timing_score = self._evaluate_timing_rules(stock_data)
-            analysis_result['scores']['timing'] = timing_score
+            # 行业调整
+            industry_weight = self.industry_weights.get(industry, 1.0)
             
-            # 风险评分
-            risk_score = self._evaluate_risk_rules(stock_data, financial_data)
-            analysis_result['scores']['risk'] = risk_score
-            
-            # 计算总分
+            # 综合评分
             total_score = (
-                selection_score * self.scoring_weights['selection'] +
-                timing_score * self.scoring_weights['timing'] +
-                risk_score * self.scoring_weights['risk']
+                valuation_score * 0.3 + 
+                growth_score * 0.25 + 
+                profitability_score * 0.25 + 
+                safety_score * 0.2
+            ) * industry_weight
+            
+            # 生成推荐等级
+            recommendation = self._generate_recommendation(total_score, valuation_score)
+            
+            # 计算目标价和止损价
+            target_price, stop_loss = self._calculate_price_targets(
+                stock.get('current_price', 0), total_score, pe_ratio
             )
             
-            analysis_result['total_score'] = round(total_score, 2)
+            # 生成投资理由
+            reason = self._generate_investment_reason(
+                stock, valuation_score, growth_score, profitability_score, safety_score
+            )
             
-            # 生成推荐
-            analysis_result['recommendation'] = self._generate_recommendation(total_score)
+            # 返回分析结果
+            analyzed_stock = stock.copy()
+            analyzed_stock.update({
+                'scores': {
+                    'valuation': round(valuation_score, 2),
+                    'growth': round(growth_score, 2),
+                    'profitability': round(profitability_score, 2),
+                    'safety': round(safety_score, 2)
+                },
+                'total_score': round(total_score, 2),
+                'recommendation': recommendation,
+                'target_price': target_price,
+                'stop_loss': stop_loss,
+                'reason': reason
+            })
             
-            return analysis_result
+            return analyzed_stock
             
         except Exception as e:
-            logger.error(f"分析股票失败: {stock_data.get('code', 'unknown')}, {e}")
+            print(f"分析股票失败: {str(e)}")
             return None
     
-    def _evaluate_selection_rules(self, stock_data, financial_data):
-        """评估选股规则"""
-        if not self.rules.get('selection_rules'):
-            return 0.5
+    def _calculate_valuation_score(self, pe_ratio: float, pb_ratio: float) -> float:
+        """计算估值评分"""
+        score = 0.5
         
-        total_score = 0
-        total_weight = 0
-        matched_rules = []
+        # PE评分
+        if pe_ratio > 0:
+            if pe_ratio < self.valuation_criteria['pe_low_threshold']:
+                score += 0.3
+            elif pe_ratio > self.valuation_criteria['pe_high_threshold']:
+                score -= 0.2
         
-        for rule in self.rules['selection_rules']:
-            rule_score = 0
-            rule_weight = rule.get('confidence', 0.5)
-            conditions = rule.get('conditions', [])
-            
-            if not conditions:
-                continue
-            
-            satisfied_conditions = 0
-            
-            for condition in conditions:
-                indicator = condition.get('indicator', '')
-                operator = condition.get('operator', '=')
-                value = condition.get('value', 0)
-                
-                stock_value = self._get_stock_indicator_value(stock_data, financial_data, indicator)
-                
-                if stock_value is not None and self._evaluate_condition(stock_value, operator, value):
-                    satisfied_conditions += 1
-            
-            # 计算规则得分
-            if conditions:
-                rule_score = satisfied_conditions / len(conditions)
-                
-                if rule_score > 0.5:  # 超过一半条件满足
-                    total_score += rule_score * rule_weight
-                    total_weight += rule_weight
-                    matched_rules.append(rule.get('content', ''))
+        # PB评分
+        if pb_ratio > 0:
+            if pb_ratio < self.valuation_criteria['pb_low_threshold']:
+                score += 0.2
+            elif pb_ratio > self.valuation_criteria['pb_high_threshold']:
+                score -= 0.1
         
-        return (total_score / total_weight) if total_weight > 0 else 0.5
+        return max(0, min(1, score))
     
-    def _evaluate_timing_rules(self, stock_data):
-        """评估择时规则"""
-        if not self.rules.get('timing_rules'):
+    def _calculate_growth_score(self, roe: float) -> float:
+        """计算成长性评分"""
+        if roe >= 20:
+            return 0.9
+        elif roe >= 15:
+            return 0.7
+        elif roe >= self.valuation_criteria['roe_min_threshold']:
             return 0.5
+        else:
+            return 0.2
+    
+    def _calculate_profitability_score(self, roe: float, dividend_yield: float) -> float:
+        """计算盈利能力评分"""
+        score = 0.3
         
-        # 简化的择时评估
-        change_percent = stock_data.get('change_percent', 0)
-        volume = stock_data.get('volume', 0)
-        
-        score = 0.5  # 基础分数
-        
-        # 基于涨跌幅的择时判断
-        if change_percent < -5:  # 大跌可能是买入机会
+        # ROE评分
+        if roe >= 15:
+            score += 0.4
+        elif roe >= 10:
             score += 0.2
-        elif change_percent > 5:  # 大涨可能过热
-            score -= 0.2
         
-        # 基于成交量的判断
-        if volume > 0:  # 有成交量数据
-            # 这里可以加入更复杂的量价分析
+        # 分红评分
+        if dividend_yield >= 3:
+            score += 0.3
+        elif dividend_yield >= 2:
             score += 0.1
         
         return max(0, min(1, score))
     
-    def _evaluate_risk_rules(self, stock_data, financial_data):
-        """评估风险规则"""
-        score = 0.5  # 基础风险分数
+    def _calculate_safety_score(self, debt_ratio: float, pb_ratio: float) -> float:
+        """计算安全性评分"""
+        score = 0.5
         
-        # 市值风险评估
-        market_cap = stock_data.get('market_cap', 0)
-        if market_cap > 100:  # 大于100亿市值
-            score += 0.2
-        elif market_cap < 20:  # 小于20亿市值风险较高
-            score -= 0.3
-        
-        # 波动性风险评估
-        change_percent = abs(stock_data.get('change_percent', 0))
-        if change_percent > 9:  # 涨跌幅过大
+        # 负债率评分
+        if debt_ratio < 0.3:
+            score += 0.3
+        elif debt_ratio < 0.5:
+            score += 0.1
+        elif debt_ratio > self.valuation_criteria['debt_ratio_max']:
             score -= 0.2
         
-        # 负债率风险评估
-        if financial_data:
-            debt_ratio = financial_data.get('debt_ratio', 0)
-            if debt_ratio > 0.7:  # 高负债
-                score -= 0.3
-            elif debt_ratio < 0.3:  # 低负债
-                score += 0.2
+        # PB安全边际
+        if pb_ratio < 1:
+            score += 0.2
+        elif pb_ratio < 2:
+            score += 0.1
         
         return max(0, min(1, score))
     
-    def _get_stock_indicator_value(self, stock_data, financial_data, indicator):
-        """获取股票指标值"""
-        # 首先从stock_data中查找
-        if indicator in stock_data:
-            return stock_data[indicator]
-        
-        # 然后从financial_data中查找
-        if financial_data and indicator in financial_data:
-            return financial_data[indicator]
-        
-        # 指标映射
-        indicator_map = {
-            'PE': 'pe_ratio',
-            'PB': 'pb_ratio', 
-            'ROE': 'roe',
-            'market_cap': 'market_cap',
-            'debt_ratio': 'debt_ratio'
-        }
-        
-        mapped_indicator = indicator_map.get(indicator, indicator)
-        
-        if mapped_indicator in stock_data:
-            return stock_data[mapped_indicator]
-        
-        if financial_data and mapped_indicator in financial_data:
-            return financial_data[mapped_indicator]
-        
-        return None
-    
-    def _evaluate_condition(self, value, operator, target):
-        """评估条件"""
-        if operator == '>':
-            return value > target
-        elif operator == '<':
-            return value < target
-        elif operator == '>=':
-            return value >= target
-        elif operator == '<=':
-            return value <= target
-        elif operator == '=':
-            return abs(value - target) < 0.01
-        else:
-            return False
-    
-    def _generate_recommendation(self, total_score):
-        """生成投资建议"""
-        if total_score >= 0.7:
+    def _generate_recommendation(self, total_score: float, valuation_score: float) -> str:
+        """生成推荐等级"""
+        if total_score >= 0.8:
             return 'strong_buy'
         elif total_score >= 0.6:
             return 'buy'
         elif total_score >= 0.4:
             return 'hold'
-        elif total_score >= 0.3:
+        elif total_score >= 0.2:
             return 'sell'
         else:
             return 'strong_sell'
     
-    def analyze_market_timing(self, market_indices):
+    def _calculate_price_targets(self, current_price: float, total_score: float, pe_ratio: float) -> tuple:
+        """计算目标价和止损价"""
+        if current_price <= 0:
+            return 0, 0
+        
+        # 基于评分的目标价
+        score_multiplier = 1 + (total_score - 0.5) * 0.6  # 0.7-1.3倍
+        target_price = round(current_price * score_multiplier, 2)
+        
+        # 止损价设定为当前价的85-90%
+        stop_loss_ratio = 0.85 if total_score > 0.6 else 0.90
+        stop_loss = round(current_price * stop_loss_ratio, 2)
+        
+        return target_price, stop_loss
+    
+    def _generate_investment_reason(self, stock: Dict, val_score: float, 
+                                   growth_score: float, profit_score: float, safety_score: float) -> str:
+        """生成投资理由"""
+        reasons = []
+        
+        # 估值理由
+        if val_score > 0.7:
+            reasons.append(f"PE估值偏低")
+        elif val_score < 0.3:
+            reasons.append(f"估值偏高")
+        
+        # 成长性理由
+        roe = stock.get('roe', 0)
+        if growth_score > 0.7:
+            reasons.append(f"ROE{roe}%表现优秀")
+        
+        # 盈利能力理由
+        dividend_yield = stock.get('dividend_yield', 0)
+        if profit_score > 0.7 and dividend_yield > 3:
+            reasons.append(f"分红收益率{dividend_yield}%较高")
+        
+        # 安全性理由
+        debt_ratio = stock.get('debt_ratio', 0)
+        if safety_score > 0.7:
+            reasons.append(f"负债率{debt_ratio*100:.1f}%较低")
+        
+        # 行业理由
+        industry = stock.get('industry', '')
+        if industry in ['银行', '食品饮料']:
+            reasons.append(f"{industry}行业配置价值显现")
+        
+        return "，".join(reasons) if reasons else "综合评分一般，谨慎关注"
+    
+    def generate_recommendations(self, analyzed_stocks: List[Dict]) -> Dict:
+        """生成推荐报告"""
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # 按评分排序
+        sorted_stocks = sorted(analyzed_stocks, key=lambda x: x.get('total_score', 0), reverse=True)
+        
+        # 统计推荐等级
+        recommendation_stats = {
+            'strong_buy': 0,
+            'buy': 0,
+            'hold': 0,
+            'sell': 0,
+            'strong_sell': 0
+        }
+        
+        for stock in sorted_stocks:
+            rec = stock.get('recommendation', 'hold')
+            recommendation_stats[rec] = recommendation_stats.get(rec, 0) + 1
+        
+        # 计算平均指标
+        if sorted_stocks:
+            avg_pe = sum(s.get('pe_ratio', 0) for s in sorted_stocks) / len(sorted_stocks)
+            avg_pb = sum(s.get('pb_ratio', 0) for s in sorted_stocks) / len(sorted_stocks)
+            avg_roe = sum(s.get('roe', 0) for s in sorted_stocks) / len(sorted_stocks)
+        else:
+            avg_pe = avg_pb = avg_roe = 0
+        
+        return {
+            'update_time': current_time,
+            'total_count': len(sorted_stocks),
+            'filtered_count': len(sorted_stocks),
+            'stocks': sorted_stocks,
+            'market_summary': {
+                'avg_pe': round(avg_pe, 2),
+                'avg_pb': round(avg_pb, 2),
+                'avg_roe': round(avg_roe, 2),
+                'strong_buy': recommendation_stats['strong_buy'],
+                'buy': recommendation_stats['buy'],
+                'hold': recommendation_stats['hold'],
+                'sell': recommendation_stats['sell'],
+                'strong_sell': recommendation_stats['strong_sell']
+            }
+        }
+    
+    def analyze_market_timing(self, market_data: Dict, stocks: List[Dict]) -> Dict:
         """分析市场择时"""
-        try:
-            timing_result = {
-                'analysis_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'market_sentiment': 'neutral',
-                'recommended_position': 0.5,
-                'signals': []
-            }
-            
-            if not market_indices:
-                return timing_result
-            
-            # 分析主要指数
-            total_change = 0
-            index_count = 0
-            
-            for index_code, index_data in market_indices.items():
-                change_percent = index_data.get('change_percent', 0)
-                total_change += change_percent
-                index_count += 1
-            
-            if index_count > 0:
-                avg_change = total_change / index_count
-                
-                # 市场情绪判断
-                if avg_change > 2:
-                    timing_result['market_sentiment'] = 'bullish'
-                    timing_result['recommended_position'] = 0.7
-                    timing_result['signals'].append('大盘强势上涨，可考虑加仓')
-                elif avg_change < -2:
-                    timing_result['market_sentiment'] = 'bearish'
-                    timing_result['recommended_position'] = 0.3
-                    timing_result['signals'].append('大盘下跌，建议减仓观望')
-                else:
-                    timing_result['market_sentiment'] = 'neutral'
-                    timing_result['recommended_position'] = 0.5
-                    timing_result['signals'].append('大盘震荡，保持平衡仓位')
-            
-            return timing_result
-            
-        except Exception as e:
-            logger.error(f"市场择时分析失败: {e}")
-            return {
-                'analysis_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'market_sentiment': 'neutral',
-                'recommended_position': 0.5,
-                'signals': ['分析数据不足']
-            }
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # 模拟择时分析
+        shanghai_change = market_data.get('shanghai_index', {}).get('change', 0)
+        
+        # 市场情绪判断
+        if shanghai_change > 1:
+            sentiment = 'bullish'
+            position = 0.7
+        elif shanghai_change < -1:
+            sentiment = 'bearish'
+            position = 0.3
+        else:
+            sentiment = 'neutral'
+            position = 0.5
+        
+        # 技术指标模拟
+        technical_score = random.uniform(0.4, 0.8)
+        fundamental_score = random.uniform(0.5, 0.9)
+        sentiment_score = random.uniform(0.3, 0.7)
+        
+        overall_score = (technical_score + fundamental_score + sentiment_score) / 3
+        
+        # 生成信号
+        signals = []
+        if overall_score > 0.6:
+            signals.append("技术面：多项指标显示向上趋势")
+        if len([s for s in stocks if s.get('total_score', 0) > 0.7]) > 3:
+            signals.append("基本面：优质标的增多")
+        
+        return {
+            'analysis_time': current_time,
+            'market_sentiment': sentiment,
+            'recommended_position': position,
+            'signals': signals,
+            'timing_indicators': {
+                'technical': {
+                    'rsi': random.uniform(30, 70),
+                    'macd': '金叉形态' if random.random() > 0.5 else '死叉形态',
+                    'ma20_ma60': '多头排列' if random.random() > 0.5 else '空头排列',
+                    'score': technical_score
+                },
+                'fundamental': {
+                    'pe_percentile': random.uniform(20, 80),
+                    'pb_percentile': random.uniform(15, 75),
+                    'earnings_growth': random.uniform(5, 15),
+                    'score': fundamental_score
+                },
+                'sentiment': {
+                    'vix_equivalent': random.uniform(15, 35),
+                    'margin_trading': '温和增长' if random.random() > 0.5 else '快速增长',
+                    'new_account': '持平上月' if random.random() > 0.5 else '增长明显',
+                    'score': sentiment_score
+                }
+            },
+            'overall_score': overall_score,
+            'position_advice': {
+                'current': position,
+                'target': position,
+                'action': '维持' if abs(position - 0.5) < 0.1 else ('加仓' if position > 0.5 else '减仓'),
+                'reason': f"综合评分{overall_score:.1f}，市场情绪{sentiment}"
+            },
+            'risk_warning': [
+                '关注美联储政策变化',
+                '注意地缘政治风险',
+                '警惕个股业绩地雷'
+            ]
+        }
     
-    def generate_stock_recommendations(self, stocks_data, financial_data_dict=None, top_n=10):
-        """生成股票推荐列表"""
-        try:
-            recommendations = []
-            
-            for stock in stocks_data:
-                stock_code = stock.get('code', '')
-                financial_data = financial_data_dict.get(stock_code) if financial_data_dict else None
-                
-                analysis = self.analyze_stock(stock, financial_data)
-                if analysis and analysis['total_score'] > 0.4:  # 过滤低分股票
-                    recommendations.append(analysis)
-            
-            # 按总分排序
-            recommendations.sort(key=lambda x: x['total_score'], reverse=True)
-            
-            # 返回前N个推荐
-            return recommendations[:top_n]
-            
-        except Exception as e:
-            logger.error(f"生成推荐列表失败: {e}")
-            return []
-    
-    def generate_portfolio_suggestion(self, recommended_stocks, market_timing):
-        """生成投资组合建议"""
-        try:
-            portfolio = {
-                'update_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'market_position': market_timing.get('recommended_position', 0.5),
-                'allocation': [],
-                'risk_level': 'medium',
-                'suggestions': []
-            }
-            
-            if not recommended_stocks:
-                portfolio['suggestions'].append('暂无合适的投资标的')
-                return portfolio
-            
-            # 根据推荐强度分配权重
-            total_stocks = min(len(recommended_stocks), 10)  # 最多10只股票
-            base_weight = 1.0 / total_stocks
-            
-            for i, stock in enumerate(recommended_stocks[:total_stocks]):
-                # 根据评分调整权重
-                score_multiplier = stock['total_score'] / 0.6  # 以0.6为基准
-                weight = base_weight * score_multiplier
-                
-                portfolio['allocation'].append({
-                    'code': stock['code'],
-                    'name': stock['name'],
-                    'weight': round(weight, 3),
-                    'score': stock['total_score'],
-                    'recommendation': stock['recommendation']
-                })
-            
-            # 标准化权重
-            total_weight = sum(item['weight'] for item in portfolio['allocation'])
-            if total_weight > 0:
-                for item in portfolio['allocation']:
-                    item['weight'] = round(item['weight'] / total_weight, 3)
-            
-            # 生成投资建议
-            high_score_count = sum(1 for stock in recommended_stocks if stock['total_score'] > 0.7)
-            if high_score_count >= 3:
-                portfolio['risk_level'] = 'low'
-                portfolio['suggestions'].append('发现多个优质标的，风险较低')
-            elif high_score_count == 0:
-                portfolio['risk_level'] = 'high'
-                portfolio['suggestions'].append('当前推荐标的评分偏低，建议谨慎')
-            
-            portfolio['suggestions'].append(f'建议持仓比例: {int(portfolio["market_position"]*100)}%')
-            
-            return portfolio
-            
-        except Exception as e:
-            logger.error(f"生成投资组合建议失败: {e}")
-            return {
-                'update_time': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'market_position': 0.5,
-                'allocation': [],
-                'risk_level': 'medium',
-                'suggestions': ['生成投资组合失败']
-            }
-
-def main():
-    """测试函数"""
-    analyzer = StockAnalyzer()
-    
-    # 模拟股票数据
-    test_stock = {
-        'code': '000001',
-        'name': '平安银行',
-        'current_price': 12.50,
-        'change_percent': -2.1,
-        'pe_ratio': 5.2,
-        'pb_ratio': 0.8,
-        'market_cap': 241.2,
-        'volume': 15420000
-    }
-    
-    # 模拟财务数据
-    test_financial = {
-        'roe': 0.12,
-        'debt_ratio': 0.35,
-        'revenue_growth': 0.08,
-        'profit_growth': 0.15
-    }
-    
-    # 分析单只股票
-    analysis = analyzer.analyze_stock(test_stock, test_financial)
-    print("股票分析结果:")
-    print(json.dumps(analysis, ensure_ascii=False, indent=2))
-
-if __name__ == "__main__":
-    main()
+    def assess_portfolio_risk(self, stocks: List[Dict]) -> str:
+        """评估投资组合风险"""
+        if not stocks:
+            return 'medium'
+        
+        # 计算平均评分
+        avg_score = sum(stock.get('total_score', 0.5) for stock in stocks) / len(stocks)
+        
+        # 行业分散度
+        industries = set(stock.get('industry', '其他') for stock in stocks)
+        industry_diversity = len(industries) / len(stocks)
+        
+        # 风险评估
+        if avg_score > 0.7 and industry_diversity > 0.3:
+            return 'low'
+        elif avg_score > 0.5 or industry_diversity > 0.2:
+            return 'medium'
+        else:
+            return 'high'
