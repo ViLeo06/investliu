@@ -6,6 +6,7 @@ Page({
     loading: true,
     error: '',
     currentTab: 0,
+    dailyQuote: null,
     summary: {
       market_status: {},
       recommendations_count: {
@@ -60,7 +61,8 @@ Page({
 
     return Promise.all([
       this.loadSummaryData(),
-      this.loadMarketTiming()
+      this.loadMarketTiming(),
+      this.loadDailyQuote()
     ]).then(() => {
       this.setData({ loading: false })
       // 记录更新时间
@@ -173,6 +175,68 @@ Page({
       'strong_sell': '强烈卖出'
     }
     return textMap[recommendation] || '持有'
+  },
+
+  // 加载每日金句
+  loadDailyQuote: function() {
+    return app.requestQuotes().then(data => {
+      if (data && data.categories) {
+        // 获取当前日期作为随机种子
+        const today = new Date();
+        const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+        
+        // 获取所有金句
+        const allQuotes = [];
+        Object.keys(data.categories).forEach(category => {
+          allQuotes.push(...data.categories[category].quotes);
+        });
+        
+        if (allQuotes.length > 0) {
+          // 基于日期选择金句，确保每天固定
+          const quoteIndex = dayOfYear % allQuotes.length;
+          const dailyQuote = allQuotes[quoteIndex];
+          
+          this.setData({ dailyQuote });
+          console.log('每日金句加载成功:', dailyQuote.id);
+        }
+      }
+    }).catch(err => {
+      console.warn('加载每日金句失败:', err);
+    });
+  },
+
+  // 点击金句卡片
+  onQuoteTap: function(e) {
+    const quote = e.detail.quote;
+    wx.showModal({
+      title: '投资金句',
+      content: `${quote.content}\n\n— ${quote.author}`,
+      confirmText: '分享',
+      cancelText: '知道了',
+      success: (res) => {
+        if (res.confirm) {
+          this.shareQuote(quote);
+        }
+      }
+    });
+  },
+
+  // 查看全部金句
+  viewAllQuotes: function() {
+    wx.navigateTo({
+      url: '/pages/quotes/quotes'
+    });
+  },
+
+  // 分享金句
+  shareQuote: function(quote) {
+    const shareContent = `💎 ${quote.content}\n\n— ${quote.author}\n\n来自老刘投资笔记`;
+    
+    // 可以在这里实现分享到微信群或朋友圈
+    wx.showToast({
+      title: '分享功能开发中',
+      icon: 'none'
+    });
   },
 
   // 分享功能

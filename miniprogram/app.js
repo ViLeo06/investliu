@@ -117,7 +117,7 @@ App({
     })
   },
 
-  // 通用API请求方法
+  // 通用API请求方法（带重试）
   request: function(options) {
     const self = this
     const defaultOptions = {
@@ -125,7 +125,8 @@ App({
       timeout: 10000,
       header: {
         'Content-Type': 'application/json'
-      }
+      },
+      retry: 2 // 默认重试2次
     }
 
     // 合并选项
@@ -136,8 +137,15 @@ App({
       requestOptions.url = self.globalData.apiBaseUrl + requestOptions.url
     }
 
+    return this._requestWithRetry(requestOptions, requestOptions.retry || 0)
+  },
+
+  // 带重试的请求方法
+  _requestWithRetry: function(options, retryCount) {
+    const self = this
+    
     // 显示加载
-    if (requestOptions.showLoading !== false) {
+    if (options.showLoading !== false) {
       wx.showLoading({
         title: '加载中...',
         mask: true
@@ -146,7 +154,7 @@ App({
 
     return new Promise((resolve, reject) => {
       wx.request({
-        ...requestOptions,
+        ...options,
         success: function(res) {
           wx.hideLoading()
           
@@ -154,6 +162,18 @@ App({
             resolve(res.data)
           } else {
             console.error('请求失败:', res)
+            
+            // 如果是服务器错误且还有重试次数，则重试
+            if (res.statusCode >= 500 && retryCount > 0) {
+              console.log(`请求失败，${retryCount}秒后重试...`)
+              setTimeout(() => {
+                self._requestWithRetry(options, retryCount - 1)
+                  .then(resolve)
+                  .catch(reject)
+              }, 1000)
+              return
+            }
+            
             reject(new Error(`请求失败: ${res.statusCode}`))
           }
         },
@@ -161,8 +181,29 @@ App({
           wx.hideLoading()
           console.error('网络请求失败:', err)
           
+          // 如果还有重试次数，则重试
+          if (retryCount > 0) {
+            console.log(`网络请求失败，${retryCount}秒后重试...`)
+            setTimeout(() => {
+              self._requestWithRetry(options, retryCount - 1)
+                .then(resolve)
+                .catch(reject)
+            }, 1000)
+            return
+          }
+          
+          // 根据错误类型显示不同提示
+          let errorMsg = '网络请求失败'
+          if (err.errMsg) {
+            if (err.errMsg.includes('timeout')) {
+              errorMsg = '请求超时，请检查网络'
+            } else if (err.errMsg.includes('fail')) {
+              errorMsg = '网络连接异常'
+            }
+          }
+          
           wx.showToast({
-            title: '网络请求失败',
+            title: errorMsg,
             icon: 'none',
             duration: 2000
           })
@@ -213,6 +254,117 @@ App({
     } catch (e) {
       return null
     }
+  },
+
+  // 金句版本管理
+  checkQuotesVersion: function() {
+    const self = this;
+    
+    return new Promise((resolve) => {
+      // 获取本地缓存的版本信息
+      const localVersion = wx.getStorageSync('quotes_version') || '0.0.0';
+      
+      // 请求远程版本信息
+      self.request({
+        url: '/laoliu_quotes.json',
+        showLoading: false
+      }).then(data => {
+        const remoteVersion = data.version || '1.0.0';
+        
+        if (self.compareVersions(remoteVersion, localVersion) > 0) {
+          console.log('检测到金句新版本:', remoteVersion);
+          // 清除旧的金句缓存
+          wx.removeStorageSync('quotes_cache');
+          // 更新版本号
+          wx.setStorageSync('quotes_version', remoteVersion);
+          resolve({ hasUpdate: true, version: remoteVersion });
+        } else {
+          resolve({ hasUpdate: false, version: localVersion });
+        }
+      }).catch(err => {
+        console.warn('检查金句版本失败:', err);
+        resolve({ hasUpdate: false, version: localVersion });
+      });
+    });
+  },
+
+  // 版本号比较
+  compareVersions: function(v1, v2) {
+    const parts1 = v1.split('.').map(Number);
+    const parts2 = v2.split('.').map(Number);
+    
+    for (let i = 0; i < Math.max(parts1.length, parts2.length); i++) {
+      const part1 = parts1[i] || 0;
+      const part2 = parts2[i] || 0;
+      
+      if (part1 > part2) return 1;
+      if (part1 < part2) return -1;
+    }
+    return 0;
+  },
+
+  // 请求金句数据（带缓存和版本管理）
+  requestQuotes: function() {
+    const self = this;
+    const cacheKey = 'quotes_cache';
+    
+    // 先检查版本
+    return self.checkQuotesVersion().then(versionInfo => {
+      // 如果没有更新，尝试从缓存加载
+      if (!versionInfo.hasUpdate) {
+        const cachedData = self.getCache(cacheKey);
+        if (cachedData) {
+          console.log('从缓存加载金句数据');
+          return Promise.resolve(cachedData);
+        }
+      }
+      
+      // 从网络加载
+      return self.request({
+        url: '/laoliu_quotes.json'
+      }).then(data => {
+        if (data) {
+          // 缓存数据
+          self.setCache(cacheKey, data, 24 * 60 * 60 * 1000); // 缓存24小时
+          console.log('金句数据加载并缓存成功');
+        }
+        return data;
+      });
+    });
+  },
+
+  // 增强的request方法，支持直接传递路径和缓存key
+  request: function(urlOrOptions, cacheKey) {
+    const self = this;
+    
+    // 兼容旧的调用方式
+    if (typeof urlOrOptions === 'string') {
+      const options = {
+        url: urlOrOptions,
+        method: 'GET'
+      };
+      
+      // 如果提供了cacheKey，先尝试从缓存加载
+      if (cacheKey) {
+        const cachedData = self.getCache(cacheKey);
+        if (cachedData) {
+          return Promise.resolve(cachedData);
+        }
+        
+        // 网络请求成功后缓存
+        return self._requestWithRetry(options, 2).then(data => {
+          if (data) {
+            self.setCache(cacheKey, data);
+          }
+          return data;
+        });
+      }
+      
+      return self._requestWithRetry(options, 2);
+    }
+    
+    // 新的对象参数方式
+    return self._requestWithRetry(urlOrOptions, urlOrOptions.retry || 2);
   },
 
   // 清理过期缓存

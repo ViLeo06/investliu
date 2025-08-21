@@ -1,0 +1,62 @@
+<!--投资金句卡片组件-->
+<view class="quote-card {{cardStyle}} {{clicking ? 'clicking' : ''}}" 
+      style="background: {{gradients[quote.category] || gradients.masters}}"
+      bindtap="onCardTap">
+  
+  <!-- 卡片头部 -->
+  <view class="card-header">
+    <view class="category-info">
+      <text class="category-icon">{{getCategoryIcon(quote.category)}}</text>
+      <text class="category-name">{{getCategoryName(quote.category)}}</text>
+    </view>
+    
+    <!-- 分享按钮 -->
+    <view wx:if="{{showShare}}" class="share-btn" bindtap="onShareQuote" catchtap="true">
+      <text class="iconfont icon-share">📤</text>
+    </view>
+  </view>
+
+  <!-- 金句内容 -->
+  <view class="quote-content">
+    <text class="quote-text">{{quote.content}}</text>
+  </view>
+
+  <!-- 作者信息 -->
+  <view class="quote-author">
+    <text class="author-name">— {{quote.author}}</text>
+    <view class="quote-meta">
+      <text class="source-page">第{{quote.source_page}}页</text>
+    </view>
+  </view>
+
+  <!-- 标签 -->
+  <view wx:if="{{cardStyle === 'detailed'}}" class="quote-tags">
+    <view wx:for="{{quote.tags}}" wx:key="*this" class="tag">
+      {{item}}
+    </view>
+  </view>
+
+  <!-- 装饰性元素 -->
+  <view class="decoration">
+    <view class="decoration-circle circle-1"></view>
+    <view class="decoration-circle circle-2"></view>
+    <view class="decoration-line"></view>
+  </view>
+</view>
+
+<!-- 分享模态框 -->
+<view wx:if="{{showShareModal}}" class="share-modal">
+  <view class="share-modal-bg" bindtap="closeShareModal"></view>
+  <view class="share-modal-content">
+    <!-- 隐藏的Canvas，用于生成分享图片 -->
+    <canvas 
+      id="shareCanvas" 
+      type="2d" 
+      style="width: 375px; height: 500px; position: absolute; left: -9999px; top: -9999px;">
+    </canvas>
+    
+    <view class="share-loading">
+      <text class="loading-text">正在生成分享图片...</text>
+    </view>
+  </view>
+</view>

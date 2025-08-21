@@ -1,134 +1,226 @@
-<!--首页-->
-<view class="container">
-  <!-- 市场概况 -->
-  <view class="card">
-    <view class="card-header">
-      <text>市场概况</text>
-      <text class="text-sm text-gray ml-10" wx:if="{{marketData.update_time}}">{{marketData.update_time}}</text>
+<!--首页 - 现代化设计-->
+<view class="page-content">
+  <view class="container fade-in">
+    <!-- 欢迎横幅 -->
+    <view class="welcome-banner">
+      <view class="welcome-content">
+        <view class="welcome-title">📈 老刘投资决策</view>
+        <view class="welcome-subtitle">智能选股 · 价值投资</view>
+      </view>
+      <view class="welcome-decoration"></view>
     </view>
-    <view class="card-body">
-      <view class="market-status flex-between">
-        <view class="status-item">
-          <view class="status-label">市场情绪</view>
-          <view class="status-value">
-            <text class="tag {{marketData.sentiment === 'bullish' ? 'tag-success' : marketData.sentiment === 'bearish' ? 'tag-danger' : 'tag-info'}}">
-              {{marketData.sentiment === 'bullish' ? '乐观' : marketData.sentiment === 'bearish' ? '悲观' : '中性'}}
+
+    <!-- 每日投资金句 -->
+    <view class="card slide-up" wx:if="{{dailyQuote}}">
+      <view class="card-header">
+        <view class="flex">
+          <text class="header-icon">💎</text>
+          <text>每日投资金句</text>
+        </view>
+        <view class="quote-meta" bindtap="viewAllQuotes">
+          <text class="text-sm">查看全部</text>
+          <text class="arrow">›</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <quote-card 
+          quote="{{dailyQuote}}" 
+          card-style="compact"
+          show-share="{{false}}"
+          bind:tap="onQuoteTap">
+        </quote-card>
+      </view>
+    </view>
+
+    <!-- 市场概况 -->
+    <view class="card slide-up">
+      <view class="card-header">
+        <view class="flex-between">
+          <view class="flex">
+            <text class="header-icon">📊</text>
+            <text>市场概况</text>
+          </view>
+          <text class="text-sm" wx:if="{{marketData.update_time}}">{{marketData.update_time}}</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <view class="market-dashboard">
+          <view class="market-item">
+            <view class="market-icon">💹</view>
+            <view class="market-info">
+              <view class="market-label">市场情绪</view>
+              <view class="market-value">
+                <text class="tag {{marketData.sentiment === 'bullish' ? 'tag-success' : marketData.sentiment === 'bearish' ? 'tag-danger' : 'tag-info'}}">
+                  {{marketData.sentiment === 'bullish' ? '🐂 乐观' : marketData.sentiment === 'bearish' ? '🐻 悲观' : '😐 中性'}}
+                </text>
+              </view>
+            </view>
+          </view>
+          
+          <view class="market-item">
+            <view class="market-icon">⚖️</view>
+            <view class="market-info">
+              <view class="market-label">建议仓位</view>
+              <view class="market-value text-2xl text-primary">{{marketData.position}}成</view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="market-signals mt-30" wx:if="{{marketData.signals.length > 0}}">
+          <view class="signals-title">
+            <text class="signals-icon">🔔</text>
+            <text>市场信号</text>
+          </view>
+          <view class="signal-item fade-in" wx:for="{{marketData.signals}}" wx:key="index">
+            <text class="signal-dot">•</text>
+            <text class="signal-text">{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 今日推荐 -->
+    <view class="card slide-up">
+      <view class="card-header">
+        <view class="flex-between">
+          <view class="flex">
+            <text class="header-icon">⭐</text>
+            <text>今日推荐</text>
+          </view>
+          <text class="text-sm">共{{summary.recommendations_count.total}}只</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <view class="recommend-tabs">
+          <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-tab="0">
+            <text class="tab-icon">🇨🇳</text>
+            <text>A股 ({{summary.recommendations_count.a_stocks}})</text>
+          </view>
+          <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-tab="1">
+            <text class="tab-icon">🇭🇰</text>
+            <text>港股 ({{summary.recommendations_count.hk_stocks}})</text>
+          </view>
+        </view>
+        
+        <!-- A股推荐 -->
+        <view wx:if="{{currentTab === 0}}" class="stocks-container">
+          <view class="stock-item fade-in" wx:for="{{summary.top_picks.a_stocks}}" wx:key="code" bindtap="viewStock" data-stock="{{item}}">
+            <view class="stock-avatar">
+              <text class="stock-initial">{{item.name.substr(0,1)}}</text>
+            </view>
+            <view class="stock-info">
+              <view class="stock-name">{{item.name}}</view>
+              <view class="stock-meta">
+                <text class="stock-code">{{item.code}}</text>
+                <text class="score {{item.total_score >= 0.7 ? 'score-high' : item.total_score >= 0.5 ? 'score-medium' : 'score-low'}}">
+                  评分: {{item.total_score}}
+                </text>
+              </view>
+            </view>
+            <view class="stock-action">
+              <view class="price">¥{{item.current_price}}</view>
+              <view class="recommendation {{getRecommendationClass(item.recommendation)}}">
+                <text>{{getRecommendationText(item.recommendation)}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 港股推荐 -->
+        <view wx:if="{{currentTab === 1}}" class="stocks-container">
+          <view class="stock-item fade-in" wx:for="{{summary.top_picks.hk_stocks}}" wx:key="code" bindtap="viewStock" data-stock="{{item}}">
+            <view class="stock-avatar">
+              <text class="stock-initial">{{item.name.substr(0,1)}}</text>
+            </view>
+            <view class="stock-info">
+              <view class="stock-name">{{item.name}}</view>
+              <view class="stock-meta">
+                <text class="stock-code">{{item.code}}</text>
+                <text class="score {{item.total_score >= 0.7 ? 'score-high' : item.total_score >= 0.5 ? 'score-medium' : 'score-low'}}">
+                  评分: {{item.total_score}}
+                </text>
+              </view>
+            </view>
+            <view class="stock-action">
+              <view class="price">HK${{item.current_price}}</view>
+              <view class="recommendation {{getRecommendationClass(item.recommendation)}}">
+                <text>{{getRecommendationText(item.recommendation)}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class="more-action mt-30">
+          <view class="btn btn-primary" bindtap="viewMoreStocks">
+            <text class="btn-icon">👁️</text>
+            <text>查看更多推荐</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 投资建议 -->
+    <view class="card slide-up" wx:if="{{summary.investment_suggestions.length > 0}}">
+      <view class="card-header">
+        <view class="flex">
+          <text class="header-icon">💡</text>
+          <text>投资建议</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <view class="suggestions-list">
+          <view class="suggestion-item fade-in" wx:for="{{summary.investment_suggestions}}" wx:key="index">
+            <view class="suggestion-icon">💼</view>
+            <text class="suggestion-text">{{item}}</text>
+          </view>
+        </view>
+        
+        <view class="risk-assessment mt-30">
+          <view class="risk-header">
+            <text class="risk-icon">⚠️</text>
+            <text class="risk-title">风险评估</text>
+          </view>
+          <view class="risk-content">
+            <text class="risk-label">当前风险等级: </text>
+            <text class="tag {{summary.portfolio_risk === 'low' ? 'tag-success' : summary.portfolio_risk === 'high' ? 'tag-danger' : 'tag-warning'}}">
+              {{summary.portfolio_risk === 'low' ? '🟢 低风险' : summary.portfolio_risk === 'high' ? '🔴 高风险' : '🟡 中等风险'}}
             </text>
           </view>
         </view>
-        <view class="status-item">
-          <view class="status-label">建议仓位</view>
-          <view class="status-value text-lg">{{marketData.position}}成</view>
-        </view>
       </view>
-      
-      <view class="market-signals mt-20" wx:if="{{marketData.signals.length > 0}}">
-        <view class="text-sm text-gray mb-10">市场信号:</view>
-        <view class="signal" wx:for="{{marketData.signals}}" wx:key="index">
-          <text class="text-sm">• {{item}}</text>
+    </view>
+
+    <!-- 免责声明 -->
+    <view class="disclaimer-card">
+      <view class="disclaimer-content">
+        <view class="disclaimer-icon">⚖️</view>
+        <view class="disclaimer-text">
+          <text class="disclaimer-title">免责声明</text>
+          <text class="disclaimer-desc">
+            本系统基于历史数据和个人经验，仅供参考，不构成投资建议。投资有风险，入市需谨慎。
+          </text>
         </view>
       </view>
     </view>
-  </view>
-
-  <!-- 今日推荐 -->
-  <view class="card">
-    <view class="card-header flex-between">
-      <text>今日推荐</text>
-      <text class="text-sm text-gray">共{{summary.recommendations_count.total}}只</text>
-    </view>
-    <view class="card-body">
-      <view class="recommend-tabs">
-        <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-tab="0">
-          A股 ({{summary.recommendations_count.a_stocks}})
-        </view>
-        <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-tab="1">
-          港股 ({{summary.recommendations_count.hk_stocks}})
-        </view>
-      </view>
-      
-      <!-- A股推荐 -->
-      <view wx:if="{{currentTab === 0}}">
-        <view class="stock-item" wx:for="{{summary.top_picks.a_stocks}}" wx:key="code" bindtap="viewStock" data-stock="{{item}}">
-          <view class="stock-info">
-            <view class="stock-name">{{item.name}}</view>
-            <view class="stock-code text-gray">{{item.code}}</view>
-            <view class="stock-score mt-10">
-              <text class="score {{item.total_score >= 0.7 ? 'score-high' : item.total_score >= 0.5 ? 'score-medium' : 'score-low'}}">
-                评分: {{item.total_score}}
-              </text>
-            </view>
-          </view>
-          <view class="stock-price">
-            <view class="price">¥{{item.current_price}}</view>
-            <view class="recommendation {{getRRecommendationClass(item.recommendation)}}">
-              {{getRecommendationText(item.recommendation)}}
-            </view>
-          </view>
-        </view>
-      </view>
-
-      <!-- 港股推荐 -->
-      <view wx:if="{{currentTab === 1}}">
-        <view class="stock-item" wx:for="{{summary.top_picks.hk_stocks}}" wx:key="code" bindtap="viewStock" data-stock="{{item}}">
-          <view class="stock-info">
-            <view class="stock-name">{{item.name}}</view>
-            <view class="stock-code text-gray">{{item.code}}</view>
-            <view class="stock-score mt-10">
-              <text class="score {{item.total_score >= 0.7 ? 'score-high' : item.total_score >= 0.5 ? 'score-medium' : 'score-low'}}">
-                评分: {{item.total_score}}
-              </text>
-            </view>
-          </view>
-          <view class="stock-price">
-            <view class="price">HK${{item.current_price}}</view>
-            <view class="recommendation {{getRecommendationClass(item.recommendation)}}">
-              {{getRecommendationText(item.recommendation)}}
-            </view>
-          </view>
-        </view>
-      </view>
-
-      <view class="more-btn mt-20" bindtap="viewMoreStocks">
-        <text class="btn btn-secondary">查看更多推荐</text>
-      </view>
-    </view>
-  </view>
-
-  <!-- 投资建议 -->
-  <view class="card" wx:if="{{summary.investment_suggestions.length > 0}}">
-    <view class="card-header">投资建议</view>
-    <view class="card-body">
-      <view class="suggestion-item" wx:for="{{summary.investment_suggestions}}" wx:key="index">
-        <text class="text-sm">• {{item}}</text>
-      </view>
-      <view class="risk-level mt-20">
-        <text class="text-sm text-gray">当前风险等级: </text>
-        <text class="tag {{summary.portfolio_risk === 'low' ? 'tag-success' : summary.portfolio_risk === 'high' ? 'tag-danger' : 'tag-warning'}}">
-          {{summary.portfolio_risk === 'low' ? '低风险' : summary.portfolio_risk === 'high' ? '高风险' : '中等风险'}}
-        </text>
-      </view>
-    </view>
-  </view>
-
-  <!-- 免责声明 -->
-  <view class="disclaimer">
-    <text class="text-xs text-gray">
-      * 本系统基于历史数据和个人经验，仅供参考，不构成投资建议。投资有风险，入市需谨慎。
-    </text>
   </view>
 </view>
 
 <!-- 加载状态 -->
-<view class="loading" wx:if="{{loading}}">
-  <text>加载中...</text>
+<view class="loading-overlay" wx:if="{{loading}}">
+  <view class="loading-content">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在加载数据...</text>
+  </view>
 </view>
 
 <!-- 错误提示 -->
-<view class="empty" wx:if="{{error}}">
-  <view class="empty-icon">⚠️</view>
-  <view>{{error}}</view>
-  <view class="mt-20">
-    <text class="btn btn-primary" bindtap="loadData">重新加载</text>
+<view class="error-overlay" wx:if="{{error}}">
+  <view class="error-content">
+    <view class="error-icon bounce">⚠️</view>
+    <view class="error-title">数据加载失败</view>
+    <view class="error-message">{{error}}</view>
+    <view class="error-actions mt-30">
+      <text class="btn btn-primary" bindtap="loadData">重新加载</text>
+    </view>
   </view>
 </view>
