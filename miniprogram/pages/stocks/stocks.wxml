@@ -10,12 +10,41 @@
       </view>
     </view>
 
-    <!-- 筛选按钮 -->
+    <!-- 搜索框 -->
+    <view class="search-bar">
+      <view class="search-input-wrapper">
+        <text class="search-icon">🔍</text>
+        <input class="search-input" placeholder="搜索股票代码/名称/行业" bindinput="onSearchInput" value="{{searchKeyword}}" />
+      </view>
+    </view>
+
+    <!-- 筛选按钮和统计信息 -->
     <view class="filter-bar">
+      <view class="stats-info">
+        <text class="stats-text">共{{totalCount}}只股票，显示{{filteredCount}}只</text>
+      </view>
       <view class="filter-btn" bindtap="toggleFilters">
         <text class="icon">🔍</text>
         <text>筛选</text>
       </view>
+    </view>
+
+    <!-- 快速筛选按钮 -->
+    <view class="quick-filters">
+      <scroll-view class="quick-filters-scroll" scroll-x="true">
+        <view class="quick-filter-item" bindtap="quickFilter" data-type="high_roe">
+          <text>📊 高ROE</text>
+        </view>
+        <view class="quick-filter-item" bindtap="quickFilter" data-type="low_pe">
+          <text>💰 低估值</text>
+        </view>
+        <view class="quick-filter-item" bindtap="quickFilter" data-type="strong_buy">
+          <text>⭐ 强推</text>
+        </view>
+        <view class="quick-filter-item" bindtap="quickFilter" data-type="high_score">
+          <text>🎆 高分</text>
+        </view>
+      </scroll-view>
     </view>
 
     <!-- 筛选条件面板 -->
@@ -39,6 +68,25 @@
         <input class="filter-input" placeholder="ROE%" type="digit" bindinput="onFilterInput" data-field="minROE" value="{{filters.minROE}}" />
       </view>
       
+      <view class="filter-row">
+        <text class="filter-label">行业:</text>
+        <picker class="filter-picker" bindchange="onFilterInput" data-field="industry" range="{{industryOptions}}" value="{{filters.industry}}">
+          <view class="picker-text">{{filters.industry || '选择行业'}}</view>
+        </picker>
+      </view>
+      
+      <view class="filter-row">
+        <text class="filter-label">推荐等级:</text>
+        <picker class="filter-picker" bindchange="onFilterInput" data-field="recommendation" range="{{recommendationOptions}}" value="{{filters.recommendation}}">
+          <view class="picker-text">{{filters.recommendation || '选择等级'}}</view>
+        </picker>
+      </view>
+      
+      <view class="filter-row">
+        <text class="filter-label">最低评分:</text>
+        <input class="filter-input" placeholder="评分" type="digit" bindinput="onFilterInput" data-field="minScore" value="{{filters.minScore}}" />
+      </view>
+      
       <view class="filter-actions">
         <button class="btn btn-secondary btn-small" bindtap="clearFilters">清空</button>
         <button class="btn btn-primary btn-small" bindtap="applyFilters">应用</button>
@@ -59,23 +107,30 @@
       <view wx:else>
         <view class="stock-item" wx:for="{{stockList}}" wx:key="code" bindtap="viewStockDetail" data-stock="{{item}}">
           <view class="stock-info">
-            <view class="stock-name">{{item.name}}</view>
-            <view class="stock-code">{{item.code}}</view>
+            <view class="stock-name-row">
+              <view class="stock-name">{{item.name}}</view>
+              <view class="stock-code">{{item.code}}</view>
+            </view>
             <view class="stock-tags">
               <text class="tag tag-info" wx:if="{{item.industry}}">{{item.industry}}</text>
-              <text class="score {{getScoreClass(item.score)}}">{{item.score}}分</text>
+              <text class="score {{item.scoreClass}}">{{item.displayScore}}分</text>
+              <text class="tag {{item.recommendationClass}}" wx:if="{{item.displayRecommendation}}">{{item.displayRecommendation}}</text>
+            </view>
+            <view class="stock-metrics" wx:if="{{item.pe_ratio || item.roe}}">
+              <text class="metric" wx:if="{{item.pe_ratio}}">PE: {{item.pe_ratio}}</text>
+              <text class="metric" wx:if="{{item.roe}}">ROE: {{item.roe}}%</text>
             </view>
           </view>
           
           <view class="stock-price">
-            <view class="price {{item.change >= 0 ? 'text-red' : 'text-green'}}">
-              ¥{{item.price}}
+            <view class="price {{item.changeClass}}">
+              ¥{{item.displayPrice}}
             </view>
-            <view class="change {{item.change >= 0 ? 'text-red' : 'text-green'}}">
-              {{item.change >= 0 ? '+' : ''}}{{item.change}}%
+            <view class="change {{item.changeClass}}">
+              {{item.displayChange >= 0 ? '+' : ''}}{{item.displayChange}}%
             </view>
-            <view class="recommendation {{getRecommendationClass(item.recommendation)}}">
-              {{item.recommendation}}
+            <view class="recommendation {{item.recommendationClass}}">
+              {{item.displayRecommendation}}
             </view>
           </view>
         </view>

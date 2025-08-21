@@ -1,4 +1,6 @@
 // 小程序入口文件
+const mockData = require('./utils/mockData.js');
+
 App({
   globalData: {
     // 全局数据
@@ -6,11 +8,15 @@ App({
     apiBaseUrl: 'https://vileo06.github.io/investliu',
     updateTime: '',
     cacheTime: 3600000, // 缓存1小时
-    systemInfo: null
+    systemInfo: null,
+    isDev: false // 开发环境标识
   },
 
   onLaunch: function() {
     console.log('老刘投资决策小程序启动')
+    
+    // 检测开发环境
+    this.checkDevelopmentEnvironment()
     
     // 获取系统信息
     this.getSystemInfo()
@@ -32,6 +38,19 @@ App({
 
   onError: function(msg) {
     console.error('小程序错误:', msg)
+  },
+
+  // 检测开发环境
+  checkDevelopmentEnvironment: function() {
+    // 检测是否在开发环境
+    const accountInfo = wx.getAccountInfoSync && wx.getAccountInfoSync();
+    if (accountInfo && accountInfo.miniProgram) {
+      // 如果版本号为 devtools 或 develop，则为开发环境
+      this.globalData.isDev = accountInfo.miniProgram.envVersion === 'develop' || 
+                              accountInfo.miniProgram.envVersion === 'trial' ||
+                              !accountInfo.miniProgram.envVersion;
+      console.log('环境检测:', this.globalData.isDev ? '开发环境' : '生产环境');
+    }
   },
 
   // 获取系统信息
@@ -117,27 +136,54 @@ App({
     })
   },
 
-  // 通用API请求方法（带重试）
-  request: function(options) {
-    const self = this
-    const defaultOptions = {
-      method: 'GET',
-      timeout: 10000,
-      header: {
-        'Content-Type': 'application/json'
-      },
-      retry: 2 // 默认重试2次
-    }
-
-    // 合并选项
-    const requestOptions = Object.assign({}, defaultOptions, options)
+  // 加载本地数据（开发环境）
+  loadLocalData: function(url) {
+    const self = this;
     
-    // 添加base URL
-    if (requestOptions.url && !requestOptions.url.startsWith('http')) {
-      requestOptions.url = self.globalData.apiBaseUrl + requestOptions.url
+    if (!self.globalData.isDev) {
+      return null;
     }
+    
+    // 对于股票数据，优先尝试从GitHub Pages读取真实生成的数据
+    if (url === '/stocks_a.json' || url === '/stocks_hk.json' || url === '/summary.json' || url === '/market_timing.json') {
+      return new Promise((resolve) => {
+        wx.request({
+          url: self.globalData.apiBaseUrl + url,
+          timeout: 3000,
+          success: (res) => {
+            if (res.data && res.statusCode === 200) {
+              console.log('开发环境：使用GitHub Pages真实数据', url);
+              resolve(res.data);
+            } else {
+              console.log('开发环境：GitHub Pages数据加载失败，使用Mock数据', url);
+              resolve(self.getMockData(url));
+            }
+          },
+          fail: () => {
+            console.log('开发环境：网络请求失败，使用Mock数据', url);
+            resolve(self.getMockData(url));
+          }
+        });
+      });
+    }
+    
+    // 其他数据直接使用Mock
+    console.log('开发环境：使用Mock数据', url);
+    return Promise.resolve(self.getMockData(url));
+  },
 
-    return this._requestWithRetry(requestOptions, requestOptions.retry || 0)
+  // 获取Mock数据
+  getMockData: function(url) {
+    const urlToDataMap = {
+      '/summary.json': mockData.summary,
+      '/market_timing.json': mockData.market_timing,
+      '/miniprogram_config.json': mockData.miniprogram_config,
+      '/stocks_a.json': mockData.stocks_a,
+      '/stocks_hk.json': mockData.stocks_hk,
+      '/laoliu_quotes.json': mockData.laoliu_quotes
+    };
+    
+    return urlToDataMap[url] || null;
   },
 
   // 带重试的请求方法
@@ -269,16 +315,21 @@ App({
         url: '/laoliu_quotes.json',
         showLoading: false
       }).then(data => {
-        const remoteVersion = data.version || '1.0.0';
-        
-        if (self.compareVersions(remoteVersion, localVersion) > 0) {
-          console.log('检测到金句新版本:', remoteVersion);
-          // 清除旧的金句缓存
-          wx.removeStorageSync('quotes_cache');
-          // 更新版本号
-          wx.setStorageSync('quotes_version', remoteVersion);
-          resolve({ hasUpdate: true, version: remoteVersion });
+        if (data) {
+          const remoteVersion = data.version || '1.0.0';
+          
+          if (self.compareVersions(remoteVersion, localVersion) > 0) {
+            console.log('检测到金句新版本:', remoteVersion);
+            // 清除旧的金句缓存
+            wx.removeStorageSync('quotes_cache');
+            // 更新版本号
+            wx.setStorageSync('quotes_version', remoteVersion);
+            resolve({ hasUpdate: true, version: remoteVersion });
+          } else {
+            resolve({ hasUpdate: false, version: localVersion });
+          }
         } else {
+          console.log('金句数据为空，使用本地版本');
           resolve({ hasUpdate: false, version: localVersion });
         }
       }).catch(err => {
@@ -344,6 +395,14 @@ App({
         method: 'GET'
       };
       
+      // 在开发环境下，尝试使用本地数据
+      if (self.globalData.isDev) {
+        const localDataResult = self.loadLocalData(urlOrOptions);
+        if (localDataResult) {
+          return localDataResult;
+        }
+      }
+      
       // 如果提供了cacheKey，先尝试从缓存加载
       if (cacheKey) {
         const cachedData = self.getCache(cacheKey);
@@ -364,6 +423,14 @@ App({
     }
     
     // 新的对象参数方式
+    // 在开发环境下，尝试使用本地数据
+    if (self.globalData.isDev && urlOrOptions.url) {
+      const localDataResult = self.loadLocalData(urlOrOptions.url);
+      if (localDataResult) {
+        return localDataResult;
+      }
+    }
+    
     return self._requestWithRetry(urlOrOptions, urlOrOptions.retry || 2);
   },
 

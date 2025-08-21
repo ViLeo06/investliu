@@ -1,152 +1,864 @@
 {
-  "update_time": "2025-08-19 21:30:00",
-  "total_count": 8,
-  "filtered_count": 8,
+  "update_time": "2025-08-21 21:46:05",
+  "total_count": 27,
+  "analysis_method": "老刘投资理念 + 港股估值优势",
+  "screening_criteria": {
+    "philosophy": "人弃我取，人取我弃",
+    "focus": "港股估值洼地 + 龙头企业",
+    "advantage": "估值合理，分红稳定"
+  },
   "stocks": [
     {
-      "code": "00700",
-      "name": "腾讯控股",
-      "industry": "互联网科技",
-      "current_price": 368.20,
-      "change_percent": 2.1,
-      "volume": 15680000,
-      "market_cap": 3532320000000,
-      "pe_ratio": 15.6,
-      "pb_ratio": 3.2,
-      "ps_ratio": 6.8,
-      "roe": 18.9,
-      "roa": 8.7,
-      "debt_ratio": 0.32,
-      "dividend_yield": 2.1,
-      "recommendation": "buy",
-      "total_score": 0.78,
-      "scores": {
-        "valuation": 0.7,
-        "growth": 0.8,
-        "profitability": 0.8,
-        "safety": 0.8
-      },
-      "reason": "互联网龙头，游戏业务复苏，AI布局积极",
-      "target_price": 420.00,
-      "stop_loss": 330.00
-    },
-    {
-      "code": "00941",
-      "name": "中国移动",
-      "industry": "电信运营",
-      "current_price": 72.15,
-      "change_percent": 1.5,
-      "volume": 28900000,
-      "market_cap": 1547115000000,
-      "pe_ratio": 12.8,
-      "pb_ratio": 1.1,
-      "ps_ratio": 1.8,
-      "roe": 8.6,
-      "roa": 4.2,
-      "debt_ratio": 0.45,
-      "dividend_yield": 5.2,
-      "recommendation": "buy",
-      "total_score": 0.71,
-      "scores": {
-        "valuation": 0.8,
-        "growth": 0.5,
-        "profitability": 0.7,
-        "safety": 0.8
-      },
-      "reason": "运营商龙头，5G建设受益，分红收益率高",
-      "target_price": 82.00,
-      "stop_loss": 65.00
+      "code": "03968",
+      "name": "招商银行",
+      "industry": "银行",
+      "market_type": "HK",
+      "current_price": 43.12,
+      "change_percent": -1.24,
+      "pe_ratio": 6.1,
+      "pb_ratio": 1.05,
+      "roe": 16.2,
+      "debt_ratio": 0.16,
+      "volume": 119905221,
+      "market_cap": 2025052910101,
+      "recommendation": "hold",
+      "total_score": 0.54,
+      "laoliu_score": 54,
+      "analysis_points": [
+        "ROE达16.2%，盈利能力强",
+        "PE仅6.1倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "观望：存在一定投资价值",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达16.2%，盈利能力强",
+        "PE仅6.1倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
     },
     {
       "code": "01299",
       "name": "友邦保险",
       "industry": "保险",
-      "current_price": 62.80,
-      "change_percent": 0.8,
-      "volume": 12350000,
-      "market_cap": 708512000000,
-      "pe_ratio": 18.2,
+      "market_type": "HK",
+      "current_price": 67.8,
+      "change_percent": -3.28,
+      "pe_ratio": 14.5,
       "pb_ratio": 2.1,
-      "ps_ratio": 1.2,
-      "roe": 11.5,
-      "roa": 1.8,
-      "debt_ratio": 0.89,
-      "dividend_yield": 3.2,
+      "roe": 16.8,
+      "debt_ratio": 0.14,
+      "volume": 75450713,
+      "market_cap": 461244384727,
       "recommendation": "hold",
-      "total_score": 0.65,
-      "scores": {
-        "valuation": 0.6,
-        "growth": 0.6,
-        "profitability": 0.7,
-        "safety": 0.7
-      },
-      "reason": "亚洲保险龙头，新业务价值增长稳定",
-      "target_price": 72.00,
-      "stop_loss": 56.00
+      "total_score": 0.49,
+      "laoliu_score": 49,
+      "analysis_points": [
+        "ROE达16.8%，盈利能力强",
+        "PE仅14.5倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "观望：存在一定投资价值",
+      "volume_price_signal": "放量下跌 - 恐慌抛售，或现低点",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达16.8%，盈利能力强",
+        "PE仅14.5倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
     },
     {
-      "code": "00175",
-      "name": "吉利汽车",
-      "industry": "汽车",
-      "current_price": 9.85,
-      "change_percent": -1.2,
-      "volume": 45680000,
-      "market_cap": 99828000000,
-      "pe_ratio": 22.5,
-      "pb_ratio": 1.8,
-      "ps_ratio": 0.8,
-      "roe": 8.0,
-      "roa": 3.1,
-      "debt_ratio": 0.62,
-      "dividend_yield": 2.5,
+      "code": "02318",
+      "name": "中国平安",
+      "industry": "保险",
+      "market_type": "HK",
+      "current_price": 45.67,
+      "change_percent": 3.22,
+      "pe_ratio": 7.8,
+      "pb_ratio": 1.2,
+      "roe": 16.8,
+      "debt_ratio": 0.53,
+      "volume": 24489053,
+      "market_cap": 404930447517,
       "recommendation": "hold",
-      "total_score": 0.58,
-      "scores": {
-        "valuation": 0.7,
-        "growth": 0.4,
-        "profitability": 0.5,
-        "safety": 0.6
-      },
-      "reason": "新能源汽车转型中，但竞争激烈盈利承压",
-      "target_price": 12.00,
-      "stop_loss": 8.50
+      "total_score": 0.49,
+      "laoliu_score": 49,
+      "analysis_points": [
+        "ROE达16.8%，盈利能力强",
+        "PE仅7.8倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "观望：存在一定投资价值",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达16.8%，盈利能力强",
+        "PE仅7.8倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "09988",
+      "name": "阿里巴巴",
+      "industry": "互联网科技",
+      "market_type": "HK",
+      "current_price": 78.9,
+      "change_percent": 3.17,
+      "pe_ratio": 12.8,
+      "pb_ratio": 2.1,
+      "roe": 15.6,
+      "debt_ratio": 0.11,
+      "volume": 150307735,
+      "market_cap": 2365247727810,
+      "recommendation": "hold",
+      "total_score": 0.45,
+      "laoliu_score": 45,
+      "analysis_points": [
+        "ROE达15.6%，盈利能力强",
+        "PE仅12.8倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "观望：存在一定投资价值",
+      "volume_price_signal": "放量上涨 - 资金追捧，可关注",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达15.6%，盈利能力强",
+        "PE仅12.8倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "00883",
+      "name": "中国海洋石油",
+      "industry": "能源",
+      "market_type": "HK",
+      "current_price": 18.9,
+      "change_percent": 3.46,
+      "pe_ratio": 8.9,
+      "pb_ratio": 1.1,
+      "roe": 15.6,
+      "debt_ratio": 0.39,
+      "volume": 190382239,
+      "market_cap": 177591712920,
+      "recommendation": "hold",
+      "total_score": 0.45,
+      "laoliu_score": 45,
+      "analysis_points": [
+        "ROE达15.6%，盈利能力强",
+        "PE仅8.9倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "观望：存在一定投资价值",
+      "volume_price_signal": "放量上涨 - 资金追捧，可关注",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达15.6%，盈利能力强",
+        "PE仅8.9倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "01398",
+      "name": "工商银行",
+      "industry": "银行",
+      "market_type": "HK",
+      "current_price": 5.12,
+      "change_percent": 1.58,
+      "pe_ratio": 4.2,
+      "pb_ratio": 0.58,
+      "roe": 12.1,
+      "debt_ratio": 0.47,
+      "volume": 98192732,
+      "market_cap": 92962913648,
+      "recommendation": "hold",
+      "total_score": 0.42,
+      "laoliu_score": 42,
+      "analysis_points": [
+        "ROE为12.1%，盈利能力较好",
+        "PE仅4.2倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "观望：存在一定投资价值",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为12.1%，盈利能力较好",
+        "PE仅4.2倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "03988",
+      "name": "中国银行",
+      "industry": "银行",
+      "market_type": "HK",
+      "current_price": 3.67,
+      "change_percent": 1.49,
+      "pe_ratio": 3.8,
+      "pb_ratio": 0.52,
+      "roe": 10.8,
+      "debt_ratio": 0.69,
+      "volume": 35451069,
+      "market_cap": 30142044069,
+      "recommendation": "hold",
+      "total_score": 0.42,
+      "laoliu_score": 42,
+      "analysis_points": [
+        "ROE为10.8%，盈利能力较好",
+        "PE仅3.8倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "观望：存在一定投资价值",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为10.8%，盈利能力较好",
+        "PE仅3.8倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
     },
     {
       "code": "01093",
       "name": "石药集团",
       "industry": "医药",
-      "current_price": 8.92,
-      "change_percent": 0.6,
-      "volume": 18750000,
-      "market_cap": 81312000000,
-      "pe_ratio": 16.8,
-      "pb_ratio": 2.5,
-      "ps_ratio": 3.2,
-      "roe": 14.9,
-      "roa": 8.1,
-      "debt_ratio": 0.38,
-      "dividend_yield": 2.8,
-      "recommendation": "buy",
-      "total_score": 0.73,
-      "scores": {
-        "valuation": 0.7,
-        "growth": 0.7,
-        "profitability": 0.8,
-        "safety": 0.7
-      },
-      "reason": "创新药企业，研发管线丰富，业绩稳定增长",
-      "target_price": 11.00,
-      "stop_loss": 7.80
+      "market_type": "HK",
+      "current_price": 8.9,
+      "change_percent": 3.54,
+      "pe_ratio": 18.9,
+      "pb_ratio": 1.8,
+      "roe": 22.4,
+      "debt_ratio": 0.72,
+      "volume": 53639769,
+      "market_cap": 345045498679,
+      "recommendation": "sell",
+      "total_score": 0.38,
+      "laoliu_score": 38,
+      "analysis_points": [
+        "ROE达22.4%，盈利能力强",
+        "PE为18.9倍，估值合理"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "放量上涨 - 资金追捧，可关注",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达22.4%，盈利能力强",
+        "PE为18.9倍，估值合理"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "00700",
+      "name": "腾讯控股",
+      "industry": "互联网科技",
+      "market_type": "HK",
+      "current_price": 378.4,
+      "change_percent": -2.35,
+      "pe_ratio": 15.6,
+      "pb_ratio": 3.2,
+      "roe": 18.9,
+      "debt_ratio": 0.69,
+      "volume": 127244739,
+      "market_cap": 7990180487220,
+      "recommendation": "sell",
+      "total_score": 0.35,
+      "laoliu_score": 35,
+      "analysis_points": [
+        "ROE达18.9%，盈利能力强",
+        "PE为15.6倍，估值合理"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达18.9%，盈利能力强",
+        "PE为15.6倍，估值合理"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "00175",
+      "name": "吉利汽车",
+      "industry": "汽车",
+      "market_type": "HK",
+      "current_price": 9.87,
+      "change_percent": -3.79,
+      "pe_ratio": 8.9,
+      "pb_ratio": 1.2,
+      "roe": 12.4,
+      "debt_ratio": 0.7,
+      "volume": 61672297,
+      "market_cap": 204972155992,
+      "recommendation": "sell",
+      "total_score": 0.35,
+      "laoliu_score": 35,
+      "analysis_points": [
+        "ROE为12.4%，盈利能力较好",
+        "PE仅8.9倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "放量下跌 - 恐慌抛售，或现低点",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为12.4%，盈利能力较好",
+        "PE仅8.9倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "01211",
+      "name": "比亚迪股份",
+      "industry": "汽车",
+      "market_type": "HK",
+      "current_price": 189.45,
+      "change_percent": -2.53,
+      "pe_ratio": 15.6,
+      "pb_ratio": 2.8,
+      "roe": 18.9,
+      "debt_ratio": 0.66,
+      "volume": 143702673,
+      "market_cap": 6462124188840,
+      "recommendation": "sell",
+      "total_score": 0.35,
+      "laoliu_score": 35,
+      "analysis_points": [
+        "ROE达18.9%，盈利能力强",
+        "PE为15.6倍，估值合理"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达18.9%，盈利能力强",
+        "PE为15.6倍，估值合理"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "00386",
+      "name": "中国石油化工",
+      "industry": "能源",
+      "market_type": "HK",
+      "current_price": 4.56,
+      "change_percent": -2.85,
+      "pe_ratio": 7.8,
+      "pb_ratio": 0.9,
+      "roe": 12.1,
+      "debt_ratio": 0.57,
+      "volume": 30682968,
+      "market_cap": 39080208170,
+      "recommendation": "sell",
+      "total_score": 0.35,
+      "laoliu_score": 35,
+      "analysis_points": [
+        "ROE为12.1%，盈利能力较好",
+        "PE仅7.8倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为12.1%，盈利能力较好",
+        "PE仅7.8倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "09961",
+      "name": "携程集团",
+      "industry": "消费",
+      "market_type": "HK",
+      "current_price": 256.78,
+      "change_percent": -2.84,
+      "pe_ratio": 22.4,
+      "pb_ratio": 3.8,
+      "roe": 18.9,
+      "debt_ratio": 0.74,
+      "volume": 68985754,
+      "market_cap": 5888594963959,
+      "recommendation": "sell",
+      "total_score": 0.35,
+      "laoliu_score": 35,
+      "analysis_points": [
+        "ROE达18.9%，盈利能力强",
+        "PE为22.4倍，估值合理"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE达18.9%，盈利能力强",
+        "PE为22.4倍，估值合理"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "00016",
+      "name": "新鸿基地产",
+      "industry": "房地产",
+      "market_type": "HK",
+      "current_price": 89.12,
+      "change_percent": 1.82,
+      "pe_ratio": 12.4,
+      "pb_ratio": 1.8,
+      "roe": 11.2,
+      "debt_ratio": 0.82,
+      "volume": 199741418,
+      "market_cap": 2832874585529,
+      "recommendation": "sell",
+      "total_score": 0.28,
+      "laoliu_score": 28,
+      "analysis_points": [
+        "ROE为11.2%，盈利能力较好",
+        "PE仅12.4倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为11.2%，盈利能力较好",
+        "PE仅12.4倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "00941",
+      "name": "中国移动",
+      "industry": "电信运营",
+      "market_type": "HK",
+      "current_price": 73.25,
+      "change_percent": -2.13,
+      "pe_ratio": 12.8,
+      "pb_ratio": 1.1,
+      "roe": 8.6,
+      "debt_ratio": 0.58,
+      "volume": 13264915,
+      "market_cap": 2104855130311,
+      "recommendation": "sell",
+      "total_score": 0.25,
+      "laoliu_score": 25,
+      "analysis_points": [
+        "ROE为8.6%，盈利能力一般",
+        "PE仅12.8倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为8.6%，盈利能力一般",
+        "PE仅12.8倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "00728",
+      "name": "中国电信",
+      "industry": "电信运营",
+      "market_type": "HK",
+      "current_price": 4.12,
+      "change_percent": -3.33,
+      "pe_ratio": 11.2,
+      "pb_ratio": 1.0,
+      "roe": 7.8,
+      "debt_ratio": 0.16,
+      "volume": 148253304,
+      "market_cap": 176573270894,
+      "recommendation": "sell",
+      "total_score": 0.25,
+      "laoliu_score": 25,
+      "analysis_points": [
+        "ROE为7.8%，盈利能力一般",
+        "PE仅11.2倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "放量下跌 - 恐慌抛售，或现低点",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为7.8%，盈利能力一般",
+        "PE仅11.2倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "02333",
+      "name": "长城汽车",
+      "industry": "汽车",
+      "market_type": "HK",
+      "current_price": 8.9,
+      "change_percent": -0.86,
+      "pe_ratio": 12.1,
+      "pb_ratio": 1.1,
+      "roe": 8.7,
+      "debt_ratio": 0.18,
+      "volume": 24233813,
+      "market_cap": 22435707818,
+      "recommendation": "sell",
+      "total_score": 0.25,
+      "laoliu_score": 25,
+      "analysis_points": [
+        "ROE为8.7%，盈利能力一般",
+        "PE仅12.1倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为8.7%，盈利能力一般",
+        "PE仅12.1倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "01109",
+      "name": "华润置地",
+      "industry": "房地产",
+      "market_type": "HK",
+      "current_price": 34.56,
+      "change_percent": 2.97,
+      "pe_ratio": 8.9,
+      "pb_ratio": 1.2,
+      "roe": 9.8,
+      "debt_ratio": 0.66,
+      "volume": 174860193,
+      "market_cap": 34526232806,
+      "recommendation": "sell",
+      "total_score": 0.2,
+      "laoliu_score": 20,
+      "analysis_points": [
+        "ROE为9.8%，盈利能力一般",
+        "PE仅8.9倍，估值偏低"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为9.8%，盈利能力一般",
+        "PE仅8.9倍，估值偏低"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "03690",
+      "name": "美团",
+      "industry": "互联网科技",
+      "market_type": "HK",
+      "current_price": 89.5,
+      "change_percent": 2.01,
+      "pe_ratio": 28.9,
+      "pb_ratio": 4.1,
+      "roe": 12.4,
+      "debt_ratio": 0.31,
+      "volume": 104796625,
+      "market_cap": 2519062729597,
+      "recommendation": "sell",
+      "total_score": 0.15,
+      "laoliu_score": 15,
+      "analysis_points": [
+        "ROE为12.4%，盈利能力较好"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为12.4%，盈利能力较好"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "09618",
+      "name": "京东集团",
+      "industry": "互联网科技",
+      "market_type": "HK",
+      "current_price": 123.45,
+      "change_percent": 3.54,
+      "pe_ratio": 18.9,
+      "pb_ratio": 2.8,
+      "roe": 8.9,
+      "debt_ratio": 0.84,
+      "volume": 17089286,
+      "market_cap": 2022072324719,
+      "recommendation": "sell",
+      "total_score": 0.15,
+      "laoliu_score": 15,
+      "analysis_points": [
+        "ROE为8.9%，盈利能力一般",
+        "PE为18.9倍，估值合理"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "缩量上涨 - 惜售心理，继续上涨",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为8.9%，盈利能力一般",
+        "PE为18.9倍，估值合理"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "09992",
+      "name": "泡泡玛特",
+      "industry": "消费",
+      "market_type": "HK",
+      "current_price": 23.45,
+      "change_percent": -0.76,
+      "pe_ratio": 45.6,
+      "pb_ratio": 8.9,
+      "roe": 12.4,
+      "debt_ratio": 0.5,
+      "volume": 155124915,
+      "market_cap": 9391610141,
+      "recommendation": "sell",
+      "total_score": 0.15,
+      "laoliu_score": 15,
+      "analysis_points": [
+        "ROE为12.4%，盈利能力较好"
+      ],
+      "risk_warnings": [
+        "PE高达45.6倍，估值偏高"
+      ],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为12.4%，盈利能力较好"
+      ],
+      "risks": [
+        "PE高达45.6倍，估值偏高"
+      ]
+    },
+    {
+      "code": "06837",
+      "name": "海底捞",
+      "industry": "消费",
+      "market_type": "HK",
+      "current_price": 12.34,
+      "change_percent": -0.94,
+      "pe_ratio": 28.9,
+      "pb_ratio": 2.1,
+      "roe": 5.6,
+      "debt_ratio": 0.74,
+      "volume": 115703599,
+      "market_cap": 275262479073,
+      "recommendation": "sell",
+      "total_score": 0.05,
+      "laoliu_score": 5,
+      "analysis_points": [
+        "ROE为5.6%，盈利能力一般"
+      ],
+      "risk_warnings": [],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "ROE为5.6%，盈利能力一般"
+      ],
+      "risks": [
+        "市场风险"
+      ]
+    },
+    {
+      "code": "01024",
+      "name": "快手",
+      "industry": "互联网科技",
+      "market_type": "HK",
+      "current_price": 45.67,
+      "change_percent": 4.74,
+      "pe_ratio": 35.6,
+      "pb_ratio": 3.4,
+      "roe": -5.6,
+      "debt_ratio": 0.71,
+      "volume": 134234771,
+      "market_cap": 1751423318391,
+      "recommendation": "sell",
+      "total_score": 0.0,
+      "laoliu_score": 0,
+      "analysis_points": [],
+      "risk_warnings": [
+        "ROE为-5.6%，存在亏损风险"
+      ],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "放量上涨 - 资金追捧，可关注",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "基本面分析中"
+      ],
+      "risks": [
+        "ROE为-5.6%，存在亏损风险"
+      ]
+    },
+    {
+      "code": "06160",
+      "name": "百济神州",
+      "industry": "医药",
+      "market_type": "HK",
+      "current_price": 89.5,
+      "change_percent": -1.75,
+      "pe_ratio": 45.6,
+      "pb_ratio": 3.4,
+      "roe": -8.9,
+      "debt_ratio": 0.69,
+      "volume": 114053598,
+      "market_cap": 1096877151206,
+      "recommendation": "sell",
+      "total_score": 0.0,
+      "laoliu_score": 0,
+      "analysis_points": [],
+      "risk_warnings": [
+        "ROE为-8.9%，存在亏损风险",
+        "PE高达45.6倍，估值偏高"
+      ],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "基本面分析中"
+      ],
+      "risks": [
+        "ROE为-8.9%，存在亏损风险",
+        "PE高达45.6倍，估值偏高"
+      ]
+    },
+    {
+      "code": "02015",
+      "name": "理想汽车",
+      "industry": "汽车",
+      "market_type": "HK",
+      "current_price": 89.12,
+      "change_percent": -3.88,
+      "pe_ratio": 28.9,
+      "pb_ratio": 3.4,
+      "roe": -12.1,
+      "debt_ratio": 0.56,
+      "volume": 88317832,
+      "market_cap": 170080501831,
+      "recommendation": "sell",
+      "total_score": 0.0,
+      "laoliu_score": 0,
+      "analysis_points": [],
+      "risk_warnings": [
+        "ROE为-12.1%，存在亏损风险"
+      ],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "放量下跌 - 恐慌抛售，或现低点",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "基本面分析中"
+      ],
+      "risks": [
+        "ROE为-12.1%，存在亏损风险"
+      ]
+    },
+    {
+      "code": "09866",
+      "name": "蔚来",
+      "industry": "汽车",
+      "market_type": "HK",
+      "current_price": 45.67,
+      "change_percent": -4.52,
+      "pe_ratio": 35.6,
+      "pb_ratio": 2.8,
+      "roe": -15.6,
+      "debt_ratio": 0.9,
+      "volume": 190321692,
+      "market_cap": 1178791853524,
+      "recommendation": "sell",
+      "total_score": 0.0,
+      "laoliu_score": 0,
+      "analysis_points": [],
+      "risk_warnings": [
+        "ROE为-15.6%，存在亏损风险"
+      ],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "放量下跌 - 恐慌抛售，或现低点",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "基本面分析中"
+      ],
+      "risks": [
+        "ROE为-15.6%，存在亏损风险"
+      ]
+    },
+    {
+      "code": "09868",
+      "name": "小鹏汽车",
+      "industry": "汽车",
+      "market_type": "HK",
+      "current_price": 34.56,
+      "change_percent": 0.81,
+      "pe_ratio": 28.9,
+      "pb_ratio": 2.1,
+      "roe": -8.9,
+      "debt_ratio": 0.2,
+      "volume": 68478389,
+      "market_cap": 1097591059664,
+      "recommendation": "sell",
+      "total_score": 0.0,
+      "laoliu_score": 0,
+      "analysis_points": [],
+      "risk_warnings": [
+        "ROE为-8.9%，存在亏损风险"
+      ],
+      "investment_advice": "回避：不符合老刘投资标准",
+      "volume_price_signal": "量价关系正常",
+      "data_source": "laoliu_analyzer",
+      "reasons": [
+        "基本面分析中"
+      ],
+      "risks": [
+        "ROE为-8.9%，存在亏损风险"
+      ]
     }
-  ],
-  "market_summary": {
-    "avg_pe": 17.18,
-    "avg_pb": 2.14,
-    "avg_roe": 12.28,
-    "strong_buy": 0,
-    "buy": 3,
-    "hold": 2,
-    "sell": 0,
-    "strong_sell": 0
-  }
+  ]
 }

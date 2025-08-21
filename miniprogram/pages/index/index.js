@@ -207,10 +207,20 @@ Page({
 
   // 点击金句卡片
   onQuoteTap: function(e) {
-    const quote = e.detail.quote;
+    const quote = e.detail && e.detail.quote;
+    
+    if (!quote || !quote.content) {
+      console.warn('金句数据不完整:', quote);
+      wx.showToast({
+        title: '金句数据加载中',
+        icon: 'none'
+      });
+      return;
+    }
+    
     wx.showModal({
       title: '投资金句',
-      content: `${quote.content}\n\n— ${quote.author}`,
+      content: `${quote.content}\n\n— ${quote.author || '老刘投资笔记'}`,
       confirmText: '分享',
       cancelText: '知道了',
       success: (res) => {
@@ -223,8 +233,11 @@ Page({
 
   // 查看全部金句
   viewAllQuotes: function() {
-    wx.navigateTo({
-      url: '/pages/quotes/quotes'
+    wx.showModal({
+      title: '投资金句集合',
+      content: '完整的老刘投资金句功能正在开发中，敬请期待！',
+      showCancel: false,
+      confirmText: '知道了'
     });
   },
 

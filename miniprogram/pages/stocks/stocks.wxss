@@ -27,10 +27,61 @@
   box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.3);
 }
 
-/* 筛选栏 */
-.filter-bar {
+/* 搜索框 */
+.search-bar {
   padding: 0 24rpx;
   margin-bottom: 24rpx;
+}
+
+.search-input-wrapper {
+  position: relative;
+  background: #f8fafc;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  border: 2rpx solid rgba(102, 126, 234, 0.1);
+}
+
+.search-icon {
+  font-size: 28rpx;
+  color: #667eea;
+  margin-right: 16rpx;
+}
+
+.search-input {
+  flex: 1;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #333;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #999;
+  font-size: 26rpx;
+}
+
+/* 筛选栏 */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.stats-info {
+  flex: 1;
+}
+
+.stats-text {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: 500;
 }
 
 .filter-btn {
@@ -51,9 +102,56 @@
   box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.4);
 }
 
-.filter-btn .icon {
-  margin-right: 12rpx;
+/* 快速筛选 */
+.quick-filters {
+  padding: 0 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.quick-filters-scroll {
+  white-space: nowrap;
+}
+
+.quick-filter-item {
+  display: inline-block;
+  padding: 16rpx 24rpx;
+  margin-right: 16rpx;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 20rpx;
   font-size: 24rpx;
+  color: #667eea;
+  font-weight: 500;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.quick-filter-item:active {
+  background: #667eea;
+  color: #fff;
+  transform: scale(0.95);
+}
+
+.quick-filter-item:last-child {
+  margin-right: 0;
+}
+
+/* 筛选面板增强 */
+.filter-picker {
+  flex: 1;
+  padding: 16rpx;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  margin: 0 10rpx;
+}
+
+.picker-text {
+  color: #333;
+}
+
+.picker-text:empty::after {
+  content: '请选择';
+  color: #999;
 }
 
 /* 筛选面板 */
@@ -140,25 +238,56 @@
 
 .stock-info {
   flex: 1;
+  min-width: 0; /* 允许文字截断 */
+}
+
+.stock-name-row {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
 }
 
 .stock-name {
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 600;
   color: #333;
-  margin-bottom: 10rpx;
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .stock-code {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #999;
-  margin-bottom: 15rpx;
+  font-weight: 500;
+  background: rgba(153, 153, 153, 0.1);
+  padding: 4rpx 8rpx;
+  border-radius: 8rpx;
 }
 
 .stock-tags {
   display: flex;
   align-items: center;
-  gap: 12rpx;
+  gap: 8rpx;
+  margin-bottom: 8rpx;
+  flex-wrap: wrap;
+}
+
+.stock-metrics {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 8rpx;
+}
+
+.metric {
+  font-size: 20rpx;
+  color: #666;
+  background: rgba(102, 126, 234, 0.1);
+  padding: 4rpx 8rpx;
+  border-radius: 6rpx;
+  font-weight: 500;
 }
 
 .stock-price {
