@@ -1,49 +1,47 @@
 {
-  "update_time": "2025-08-21 21:46:05",
+  "update_time": "2025-08-23 23:15:13",
   "market_phase": "震荡市",
-  "position_suggestion": 0.6,
-  "sentiment_score": 0.55,
+  "position_suggestion": 0.55,
+  "sentiment_score": 0.52,
   "timing_signals": [
     {
-      "name": "基本面",
+      "name": "技术面",
+      "signal": "neutral",
+      "score": 0.5,
+      "description": "上证指数在3000点附近整理"
+    },
+    {
+      "name": "资金面",
       "signal": "positive",
-      "score": 0.65,
-      "description": "平均ROE为17.1%，盈利能力良好"
+      "score": 0.62,
+      "description": "北向资金持续流入"
+    },
+    {
+      "name": "政策面",
+      "signal": "positive",
+      "score": 0.58,
+      "description": "政策预期相对积极"
     },
     {
       "name": "估值面",
       "signal": "positive",
-      "score": 0.7,
-      "description": "平均PE为10.6倍，估值合理"
-    },
-    {
-      "name": "情绪面",
-      "signal": "neutral",
-      "score": 0.5,
-      "description": "市场情绪相对平衡"
-    },
-    {
-      "name": "量价面",
-      "signal": "neutral",
-      "score": 0.55,
-      "description": "量价关系正常，无异常信号"
+      "score": 0.68,
+      "description": "A股整体估值处于历史中低位"
     }
   ],
   "market_status": {
     "sentiment": "neutral_positive",
-    "position_suggestion": 0.6,
+    "position_suggestion": 0.55,
     "signals": [
-      "市场按老刘标准筛选后，发现较多投资机会",
-      "银行、食品饮料等价值股估值合理",
-      "港股相比A股估值优势更加明显"
+      "上证指数震荡整理，寻求突破方向",
+      "成交量相比上周有所增加",
+      "银行股表现相对稳定，科技股有所反弹"
     ]
   },
   "recommendations": [
-    "按老刘'人弃我取'理念，当前可适度加仓到6成",
-    "重点配置银行(估值低ROE稳定)、食品饮料(消费龙头)",
-    "港股腾讯、中国移动等龙头估值合理可配置",
-    "严格遵循'败于原价，死于抄底，终于杠杆'风控原则"
-  ],
-  "laoliu_timing_wisdom": "多看少动是个好习惯，价格严重超跌才是买入时机",
-  "opportunity_type": "结构性机会"
+    "当前位置可适度加仓，建议仓位控制在5-6成",
+    "重点关注低估值蓝筹股和优质成长股",
+    "密切关注美联储政策和地缘政治风险",
+    "港股估值优势明显，可适当配置"
+  ]
 }

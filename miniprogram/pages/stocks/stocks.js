@@ -67,11 +67,9 @@ Page({
 
     const app = getApp()
     const url = self.data.selectedMarket === 'a' ? '/stocks_a.json' : '/stocks_hk.json'
+    const cacheKey = `stocks_${self.data.selectedMarket}`
     
-    app.request({
-      url: url,
-      showLoading: false
-    }).then(data => {
+    app.request(url, cacheKey).then(data => {
       console.log('股票数据加载成功:', data)
       
       // 预处理数据，添加显示所需的字段

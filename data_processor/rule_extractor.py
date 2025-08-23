@@ -48,36 +48,14 @@ class RuleExtractor:
         market_sentiment = timing_analysis.get('market_sentiment', 'neutral')
         position = timing_analysis.get('recommended_position', 0.5)
         
-        # 仓位建议
-        if position >= 0.7:
-            suggestions.append(f"当前市场情绪{market_sentiment}，建议保持{int(position*100)}%仓位")
-        elif position <= 0.3:
-            suggestions.append(f"市场风险较大，建议降低仓位至{int(position*100)}%")
-        else:
-            suggestions.append(f"市场情绪中性，建议保持{int(position*100)}%仓位")
-        
-        # 基于股票质量的建议
-        a_stocks = a_recommendations.get('stocks', [])
-        hk_stocks = hk_recommendations.get('stocks', [])
-        
-        high_score_a = len([s for s in a_stocks if s.get('total_score', 0) > 0.7])
-        high_score_hk = len([s for s in hk_stocks if s.get('total_score', 0) > 0.7])
-        
-        if high_score_a > 3:
-            suggestions.append("A股发现多个优质标的，重点关注银行和消费股")
-        if high_score_hk > 2:
-            suggestions.append("港股腾讯等科技股出现反弹信号")
-        
-        # 风险控制建议
-        suggestions.extend([
-            "控制单一股票仓位不超过总资金20%",
-            "密切关注宏观政策变化对市场的影响"
-        ])
-        
-        # 添加市场相关建议
-        timing_suggestions = self.market_timing_rules.get(market_sentiment, [])
-        if timing_suggestions:
-            suggestions.extend(timing_suggestions[:2])  # 最多添加2条
+        # 基于老刘投资理念的建议
+        suggestions = [
+            f"当前市场按老刘理念可适度配置，建议{int(position*10)}成仓位",
+            "重点关注银行、食品饮料等老刘偏好行业",
+            "港股估值优势明显，腾讯等龙头可适当配置",
+            "严格控制风险：败于原价，死于抄底，终于杠杆",
+            "跟着游资，跟着热点，跟着龙头 - 但要控制风险"
+        ]
         
         return suggestions[:5]  # 最多返回5条建议
     

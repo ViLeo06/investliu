@@ -1,293 +1,179 @@
 {
-  "update_time": "2025-08-21 21:46:05",
+  "update_time": "2025-08-23 23:15:13",
   "market_status": {
     "sentiment": "neutral_positive",
-    "position_suggestion": 0.6,
+    "position_suggestion": 0.55,
     "signals": [
-      "A股市场共分析42只股票，港股27只",
-      "按老刘投资理念筛选，重点关注高ROE低估值标的",
-      "当前市场存在结构性机会，建议精选个股"
+      "上证指数震荡整理，寻求突破方向",
+      "成交量相比上周有所增加",
+      "银行股表现相对稳定，科技股有所反弹"
     ]
   },
   "recommendations_count": {
-    "a_stocks": 0,
-    "hk_stocks": 0,
-    "total": 0
+    "a_stocks": 3,
+    "hk_stocks": 2,
+    "total": 5
   },
   "top_picks": {
     "a_stocks": [
       {
+        "code": "000001",
+        "name": "平安银行",
+        "current_price": 13.45,
+        "change_percent": 2.1,
+        "pe_ratio": 5.2,
+        "pb_ratio": 0.68,
+        "roe": 12.8,
+        "debt_ratio": 0.15,
+        "recommendation": "buy",
+        "total_score": 0.75,
+        "valuation_score": 0.85,
+        "growth_score": 0.65,
+        "profitability_score": 0.78,
+        "safety_score": 0.72,
+        "industry": "银行",
+        "market_cap": 2568000000000,
+        "volume": 89563210,
+        "reasons": [
+          "PE估值偏低，仅5.2倍",
+          "ROE维持在12.8%的较高水平",
+          "银行股配置价值显现"
+        ],
+        "risks": [
+          "信贷风险需关注",
+          "利率环境变化影响"
+        ],
+        "data_source": "sina_api"
+      },
+      {
         "code": "600036",
         "name": "招商银行",
-        "industry": "银行",
-        "market_type": "A",
         "current_price": 43.12,
-        "change_percent": 2.91,
+        "change_percent": 1.8,
         "pe_ratio": 6.1,
         "pb_ratio": 1.05,
         "roe": 16.2,
-        "debt_ratio": 0.37,
-        "volume": 157285216,
-        "market_cap": 1755691900393,
-        "recommendation": "hold",
-        "total_score": 0.54,
-        "laoliu_score": 54,
-        "analysis_points": [
-          "ROE达16.2%，盈利能力强",
-          "PE仅6.1倍，估值偏低"
-        ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "量价关系正常",
-        "data_source": "laoliu_analyzer",
-        "reasons": [
-          "ROE达16.2%，盈利能力强",
-          "PE仅6.1倍，估值偏低"
-        ],
-        "risks": [
-          "市场风险"
-        ]
-      },
-      {
-        "code": "002142",
-        "name": "宁波银行",
+        "debt_ratio": 0.12,
+        "recommendation": "buy",
+        "total_score": 0.82,
+        "valuation_score": 0.78,
+        "growth_score": 0.75,
+        "profitability_score": 0.88,
+        "safety_score": 0.85,
         "industry": "银行",
-        "market_type": "A",
-        "current_price": 34.56,
-        "change_percent": 2.62,
-        "pe_ratio": 8.9,
-        "pb_ratio": 1.1,
-        "roe": 18.7,
-        "debt_ratio": 0.34,
-        "volume": 79271409,
-        "market_cap": 1634980712797,
-        "recommendation": "hold",
-        "total_score": 0.54,
-        "laoliu_score": 54,
-        "analysis_points": [
-          "ROE达18.7%，盈利能力强",
-          "PE仅8.9倍，估值偏低"
-        ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "量价关系正常",
-        "data_source": "laoliu_analyzer",
+        "market_cap": 1256000000000,
+        "volume": 156234890,
         "reasons": [
-          "ROE达18.7%，盈利能力强",
-          "PE仅8.9倍，估值偏低"
+          "银行业龙头，资产质量优秀",
+          "ROE高达16.2%，盈利能力突出",
+          "分红稳定，股息率吸引"
         ],
         "risks": [
-          "市场风险"
-        ]
+          "估值相对较高",
+          "经济周期影响"
+        ],
+        "data_source": "sina_api"
       },
       {
-        "code": "000895",
-        "name": "双汇发展",
+        "code": "600519",
+        "name": "贵州茅台",
+        "current_price": 1876.5,
+        "change_percent": -0.8,
+        "pe_ratio": 32.5,
+        "pb_ratio": 8.9,
+        "roe": 28.1,
+        "debt_ratio": 0.08,
+        "recommendation": "hold",
+        "total_score": 0.68,
+        "valuation_score": 0.45,
+        "growth_score": 0.78,
+        "profitability_score": 0.95,
+        "safety_score": 0.82,
         "industry": "食品饮料",
-        "market_type": "A",
-        "current_price": 32.67,
-        "change_percent": -2.49,
-        "pe_ratio": 14.2,
-        "pb_ratio": 2.1,
-        "roe": 16.8,
-        "debt_ratio": 0.8,
-        "volume": 65514474,
-        "market_cap": 715434097707,
-        "recommendation": "hold",
-        "total_score": 0.51,
-        "laoliu_score": 51,
-        "analysis_points": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅14.2倍，估值偏低"
-        ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "量价关系正常",
-        "data_source": "laoliu_analyzer",
+        "market_cap": 2356000000000,
+        "volume": 45123456,
         "reasons": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅14.2倍，估值偏低"
+          "白酒龙头，品牌价值突出",
+          "ROE超过28%，盈利能力极强",
+          "现金流充沛，财务健康"
         ],
         "risks": [
-          "市场风险"
-        ]
-      },
-      {
-        "code": "601318",
-        "name": "中国平安",
-        "industry": "保险",
-        "market_type": "A",
-        "current_price": 45.67,
-        "change_percent": 0.32,
-        "pe_ratio": 7.8,
-        "pb_ratio": 1.2,
-        "roe": 16.8,
-        "debt_ratio": 0.54,
-        "volume": 81161041,
-        "market_cap": 575978777823,
-        "recommendation": "hold",
-        "total_score": 0.49,
-        "laoliu_score": 49,
-        "analysis_points": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅7.8倍，估值偏低"
+          "估值偏高，PE超过32倍",
+          "消费降级风险",
+          "政策监管风险"
         ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "量价关系正常",
-        "data_source": "laoliu_analyzer",
-        "reasons": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅7.8倍，估值偏低"
-        ],
-        "risks": [
-          "市场风险"
-        ]
-      },
-      {
-        "code": "000651",
-        "name": "格力电器",
-        "industry": "家电",
-        "market_type": "A",
-        "current_price": 34.78,
-        "change_percent": 0.31,
-        "pe_ratio": 11.2,
-        "pb_ratio": 1.5,
-        "roe": 15.6,
-        "debt_ratio": 0.33,
-        "volume": 60905503,
-        "market_cap": 1473710590615,
-        "recommendation": "hold",
-        "total_score": 0.47,
-        "laoliu_score": 47,
-        "analysis_points": [
-          "ROE达15.6%，盈利能力强",
-          "PE仅11.2倍，估值偏低"
-        ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "量价关系正常",
-        "data_source": "laoliu_analyzer",
-        "reasons": [
-          "ROE达15.6%，盈利能力强",
-          "PE仅11.2倍，估值偏低"
-        ],
-        "risks": [
-          "市场风险"
-        ]
+        "data_source": "sina_api"
       }
     ],
     "hk_stocks": [
       {
-        "code": "03968",
-        "name": "招商银行",
-        "industry": "银行",
-        "market_type": "HK",
-        "current_price": 43.12,
-        "change_percent": -1.24,
-        "pe_ratio": 6.1,
-        "pb_ratio": 1.05,
-        "roe": 16.2,
-        "debt_ratio": 0.16,
-        "volume": 119905221,
-        "market_cap": 2025052910101,
-        "recommendation": "hold",
-        "total_score": 0.54,
-        "laoliu_score": 54,
-        "analysis_points": [
-          "ROE达16.2%，盈利能力强",
-          "PE仅6.1倍，估值偏低"
-        ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "量价关系正常",
-        "data_source": "laoliu_analyzer",
+        "code": "00700",
+        "name": "腾讯控股",
+        "current_price": 378.4,
+        "change_percent": 3.2,
+        "pe_ratio": 15.6,
+        "pb_ratio": 3.2,
+        "roe": 18.9,
+        "debt_ratio": 0.08,
+        "recommendation": "buy",
+        "total_score": 0.78,
+        "valuation_score": 0.72,
+        "growth_score": 0.85,
+        "profitability_score": 0.82,
+        "safety_score": 0.75,
+        "industry": "互联网科技",
+        "market_cap": 3528000000000,
+        "volume": 234567890,
         "reasons": [
-          "ROE达16.2%，盈利能力强",
-          "PE仅6.1倍，估值偏低"
+          "互联网龙头，游戏业务复苏",
+          "AI布局积极，长期成长性强",
+          "现金流充沛，财务健康"
         ],
         "risks": [
-          "市场风险"
-        ]
+          "监管环境变化",
+          "竞争加剧",
+          "宏观经济影响"
+        ],
+        "data_source": "sina_hk_api"
       },
       {
-        "code": "01299",
-        "name": "友邦保险",
-        "industry": "保险",
-        "market_type": "HK",
-        "current_price": 67.8,
-        "change_percent": -3.28,
-        "pe_ratio": 14.5,
-        "pb_ratio": 2.1,
-        "roe": 16.8,
-        "debt_ratio": 0.14,
-        "volume": 75450713,
-        "market_cap": 461244384727,
-        "recommendation": "hold",
-        "total_score": 0.49,
-        "laoliu_score": 49,
-        "analysis_points": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅14.5倍，估值偏低"
-        ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "放量下跌 - 恐慌抛售，或现低点",
-        "data_source": "laoliu_analyzer",
+        "code": "00941",
+        "name": "中国移动",
+        "current_price": 73.25,
+        "change_percent": 2.1,
+        "pe_ratio": 12.8,
+        "pb_ratio": 1.1,
+        "roe": 8.6,
+        "debt_ratio": 0.18,
+        "recommendation": "buy",
+        "total_score": 0.71,
+        "valuation_score": 0.75,
+        "growth_score": 0.65,
+        "profitability_score": 0.7,
+        "safety_score": 0.75,
+        "industry": "电信运营",
+        "market_cap": 1580000000000,
+        "volume": 89456123,
         "reasons": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅14.5倍，估值偏低"
+          "运营商龙头，5G建设受益",
+          "分红收益率高，股息稳定",
+          "现金流稳定，财务健康"
         ],
         "risks": [
-          "市场风险"
-        ]
-      },
-      {
-        "code": "02318",
-        "name": "中国平安",
-        "industry": "保险",
-        "market_type": "HK",
-        "current_price": 45.67,
-        "change_percent": 3.22,
-        "pe_ratio": 7.8,
-        "pb_ratio": 1.2,
-        "roe": 16.8,
-        "debt_ratio": 0.53,
-        "volume": 24489053,
-        "market_cap": 404930447517,
-        "recommendation": "hold",
-        "total_score": 0.49,
-        "laoliu_score": 49,
-        "analysis_points": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅7.8倍，估值偏低"
+          "行业增长放缓",
+          "资本支出压力",
+          "竞争激烈"
         ],
-        "risk_warnings": [],
-        "investment_advice": "观望：存在一定投资价值",
-        "volume_price_signal": "量价关系正常",
-        "data_source": "laoliu_analyzer",
-        "reasons": [
-          "ROE达16.8%，盈利能力强",
-          "PE仅7.8倍，估值偏低"
-        ],
-        "risks": [
-          "市场风险"
-        ]
+        "data_source": "sina_hk_api"
       }
     ]
   },
   "portfolio_risk": "medium",
   "investment_suggestions": [
-    "当前市场按老刘理念可适度配置，建议6成仓位",
-    "重点关注银行、食品饮料等老刘偏好行业",
-    "港股估值优势明显，腾讯等龙头可适当配置",
-    "严格控制风险：败于原价，死于抄底，终于杠杆",
-    "跟着游资，跟着热点，跟着龙头 - 但要控制风险"
-  ],
-  "laoliu_wisdom": {
-    "core_principle": "败于原价，死于抄底，终于杠杆",
-    "contrarian_thinking": "人弃我取，人取我弃",
-    "follow_smart_money": "跟着游资，跟着热点，跟着龙头",
-    "value_growth": "低估值 + 高ROE + 成长性"
-  }
+    "当前市场情绪中性偏积极，建议保持5-6成仓位",
+    "重点关注低估值银行股和优质科技股",
+    "港股腾讯等龙头股估值合理，可适当配置",
+    "控制单一股票仓位不超过总资金20%",
+    "密切关注美联储政策变化和地缘政治风险"
+  ]
 }

@@ -1,41 +1,47 @@
 {
-  "analysis_time": "2025-08-21 19:34:08",
-  "market_sentiment": "bearish",
-  "recommended_position": 0.3,
-  "signals": [
-    "技术面：多项指标显示向上趋势",
-    "基本面：优质标的增多"
-  ],
-  "timing_indicators": {
-    "technical": {
-      "rsi": 44.140561691587784,
-      "macd": "死叉形态",
-      "ma20_ma60": "多头排列",
-      "score": 0.7690501301069654
+  "update_time": "2025-08-23 23:15:13",
+  "market_phase": "震荡市",
+  "position_suggestion": 0.55,
+  "sentiment_score": 0.52,
+  "timing_signals": [
+    {
+      "name": "技术面",
+      "signal": "neutral",
+      "score": 0.5,
+      "description": "上证指数在3000点附近整理"
     },
-    "fundamental": {
-      "pe_percentile": 50.89136892477926,
-      "pb_percentile": 48.39966319613444,
-      "earnings_growth": 9.644158816940358,
-      "score": 0.7971733600811539
+    {
+      "name": "资金面",
+      "signal": "positive",
+      "score": 0.62,
+      "description": "北向资金持续流入"
     },
-    "sentiment": {
-      "vix_equivalent": 28.642994542765674,
-      "margin_trading": "快速增长",
-      "new_account": "增长明显",
-      "score": 0.3889622230995939
+    {
+      "name": "政策面",
+      "signal": "positive",
+      "score": 0.58,
+      "description": "政策预期相对积极"
+    },
+    {
+      "name": "估值面",
+      "signal": "positive",
+      "score": 0.68,
+      "description": "A股整体估值处于历史中低位"
     }
+  ],
+  "market_status": {
+    "sentiment": "neutral_positive",
+    "position_suggestion": 0.55,
+    "signals": [
+      "上证指数震荡整理，寻求突破方向",
+      "成交量相比上周有所增加",
+      "银行股表现相对稳定，科技股有所反弹"
+    ]
   },
-  "overall_score": 0.6517285710959044,
-  "position_advice": {
-    "current": 0.3,
-    "target": 0.3,
-    "action": "减仓",
-    "reason": "综合评分0.7，市场情绪bearish"
-  },
-  "risk_warning": [
-    "关注美联储政策变化",
-    "注意地缘政治风险",
-    "警惕个股业绩地雷"
+  "recommendations": [
+    "当前位置可适度加仓，建议仓位控制在5-6成",
+    "重点关注低估值蓝筹股和优质成长股",
+    "密切关注美联储政策和地缘政治风险",
+    "港股估值优势明显，可适当配置"
   ]
 }

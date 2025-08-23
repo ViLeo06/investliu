@@ -102,22 +102,24 @@ class DataGenerator:
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         # 获取推荐数量
-        a_count = len(a_recommendations.get('stocks', []))
-        hk_count = len(hk_recommendations.get('stocks', []))
+        a_stocks_list = a_recommendations.get('stocks', [])
+        hk_stocks_list = hk_recommendations.get('stocks', [])
+        a_count = len(a_stocks_list)
+        hk_count = len(hk_stocks_list)
         total_count = a_count + hk_count
         
-        # 获取顶级推荐（前3只）
+        # 获取顶级推荐（前5只A股，前3只港股）
         top_a_stocks = sorted(
-            a_recommendations.get('stocks', []), 
-            key=lambda x: x.get('total_score', 0), 
+            a_stocks_list, 
+            key=lambda x: x.get('laoliu_score', x.get('total_score', 0) * 100), 
             reverse=True
-        )[:3]
+        )[:5]
         
         top_hk_stocks = sorted(
-            hk_recommendations.get('stocks', []), 
-            key=lambda x: x.get('total_score', 0), 
+            hk_stocks_list, 
+            key=lambda x: x.get('laoliu_score', x.get('total_score', 0) * 100), 
             reverse=True
-        )[:2]
+        )[:3]
         
         # 生成投资建议
         investment_suggestions = self.rule_extractor.generate_investment_suggestions(
@@ -195,7 +197,7 @@ class DataGenerator:
         
         # 按老刘标准筛选股票
         qualified_stocks = self.laoliu_analyzer.screen_stocks_by_laoliu_criteria(
-            stocks, min_roe=8, max_pe=30, min_score=50
+            stocks, min_roe=8, max_pe=30, min_score=40
         )
         
         # 取前20只作为推荐
@@ -204,13 +206,12 @@ class DataGenerator:
         return {
             "update_time": current_time,
             "market_type": market_type,
-            "total_count": len(top_stocks),
+            "total_count": len(qualified_stocks),
             "analysis_method": "老刘投资理念 + 量价关系分析",
             "screening_criteria": {
-                "min_roe": "8%以上",
-                "max_pe": "30倍以下", 
-                "laoliu_score": "50分以上",
-                "core_philosophy": "败于原价，死于抄底，终于杠杆"
+                "philosophy": "败于原价，死于抄底，终于杠杆",
+                "focus": "高ROE + 低估值 + 量价配合",
+                "risk_control": "分批建仓，控制杠杆"
             },
             "stocks": top_stocks
         }

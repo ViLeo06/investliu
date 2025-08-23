@@ -23,9 +23,12 @@
     "offline_mode": true
   },
   "data_quality": {
-    "last_update": "2025-08-21 20:50:00",
+    "last_update": "2025-08-23 23:15:13",
     "success_rate": 0.95,
     "primary_source": "sina_api",
-    "fallback_sources": ["tencent_api", "mock_data"]
+    "fallback_sources": [
+      "tencent_api",
+      "mock_data"
+    ]
   }
 }

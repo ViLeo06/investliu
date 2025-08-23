@@ -84,10 +84,7 @@ Page({
       this.setData({ summary: cachedData })
     }
 
-    return app.request({
-      url: '/summary.json',
-      showLoading: false
-    }).then(data => {
+    return app.request('/summary.json', 'summary_data').then(data => {
       if (data) {
         this.setData({ summary: data })
         // 缓存数据
@@ -104,10 +101,7 @@ Page({
       this.updateMarketData(cachedData)
     }
 
-    return app.request({
-      url: '/market_timing.json',
-      showLoading: false
-    }).then(data => {
+    return app.request('/market_timing.json', 'market_timing').then(data => {
       if (data) {
         this.updateMarketData(data)
         // 缓存数据
