@@ -144,31 +144,8 @@ App({
       return null;
     }
     
-    // 对于股票数据，优先尝试从GitHub Pages读取真实生成的数据
-    if (url === '/stocks_a.json' || url === '/stocks_hk.json' || url === '/summary.json' || url === '/market_timing.json') {
-      return new Promise((resolve) => {
-        wx.request({
-          url: self.globalData.apiBaseUrl + url,
-          timeout: 3000,
-          success: (res) => {
-            if (res.data && res.statusCode === 200) {
-              console.log('开发环境：使用GitHub Pages真实数据', url);
-              resolve(res.data);
-            } else {
-              console.log('开发环境：GitHub Pages数据加载失败，使用Mock数据', url);
-              resolve(self.getMockData(url));
-            }
-          },
-          fail: () => {
-            console.log('开发环境：网络请求失败，使用Mock数据', url);
-            resolve(self.getMockData(url));
-          }
-        });
-      });
-    }
-    
-    // 其他数据直接使用Mock
-    console.log('开发环境：使用Mock数据', url);
+    // 对于股票数据，直接使用扩展的Mock数据
+    console.log('开发环境：使用扩展Mock数据', url);
     return Promise.resolve(self.getMockData(url));
   },
 

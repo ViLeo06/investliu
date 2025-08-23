@@ -2,108 +2,115 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-# 老刘投资决策程序 - Claude Code 项目记录
+# 老刘投资决策程序 - Claude Code Project Guide
 
-## 项目概述
-基于个人投资者老刘多年投资笔记的股票决策辅助程序，以微信小程序形式呈现，专注中长线价值投资策略。
+## Project Overview
+A stock investment decision support system based on "老刘" (Lao Liu)'s handwritten investment notes, delivered as a WeChat Mini Program focused on long-term value investing strategies.
 
-## 核心开发命令
+## Essential Development Commands
 
-### 数据处理命令
+### Data Processing Pipeline
 ```bash
-# 生成最新股票推荐数据（核心命令）
+# Generate latest stock recommendations (PRIMARY COMMAND)
 cd data_processor && python3 main.py
 
-# 安装Python依赖
+# Install Python dependencies
 pip install -r requirements.txt
 
-# 配置API密钥（首次运行需要）
-cp config.example.py config.py
-# 编辑config.py添加OCR和股票API密钥
+# OCR processing for handwritten investment notes
+python complete_ocr_processor.py  # Process 27 notebook images
+python extract_quotes.py  # Extract investment quotes from OCR results
 
-# 验证生成的数据文件
-ls -la *.json  # 检查根目录JSON文件
-cat summary.json | head -20  # 验证数据格式
+# Validate generated data files
+ls -la *.json  # Check root directory JSON files
+python -m json.tool summary.json  # Validate JSON format
+python -m json.tool static_data/laoliu_quotes.json  # Validate quotes data
 ```
 
-### 微信小程序开发
+### WeChat Mini Program Development
 ```bash
-# 在微信开发者工具中打开miniprogram目录
+# Open miniprogram directory in WeChat Developer Tools
 # AppID: wx2aad9cd988058c1f
-# 项目名称: 老刘投资决策
+# Project Name: 老刘投资决策
 
-# 预览测试（在微信开发者工具中）
-# 点击"预览" → 扫码真机测试
+# Build and test commands (via WeChat Developer Tools UI):
+# - Click "Preview" → Scan QR code for device testing
+# - Click "Upload" → Enter version number for release
 
-# 上传代码（在微信开发者工具中）
-# 点击"上传" → 填写版本号
-
-# 检查小程序页面样式
-# 主要检查首页WXML/WXSS的现代化UI效果
+# Local file validation
+find miniprogram/pages -name "*.wxml" -o -name "*.wxss" -o -name "*.js"
 ```
 
-### 部署命令
+### Deployment Workflow
 ```bash
-# 完整数据更新和部署流程
-cd data_processor && python3 main.py  # 生成数据
-cp static_data/*.json .  # 复制到根目录（如需要）
+# Complete data update and deployment
+cd data_processor && python3 main.py  # Generate fresh data
 git add *.json static_data/
-git commit -m "update stock data and UI improvements"
+git commit -m "update stock data and improvements"
 git push origin master
 
-# 验证GitHub Pages部署
+# Verify GitHub Pages deployment
 curl -I https://vileo06.github.io/investliu/summary.json
 ```
 
-## 项目架构
+## High-Level Architecture
 
-### 核心设计理念
-- **零服务器架构**: 使用GitHub Pages托管静态JSON数据
-- **本地数据处理**: Python脚本生成投资建议
-- **微信小程序**: 原生开发，直接读取静态数据
-- **成本优化**: 完全免费的技术栈
+### Core Design Philosophy
+- **Serverless Architecture**: Static JSON data hosted on GitHub Pages
+- **Local Data Processing**: Python scripts generate investment recommendations
+- **WeChat Mini Program**: Native development consuming static data
+- **Cost Optimization**: Completely free technology stack
 
-### 高层架构概述
-
-#### 数据流架构
+### Data Flow Architecture
 ```
-手写笔记 → OCR识别 → 规则提取 → Python分析引擎 → JSON输出 → GitHub Pages → 微信小程序
+Handwritten Notes → OCR Recognition → Rule Extraction → Python Analysis → JSON Output → GitHub Pages → Mini Program
 ```
 
-#### 核心组件交互
-1. **数据处理层** (`data_processor/`): 
-   - `StockDataFetcher`: 获取股票基础数据（模拟API调用）
-   - `StockAnalyzer`: 四维分析模型（估值25% + 成长25% + 盈利25% + 安全25%）
-   - `RuleExtractor`: 基于老刘投资经验的规则引擎
-   - `DataGenerator`: 协调所有组件生成最终JSON文件
+### Key System Components
 
-2. **静态数据层** (根目录JSON文件):
-   - `summary.json`: 汇总数据和今日推荐
-   - `stocks_a.json/stocks_hk.json`: A股/港股详细推荐
-   - `market_timing.json`: 择时建议和市场情绪
-   - `miniprogram_config.json`: 小程序运行时配置
+#### 1. Data Processing Layer (`data_processor/`)
+- **`main.py`**: Primary orchestrator - runs all data generation workflows
+- **`StockDataFetcher`**: Retrieves stock data (currently simulated API calls)
+- **`StockAnalyzer`**: Four-dimensional scoring model (Valuation 25% + Growth 25% + Profitability 25% + Safety 25%)
+- **`LaoLiuAnalyzer`**: Specialized analyzer implementing Lao Liu's investment philosophy
+- **`RuleExtractor`**: Rule engine based on Lao Liu's investment experience
+- **`DataGenerator`**: Coordinates all components to generate final JSON files
 
-3. **小程序前端** (`miniprogram/`):
-   - `app.js`: 全局配置，包含重试机制的API请求封装
-   - 5个核心页面：首页、选股、分析、组合、设置
-   - 缓存策略：1小时本地缓存，自动刷新机制
+#### 2. OCR Processing Pipeline (Root directory scripts)
+- **`complete_ocr_processor.py`**: Processes 27 investment note images, supports multiple OCR methods
+- **`extract_quotes.py`**: Extracts curated investment quotes, categorized as Masters/Strategy/Philosophy
+- **`structure_analyzer.py`**: Converts raw OCR text into structured investment rules
 
-#### 投资分析算法核心
+#### 3. Static Data Layer (Root directory JSON files)
+- **`summary.json`**: Aggregated data and today's recommendations
+- **`stocks_a.json/stocks_hk.json`**: A-share/H-share detailed recommendations
+- **`market_timing.json`**: Market timing advice and sentiment analysis
+- **`miniprogram_config.json`**: Mini program runtime configuration
+- **`static_data/laoliu_quotes.json`**: Investment quotes data (17 curated quotes, 3 categories)
+
+#### 4. Mini Program Frontend (`miniprogram/`)
+- **`app.js`**: Global configuration with retry mechanism API wrapper and quotes version management
+- **Core Pages**: Home (daily quotes), Stock Selection, Analysis, Portfolio, Settings
+- **`components/quote-card/`**: Quote card component with sharing functionality
+- **`utils/shareCard.js`**: Canvas-based share card generator
+- **Caching Strategy**: 1-hour local cache with auto-refresh mechanism
+
+### Investment Analysis Algorithm Core
 ```python
-# 四维评分模型（stock_analyzer.py中实现）
+# Four-dimensional scoring model (implemented in stock_analyzer.py)
 total_score = (valuation_score * 0.25 + 
                growth_score * 0.25 + 
                profitability_score * 0.25 + 
                safety_score * 0.25) * industry_weight
 ```
 
-基于财务指标: PE、PB、ROE、负债率，结合行业比较和市场环境调整。
+Based on financial metrics: PE, PB, ROE, debt ratio, combined with industry comparison and market environment adjustments.
 
-### 技术栈
-- **数据处理**: Python 3.8+ (pandas, requests, akshare, baidu-aip, tencentcloud-sdk-python)
-- **数据存储**: 静态JSON文件托管在GitHub Pages
-- **前端**: 微信小程序原生开发
-- **API数据源**: 免费股票API (当前使用模拟数据)
+## Technology Stack
+- **Data Processing**: Python 3.8+ (pandas, requests, akshare, baidu-aip, tencentcloud-sdk-python)
+- **Data Storage**: Static JSON files hosted on GitHub Pages
+- **Frontend**: WeChat Mini Program native development
+- **API Data Sources**: Free stock APIs (currently using mock data)
 
 ## 关键开发模式
 
@@ -146,6 +153,19 @@ total_score = (valuation_score * 0.25 +
 2. JSON文件同时输出到 `static_data/` 和项目根目录
 3. 提交并推送到GitHub，触发Pages自动部署
 4. 小程序下次启动时自动获取最新数据
+
+### OCR处理工作流（处理手写笔记）
+1. 将手写笔记图片放入 `investnotebook/` 目录（支持68-94序号命名）
+2. 运行 `python complete_ocr_processor.py` 进行完整OCR处理
+3. 使用多种OCR方法验证：qwen-vl-max, qwen-vl-ocr, optimized-prompt
+4. 运行 `python extract_quotes.py` 提取投资金句并生成JSON数据
+5. 金句数据自动更新到 `static_data/laoliu_quotes.json`
+
+### 投资金句功能架构
+- **数据结构**: 17条精选金句，分为3大类别（投资大师🎯/投资策略📈/市场哲学💭）
+- **每日轮换**: 基于日期的算法自动轮换首页展示金句
+- **分享功能**: Canvas生成精美分享卡片，包含渐变背景和品牌标识
+- **版本管理**: 支持金句数据版本检查和自动更新
 
 ### 小程序错误处理机制
 - 网络请求包含自动重试（默认2次）
@@ -200,6 +220,8 @@ curl -f https://vileo06.github.io/investliu/summary.json || echo "数据访问�
 ```
 
 ### 常见问题解决
+- **OCR处理失败**: 检查阿里云API密钥配置，确保qwen-vl模型调用权限正常
+- **金句数据不显示**: 验证`static_data/laoliu_quotes.json`文件格式，检查版本管理逻辑
 - **UI样式异常**: 检查`app.wxss`和页面级wxss中的渐变和动画CSS
 - **TabBar样式不生效**: 确认`app.json`中tabBar配置和`app.wxss`中wx-tab-bar覆盖样式
 - **筛选面板显示问题**: 验证`filters-panel.show`类的opacity/visibility/padding组合
@@ -207,6 +229,7 @@ curl -f https://vileo06.github.io/investliu/summary.json || echo "数据访问�
 - **股票评分显示错误**: 确认`stock_analyzer.py`中的评分算法逻辑
 - **页面动画不生效**: 检查CSS动画keyframes和animation类是否正确应用
 - **按钮文字不显示**: 确认WXML中使用`<view>`而非`<text>`作为按钮容器
+- **Canvas分享卡片生成失败**: 检查`utils/shareCard.js`中Canvas API调用和图片绘制权限
 
 ### 部署验证
 - 发布前必须验证所有JSON文件格式正确性
@@ -233,18 +256,24 @@ curl -f https://vileo06.github.io/investliu/summary.json || echo "数据访问�
 ## 项目当前状态（2025年8月）
 ### ✅ 已完成功能
 - Python数据处理管道和四维分析模型
+- 完整OCR处理管道（27张投资笔记图片，多方法验证）
+- 投资金句功能完整实现（17条精选金句，3大分类，分享功能）
 - 微信小程序完整UI（现代化设计）
+- quote-card组件和Canvas分享卡片生成器
 - GitHub Pages静态托管
 - 错误处理和重试机制
 - 全面UI美化（渐变、动画、emoji图标）
 - TabBar现代化交互（选中放大、指示器、毛玻璃效果）
 - 筛选面板完美隐藏/展开机制
 - 按钮和推荐标签显示优化
+- 每日金句轮换和版本管理系统
 
 ### 🔄 技术债务
 - 当前使用模拟数据，待集成真实股票API
+- OCR密钥管理需要环境变量化（目前硬编码在脚本中）
 - 需要微信小程序金融类资质认证
 - 可考虑添加更多技术指标
+- Canvas分享功能在部分设备上性能待优化
 
 ### 📋 发布准备
 - 核心功能完整，可直接发布
