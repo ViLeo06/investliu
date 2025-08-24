@@ -16,9 +16,9 @@ SINA_API_BASE = "https://hq.sinajs.cn/list="
 EASTMONEY_API_BASE = "https://push2.eastmoney.com/api/qt/clist/get"
 
 # GitHub Pages配置
-GITHUB_USERNAME = "your_username"
-GITHUB_REPO = "investliu"
-GITHUB_TOKEN = "your_token"  # 用于自动提交
+GITHUB_USERNAME = "your_username"  # 必须修改为您的GitHub用户名
+GITHUB_REPO = "investliu"  # 仓库名称，通常保持默认
+GITHUB_TOKEN = "your_token"  # 用于自动提交（可选）
 
 # 数据更新配置
 UPDATE_INTERVAL = 24  # 小时

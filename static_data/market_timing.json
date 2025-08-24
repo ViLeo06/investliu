@@ -1,47 +1,38 @@
 {
-  "update_time": "2025-08-23 23:15:13",
-  "market_phase": "震荡市",
-  "position_suggestion": 0.55,
-  "sentiment_score": 0.52,
-  "timing_signals": [
-    {
-      "name": "技术面",
-      "signal": "neutral",
-      "score": 0.5,
-      "description": "上证指数在3000点附近整理"
+  "analysis_time": "2025-08-24 21:39:47",
+  "market_sentiment": "bullish",
+  "recommended_position": 0.7,
+  "signals": [],
+  "timing_indicators": {
+    "technical": {
+      "rsi": 57.705434755245626,
+      "macd": "死叉形态",
+      "ma20_ma60": "空头排列",
+      "score": 0.41074062338904266
     },
-    {
-      "name": "资金面",
-      "signal": "positive",
-      "score": 0.62,
-      "description": "北向资金持续流入"
+    "fundamental": {
+      "pe_percentile": 67.16554840825498,
+      "pb_percentile": 15.560771241899296,
+      "earnings_growth": 11.313512225428656,
+      "score": 0.6941699251256831
     },
-    {
-      "name": "政策面",
-      "signal": "positive",
-      "score": 0.58,
-      "description": "政策预期相对积极"
-    },
-    {
-      "name": "估值面",
-      "signal": "positive",
-      "score": 0.68,
-      "description": "A股整体估值处于历史中低位"
+    "sentiment": {
+      "vix_equivalent": 33.72288953146243,
+      "margin_trading": "快速增长",
+      "new_account": "增长明显",
+      "score": 0.5372053943061574
     }
-  ],
-  "market_status": {
-    "sentiment": "neutral_positive",
-    "position_suggestion": 0.55,
-    "signals": [
-      "上证指数震荡整理，寻求突破方向",
-      "成交量相比上周有所增加",
-      "银行股表现相对稳定，科技股有所反弹"
-    ]
   },
-  "recommendations": [
-    "当前位置可适度加仓，建议仓位控制在5-6成",
-    "重点关注低估值蓝筹股和优质成长股",
-    "密切关注美联储政策和地缘政治风险",
-    "港股估值优势明显，可适当配置"
+  "overall_score": 0.5473719809402944,
+  "position_advice": {
+    "current": 0.7,
+    "target": 0.7,
+    "action": "加仓",
+    "reason": "综合评分0.5，市场情绪bullish"
+  },
+  "risk_warning": [
+    "关注美联储政策变化",
+    "注意地缘政治风险",
+    "警惕个股业绩地雷"
   ]
 }

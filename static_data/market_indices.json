@@ -1,0 +1,17 @@
+{
+  "shanghai_index": {
+    "value": 3825.7592,
+    "change": 1.45,
+    "volume": 342191206764
+  },
+  "szse_index": {
+    "value": 12166.06,
+    "change": 2.07,
+    "volume": 238541988658
+  },
+  "hsi_index": {
+    "value": 25339.139,
+    "change": 0.93,
+    "volume": 113147177990
+  }
+}

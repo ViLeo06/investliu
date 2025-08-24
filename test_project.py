@@ -22,9 +22,17 @@ def check_python():
     try:
         version = sys.version
         print(f"✅ Python版本: {version}")
+        print(f"✅ Python路径: {sys.executable}")
+        print(f"✅ 当前工作目录: {os.getcwd()}")
+        
+        # 检查字符编码
+        import locale
+        print(f"✅ 系统编码: {locale.getpreferredencoding()}")
+        
         return True
     except Exception as e:
         print(f"❌ Python环境错误: {e}")
+        print("请确保已正确安装Python并添加到PATH环境变量")
         return False
 
 def check_dependencies():
@@ -246,6 +254,46 @@ def print_final_instructions():
     print("   - 小程序需要相应资质")
     print()
 
+def diagnose_python_environment():
+    """诊断Python环境问题"""
+    print_header("Python环境诊断")
+    
+    print("正在诊断Python环境...")
+    print()
+    
+    # 检查Python可执行文件
+    import subprocess
+    try:
+        result = subprocess.run(['python', '--version'], capture_output=True, text=True, timeout=5)
+        if result.returncode == 0:
+            print(f"✅ python --version: {result.stdout.strip()}")
+        else:
+            print(f"❌ python --version 失败: {result.stderr}")
+    except FileNotFoundError:
+        print("❌ 未找到python可执行文件")
+    except subprocess.TimeoutExpired:
+        print("❌ python命令执行超时")
+    except Exception as e:
+        print(f"❌ python命令执行错误: {e}")
+    
+    # 检查环境变量
+    print()
+    print("PATH环境变量中的Python路径:")
+    path_env = os.environ.get('PATH', '')
+    python_paths = [p for p in path_env.split(os.pathsep) if 'python' in p.lower()]
+    if python_paths:
+        for path in python_paths:
+            print(f"  - {path}")
+    else:
+        print("  ❌ PATH中未找到Python相关路径")
+    
+    print()
+    print("🔧 修复建议:")
+    print("1. 确保已安装Python 3.9或更高版本")
+    print("2. 重新安装Python时勾选 'Add Python to PATH'")
+    print("3. 或手动添加Python安装目录到系统PATH环境变量")
+    print("4. 重启命令行窗口或重启系统")
+
 def main():
     """主测试函数"""
     print_header("老刘投资决策系统 - 集成测试")
@@ -263,9 +311,19 @@ def main():
     ]
     
     for test in tests:
-        if not test():
+        try:
+            if not test():
+                print()
+                print("❌ 测试失败，请检查上述错误并修复")
+                print()
+                # 如果是Python相关错误，显示诊断信息
+                if test == check_python or test == check_dependencies:
+                    diagnose_python_environment()
+                sys.exit(1)
+        except Exception as e:
+            print(f"❌ 测试执行错误: {e}")
             print()
-            print("❌ 测试失败，请检查上述错误并修复")
+            diagnose_python_environment()
             sys.exit(1)
         print()
     

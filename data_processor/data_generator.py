@@ -36,45 +36,57 @@ class DataGenerator:
             
             # 1. 获取市场指数数据
             logger.info("获取市场指数数据...")
-            market_indices = self.fetcher.get_market_index()
+            market_indices = self.fetcher.fetch_market_data()
             self._save_json(market_indices, 'market_indices.json')
             
-            # 2. 分析市场择时
-            logger.info("分析市场择时...")
-            market_timing = self.analyzer.analyze_market_timing(market_indices)
-            self._save_json(market_timing, 'market_timing.json')
-            
-            # 3. 获取A股数据
+            # 2. 获取A股数据
             logger.info("获取A股数据...")
             a_stocks = self._get_stock_data_batch('A', pages=3)
             
-            # 4. 分析A股推荐
-            logger.info("分析A股推荐...")
-            a_recommendations = self.analyzer.generate_stock_recommendations(a_stocks, top_n=20)
-            self._save_json(a_recommendations, 'stocks_a_recommendations.json')
-            
-            # 5. 获取港股数据
+            # 3. 获取港股数据
             logger.info("获取港股数据...")
             hk_stocks = self._get_stock_data_batch('HK', pages=2)
             
-            # 6. 分析港股推荐
-            logger.info("分析港股推荐...")
-            hk_recommendations = self.analyzer.generate_stock_recommendations(hk_stocks, top_n=15)
+            # 4. 合并股票数据用于市场择时分析
+            all_stocks = a_stocks + hk_stocks
+            
+            # 5. 分析市场择时
+            logger.info("分析市场择时...")
+            market_timing = self.analyzer.analyze_market_timing(market_indices, all_stocks)
+            self._save_json(market_timing, 'market_timing.json')
+            
+            # 6. 分析A股数据
+            logger.info("分析A股数据...")
+            analyzed_a_stocks = self.analyzer.analyze_stocks(a_stocks, 'A')
+            
+            # 7. 生成A股推荐
+            logger.info("生成A股推荐...")
+            a_recommendations = self.analyzer.generate_recommendations(analyzed_a_stocks)
+            self._save_json(a_recommendations, 'stocks_a_recommendations.json')
+            
+            # 8. 分析港股数据
+            logger.info("分析港股数据...")
+            analyzed_hk_stocks = self.analyzer.analyze_stocks(hk_stocks, 'HK')
+            
+            # 9. 生成港股推荐
+            logger.info("生成港股推荐...")
+            hk_recommendations = self.analyzer.generate_recommendations(analyzed_hk_stocks)
             self._save_json(hk_recommendations, 'stocks_hk_recommendations.json')
             
-            # 7. 生成投资组合建议
+            # 10. 生成投资组合建议
             logger.info("生成投资组合建议...")
-            all_recommendations = a_recommendations + hk_recommendations
-            portfolio = self.analyzer.generate_portfolio_suggestion(all_recommendations, market_timing)
-            self._save_json(portfolio, 'portfolio_suggestion.json')
+            # 使用分析后的股票数据
+            all_analyzed_stocks = analyzed_a_stocks + analyzed_hk_stocks
+            portfolio = self.analyzer.assess_portfolio_risk(all_analyzed_stocks)
+            self._save_json({'risk_level': portfolio, 'suggestions': []}, 'portfolio_suggestion.json')
             
-            # 8. 生成汇总数据
+            # 11. 生成汇总数据
             logger.info("生成汇总数据...")
-            summary = self._generate_summary(market_timing, a_recommendations, hk_recommendations, portfolio)
+            summary = self._generate_summary(market_timing, a_recommendations, hk_recommendations, {'risk_level': portfolio, 'suggestions': []})
             self._save_json(summary, 'summary.json')
             
-            # 9. 生成完整的股票列表（分页）
-            self._generate_stock_lists(a_stocks, hk_stocks)
+            # 12. 生成完整的股票列表（分页）
+            self._generate_stock_lists(analyzed_a_stocks, analyzed_hk_stocks)
             
             logger.info("所有数据文件生成完成！")
             return True
@@ -85,31 +97,26 @@ class DataGenerator:
     
     def _get_stock_data_batch(self, market_type, pages=3):
         """批量获取股票数据"""
-        all_stocks = []
-        
-        for page in range(1, pages + 1):
-            try:
-                logger.info(f"获取{market_type}股第{page}页数据...")
+        try:
+            logger.info(f"获取{market_type}股数据...")
+            
+            if market_type == 'A':
+                stocks = self.fetcher.fetch_a_stocks()
+            elif market_type == 'HK':
+                stocks = self.fetcher.fetch_hk_stocks()
+            else:
+                return []
+            
+            if stocks:
+                logger.info(f"获取到{len(stocks)}只{market_type}股")
+                return stocks
+            else:
+                logger.warning(f"未获取到{market_type}股数据")
+                return []
                 
-                if market_type == 'A':
-                    stocks = self.fetcher.get_stock_list_a(page=page, size=100)
-                elif market_type == 'HK':
-                    stocks = self.fetcher.get_stock_list_hk(page=page, size=100)
-                else:
-                    continue
-                
-                if stocks:
-                    all_stocks.extend(stocks)
-                    logger.info(f"获取到{len(stocks)}只股票")
-                
-                time.sleep(1)  # 避免请求过频
-                
-            except Exception as e:
-                logger.error(f"获取{market_type}股第{page}页失败: {e}")
-                continue
-        
-        logger.info(f"{market_type}股总计获取: {len(all_stocks)} 只")
-        return all_stocks
+        except Exception as e:
+            logger.error(f"获取{market_type}股数据失败: {e}")
+            return []
     
     def _generate_summary(self, market_timing, a_recommendations, hk_recommendations, portfolio):
         """生成汇总数据"""
@@ -121,13 +128,13 @@ class DataGenerator:
                 'main_signals': market_timing.get('signals', [])[:3]
             },
             'recommendations_count': {
-                'a_stocks': len(a_recommendations),
-                'hk_stocks': len(hk_recommendations),
-                'total': len(a_recommendations) + len(hk_recommendations)
+                'a_stocks': len(a_recommendations) if isinstance(a_recommendations, list) else 0,
+                'hk_stocks': len(hk_recommendations) if isinstance(hk_recommendations, list) else 0,
+                'total': (len(a_recommendations) if isinstance(a_recommendations, list) else 0) + (len(hk_recommendations) if isinstance(hk_recommendations, list) else 0)
             },
             'top_picks': {
-                'a_stocks': a_recommendations[:5] if a_recommendations else [],
-                'hk_stocks': hk_recommendations[:5] if hk_recommendations else []
+                'a_stocks': a_recommendations[:5] if isinstance(a_recommendations, list) and a_recommendations else [],
+                'hk_stocks': hk_recommendations[:5] if isinstance(hk_recommendations, list) and hk_recommendations else []
             },
             'portfolio_risk': portfolio.get('risk_level', 'medium'),
             'investment_suggestions': portfolio.get('suggestions', [])[:3],
@@ -183,9 +190,22 @@ class DataGenerator:
     
     def generate_config_file(self):
         """生成配置文件"""
+        # 尝试从配置文件或环境变量获取基础URL
+        base_url = 'https://your-username.github.io/investliu'
+        try:
+            import config
+            if hasattr(config, 'GITHUB_USERNAME') and hasattr(config, 'GITHUB_REPO'):
+                base_url = f'https://{config.GITHUB_USERNAME}.github.io/{config.GITHUB_REPO}'
+        except ImportError:
+            import os
+            github_username = os.getenv('GITHUB_USERNAME')
+            github_repo = os.getenv('GITHUB_REPO', 'investliu')
+            if github_username:
+                base_url = f'https://{github_username}.github.io/{github_repo}'
+        
         config = {
             'api_endpoints': {
-                'base_url': 'https://your-username.github.io/investliu',
+                'base_url': base_url,
                 'summary': '/static_data/summary.json',
                 'market_timing': '/static_data/market_timing.json',
                 'a_stocks_recommendations': '/static_data/stocks_a_recommendations.json',

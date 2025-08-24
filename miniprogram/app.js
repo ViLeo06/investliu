@@ -1,11 +1,13 @@
 // 小程序入口文件
-const mockData = require('./utils/mockData.js');
+const mockData = require('./utils/mockData_light.js');
 
 App({
   globalData: {
     // 全局数据
     userInfo: null,
-    apiBaseUrl: 'https://vileo06.github.io/investliu',
+    // TODO: 请将此URL更改为您自己的GitHub Pages地址
+    // 格式: https://你的用户名.github.io/investliu
+    apiBaseUrl: 'https://your-username.github.io/investliu',
     updateTime: '',
     cacheTime: 3600000, // 缓存1小时
     systemInfo: null,
@@ -17,6 +19,11 @@ App({
     
     // 检测开发环境
     this.checkDevelopmentEnvironment()
+    
+    // 在开发环境下清理股票缓存，确保使用最新数据
+    if (this.globalData.isDev) {
+      this.clearStockCache()
+    }
     
     // 获取系统信息
     this.getSystemInfo()
@@ -50,6 +57,11 @@ App({
                               accountInfo.miniProgram.envVersion === 'trial' ||
                               !accountInfo.miniProgram.envVersion;
       console.log('环境检测:', this.globalData.isDev ? '开发环境' : '生产环境');
+      console.log('账户信息:', accountInfo);
+    } else {
+      // 如果获取不到账户信息，默认为开发环境（开发者工具情况）
+      this.globalData.isDev = true;
+      console.log('无法获取账户信息，默认为开发环境');
     }
   },
 
@@ -140,13 +152,33 @@ App({
   loadLocalData: function(url) {
     const self = this;
     
+    console.log('loadLocalData调用:', {
+      url: url,
+      isDev: self.globalData.isDev
+    });
+    
     if (!self.globalData.isDev) {
+      console.log('非开发环境，不使用Mock数据');
       return null;
     }
     
-    // 对于股票数据，直接使用扩展的Mock数据
-    console.log('开发环境：使用扩展Mock数据', url);
-    return Promise.resolve(self.getMockData(url));
+    // 对于开发环境，直接尝试require本地JSON文件
+    console.log('开发环境：尝试读取本地JSON文件', url);
+    
+    try {
+      console.log('开发环境：尝试使用Mock数据', url);
+      
+      // 在开发环境下，直接使用Mock数据，不尝试require JSON文件
+      // 因为微信小程序不支持require JSON文件
+      const data = self.getMockData(url);
+      console.log('Mock数据结果:', data ? '有数据' : '无数据');
+      
+      return Promise.resolve(data);
+      
+    } catch (error) {
+      console.log('Mock数据加载失败:', error);
+      return Promise.resolve(null);
+    }
   },
 
   // 获取Mock数据
@@ -154,13 +186,23 @@ App({
     const urlToDataMap = {
       '/summary.json': mockData.summary,
       '/market_timing.json': mockData.market_timing,
-      '/miniprogram_config.json': mockData.miniprogram_config,
+      '/laoliu_quotes.json': mockData.laoliu_quotes,
       '/stocks_a.json': mockData.stocks_a,
       '/stocks_hk.json': mockData.stocks_hk,
-      '/laoliu_quotes.json': mockData.laoliu_quotes
+      '/analysis_samples.json': mockData.analysis_samples,
+      '/stocks_a_recommendations.json': mockData.stocks_a_recommendations,
+      '/stocks_hk_recommendations.json': mockData.stocks_hk_recommendations
     };
     
-    return urlToDataMap[url] || null;
+    const result = urlToDataMap[url] || null;
+    console.log('getMockData:', {
+      url: url,
+      存在映射: !!result,
+      数据类型: typeof result,
+      股票数量: result && result.stocks ? result.stocks.length : (result && Array.isArray(result) ? result.length : '无stocks字段')
+    });
+    
+    return result;
   },
 
   // 带重试的请求方法
@@ -425,6 +467,27 @@ App({
       })
     } catch (e) {
       console.error('清理缓存失败:', e)
+    }
+  },
+
+  // 强制清理所有股票相关缓存
+  clearStockCache: function() {
+    try {
+      const keysToRemove = [
+        'stocks_a',
+        'stocks_hk', 
+        'stocks_last_update',
+        'app_config'
+      ];
+      
+      keysToRemove.forEach(key => {
+        wx.removeStorageSync(key);
+        console.log('清理缓存:', key);
+      });
+      
+      console.log('所有股票缓存已清理');
+    } catch (e) {
+      console.error('清理股票缓存失败:', e);
     }
   }
 })

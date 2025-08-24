@@ -1,0 +1,74 @@
+{
+  "basic_info": {
+    "code": "000858",
+    "name": "五粮液",
+    "market_type": "A",
+    "current_price": 152.3,
+    "change_percent": 2.1,
+    "volume": 45239184,
+    "market_cap": 1748488831.1000001,
+    "industry": "食品饮料",
+    "update_time": "2025-08-24 13:48:37"
+  },
+  "valuation_metrics": {
+    "pe_ratio": 18.5,
+    "pb_ratio": 4.2,
+    "ps_ratio": 0,
+    "dividend_yield": 4.377446942129559
+  },
+  "financial_metrics": {
+    "roe": 22.1,
+    "roa": 15.8,
+    "debt_ratio": 0.35,
+    "current_ratio": 1.633138640888103,
+    "gross_margin": 78.5,
+    "net_margin": 13.26,
+    "revenue_growth": 18.2,
+    "profit_growth": 25.3,
+    "report_date": "2024-09-30"
+  },
+  "laoliu_evaluation": {
+    "laoliu_score": 75,
+    "analysis_points": [
+      "ROE达22.1%，盈利能力优秀",
+      "PE为18.5倍，估值合理",
+      "负债率35.0%，财务健康",
+      "食品饮料行业符合老刘投资偏好"
+    ],
+    "risk_warnings": [],
+    "investment_advice": "谨慎推荐：基本面良好，可适当配置",
+    "contrarian_opportunity": false
+  },
+  "technical_analysis": {
+    "volume_price_signal": "量价关系正常",
+    "volume_ratio": 0.865638605495717,
+    "price_change": 0.2710243124750924
+  },
+  "ai_insights": {
+    "analysis_content": "【五粮液投资分析】\n\n综合评分：75分\n投资建议：谨慎推荐：基本面良好，可适当配置\n\n主要优势：\n• ROE达22.1%，盈利能力优秀\n• PE为18.5倍，估值合理\n• 负债率35.0%，财务健康\n\n基于老刘投资理念，该股票符合价值投资标准，建议关注。",
+    "key_points": [
+      "ROE达21%，盈利能力优秀",
+      "PE为18.5倍，估值合理",
+      "负债率35.0%，财务健康"
+    ],
+    "recommendation": "buy",
+    "confidence_level": "中"
+  },
+  "investment_summary": {
+    "comprehensive_score": 75,
+    "recommendation": "buy",
+    "target_price": 175.15,
+    "stop_loss": 129.46,
+    "position_suggestion": "可适度配置，建议1-3成"
+  },
+  "metadata": {
+    "analysis_time": "2025-08-24 13:48:38",
+    "data_sources": [
+      "akshare",
+      "qwen-ai"
+    ],
+    "version": "1.0.0",
+    "cache_duration": 3600,
+    "searchable_content": "五粮液 000858 食品饮料 谨慎推荐：基本面良好，可适当配置 ROE达22.1%，盈利能力优秀 PE为18.5倍，估值合理 负债率35.0%，财务健康 食品饮料行业符合老刘投资偏好"
+  }
+}

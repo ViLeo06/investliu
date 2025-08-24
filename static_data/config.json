@@ -1,6 +1,5 @@
 {
-  "baseUrl": "https://your_username.github.io/investliu",
-  "endpoints": {
+  "api_endpoints": {
     "base_url": "https://your_username.github.io/investliu",
     "summary": "/static_data/summary.json",
     "market_timing": "/static_data/market_timing.json",
@@ -9,5 +8,8 @@
     "portfolio": "/static_data/portfolio_suggestion.json",
     "pagination": "/static_data/pagination_info.json"
   },
-  "updateTime": "2025-08-24 21:39:47"
+  "update_frequency": "24h",
+  "cache_duration": "1h",
+  "version": "1.0",
+  "generated_time": "2025-08-24 21:39:47"
 }

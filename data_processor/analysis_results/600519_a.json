@@ -1,0 +1,79 @@
+{
+  "basic_info": {
+    "code": "600519",
+    "name": "贵州茅台",
+    "market_type": "A",
+    "current_price": 1654.0,
+    "change_percent": -1.3,
+    "volume": 15865988,
+    "market_cap": 2217220080.0,
+    "industry": "食品饮料",
+    "update_time": "2025-08-24 13:48:38"
+  },
+  "valuation_metrics": {
+    "pe_ratio": 28.2,
+    "pb_ratio": 10.1,
+    "ps_ratio": 0,
+    "dividend_yield": 3.5706794770330257
+  },
+  "financial_metrics": {
+    "roe": 25.8,
+    "roa": 20.2,
+    "debt_ratio": 0.22,
+    "current_ratio": 1.6542931525044338,
+    "gross_margin": 85.2,
+    "net_margin": 15.48,
+    "revenue_growth": 15.8,
+    "profit_growth": 22.1,
+    "report_date": "2024-09-30"
+  },
+  "laoliu_evaluation": {
+    "laoliu_score": 65,
+    "analysis_points": [
+      "ROE达25.8%，盈利能力优秀",
+      "PE高达28.2倍，估值偏高",
+      "负债率22.0%，财务安全",
+      "食品饮料行业符合老刘投资偏好"
+    ],
+    "risk_warnings": [
+      "估值过高，注意风险",
+      "PB达10.10倍，市净率偏高"
+    ],
+    "investment_advice": "谨慎推荐：基本面良好，可适当配置",
+    "contrarian_opportunity": false
+  },
+  "technical_analysis": {
+    "volume_price_signal": "量价关系正常",
+    "volume_ratio": 0.965386811611003,
+    "price_change": 1.0840669773865041
+  },
+  "ai_insights": {
+    "analysis_content": "【贵州茅台投资分析】\n\n综合评分：65分\n投资建议：谨慎推荐：基本面良好，可适当配置\n\n主要优势：\n• ROE达25.8%，盈利能力优秀\n• PE高达28.2倍，估值偏高\n• 负债率22.0%，财务安全\n\n风险提示：\n• 估值过高，注意风险\n• PB达10.10倍，市净率偏高\n\n基于老刘投资理念，该股票符合价值投资标准，建议关注。",
+    "key_points": [
+      "ROE达25.8%，盈利能力优秀",
+      "PE高达28.2倍，估值偏高",
+      "负债率20%，财务安全",
+      "估值过高，注意风险",
+      "PB达10.10倍，市净率偏高"
+    ],
+    "recommendation": "buy",
+    "confidence_level": "中"
+  },
+  "investment_summary": {
+    "comprehensive_score": 65,
+    "recommendation": "buy",
+    "target_price": 1902.1,
+    "stop_loss": 1405.9,
+    "position_suggestion": "可适度配置，建议1-3成"
+  },
+  "metadata": {
+    "analysis_time": "2025-08-24 13:48:39",
+    "data_sources": [
+      "akshare",
+      "qwen-ai"
+    ],
+    "version": "1.0.0",
+    "cache_duration": 3600,
+    "searchable_content": "贵州茅台 600519 食品饮料 谨慎推荐：基本面良好，可适当配置 ROE达25.8%，盈利能力优秀 PE高达28.2倍，估值偏高 负债率22.0%，财务安全 食品饮料行业符合老刘投资偏好"
+  }
+}

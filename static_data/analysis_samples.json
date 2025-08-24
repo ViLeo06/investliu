@@ -1,0 +1,2706 @@
+{
+  "total_count": 100,
+  "update_time": "2025-08-24 14:58:19",
+  "analysis_results": [
+    {
+      "basic_info": {
+        "code": "601398",
+        "name": "工商银行",
+        "market_type": "A",
+        "current_price": 19.54,
+        "change_percent": -2.51,
+        "volume": 28379983,
+        "market_cap": 556963607.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.3倍，估值偏低",
+          "PB仅1.23倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601939",
+        "name": "建设银行",
+        "market_type": "A",
+        "current_price": 30.55,
+        "change_percent": 0.91,
+        "volume": 3575926,
+        "market_cap": 476399205.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.9倍，估值偏低",
+          "PB仅1.03倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601288",
+        "name": "农业银行",
+        "market_type": "A",
+        "current_price": 43.08,
+        "change_percent": -0.33,
+        "volume": 49954557,
+        "market_cap": 2067698008.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.0倍，估值偏低",
+          "PB仅0.59倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600000",
+        "name": "浦发银行",
+        "market_type": "A",
+        "current_price": 42.84,
+        "change_percent": -4.82,
+        "volume": 68722131,
+        "market_cap": 2836869555.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.3倍，估值偏低",
+          "PB仅1.34倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601166",
+        "name": "兴业银行",
+        "market_type": "A",
+        "current_price": 34.08,
+        "change_percent": -9.39,
+        "volume": 45544858,
+        "market_cap": 1177067377.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.5倍，估值偏低",
+          "PB仅1.61倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600035",
+        "name": "股票600035",
+        "market_type": "A",
+        "current_price": 29.24,
+        "change_percent": 7.3,
+        "volume": 38473760,
+        "market_cap": 1723557911.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.3倍，估值偏低",
+          "PB仅1.99倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600038",
+        "name": "股票600038",
+        "market_type": "A",
+        "current_price": 33.42,
+        "change_percent": -8.68,
+        "volume": 93765574,
+        "market_cap": 2111782663.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.7倍，估值偏低",
+          "PB仅1.95倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600043",
+        "name": "股票600043",
+        "market_type": "A",
+        "current_price": 5.77,
+        "change_percent": -0.75,
+        "volume": 90246902,
+        "market_cap": 546666216.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.7倍，估值偏低",
+          "PB仅0.79倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600048",
+        "name": "股票600048",
+        "market_type": "A",
+        "current_price": 29.22,
+        "change_percent": -3.95,
+        "volume": 67921906,
+        "market_cap": 785030890.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.5倍，估值偏低",
+          "PB仅1.92倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600054",
+        "name": "股票600054",
+        "market_type": "A",
+        "current_price": 46.03,
+        "change_percent": -0.34,
+        "volume": 65535653,
+        "market_cap": 2396093859.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.5倍，估值偏低",
+          "PB仅1.61倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600055",
+        "name": "股票600055",
+        "market_type": "A",
+        "current_price": 8.16,
+        "change_percent": 4.79,
+        "volume": 10792267,
+        "market_cap": 209427200.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.5倍，估值偏低",
+          "PB仅0.8倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600080",
+        "name": "股票600080",
+        "market_type": "A",
+        "current_price": 16.49,
+        "change_percent": 9.17,
+        "volume": 49636900,
+        "market_cap": 824633355.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅10.0倍，估值偏低",
+          "PB仅1.92倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600114",
+        "name": "股票600114",
+        "market_type": "A",
+        "current_price": 15.08,
+        "change_percent": -5.13,
+        "volume": 83887435,
+        "market_cap": 111673522.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.1倍，估值偏低",
+          "PB仅1.83倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600129",
+        "name": "股票600129",
+        "market_type": "A",
+        "current_price": 30.96,
+        "change_percent": 7.69,
+        "volume": 93349550,
+        "market_cap": 1688132700.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.6倍，估值偏低",
+          "PB仅1.04倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600152",
+        "name": "股票600152",
+        "market_type": "A",
+        "current_price": 48.97,
+        "change_percent": 9.43,
+        "volume": 11699909,
+        "market_cap": 4154718763.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.3倍，估值偏低",
+          "PB仅0.79倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600198",
+        "name": "股票600198",
+        "market_type": "A",
+        "current_price": 6.44,
+        "change_percent": 4.88,
+        "volume": 64301736,
+        "market_cap": 401156848.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.8倍，估值偏低",
+          "PB仅0.7倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600205",
+        "name": "股票600205",
+        "market_type": "A",
+        "current_price": 23.98,
+        "change_percent": -0.06,
+        "volume": 94676563,
+        "market_cap": 748191371.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.0倍，估值偏低",
+          "PB仅1.57倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600211",
+        "name": "股票600211",
+        "market_type": "A",
+        "current_price": 29.99,
+        "change_percent": 7.66,
+        "volume": 84937339,
+        "market_cap": 2236571158.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.1倍，估值偏低",
+          "PB仅0.54倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600212",
+        "name": "股票600212",
+        "market_type": "A",
+        "current_price": 22.23,
+        "change_percent": -8.81,
+        "volume": 75072033,
+        "market_cap": 411635022.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.8倍，估值偏低",
+          "PB仅1.91倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600216",
+        "name": "股票600216",
+        "market_type": "A",
+        "current_price": 43.5,
+        "change_percent": -0.48,
+        "volume": 50765219,
+        "market_cap": 676323906.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.1倍，估值偏低",
+          "PB仅1.92倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600217",
+        "name": "股票600217",
+        "market_type": "A",
+        "current_price": 48.17,
+        "change_percent": -5.0,
+        "volume": 45865266,
+        "market_cap": 1015865223.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.6倍，估值偏低",
+          "PB仅1.0倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600225",
+        "name": "股票600225",
+        "market_type": "A",
+        "current_price": 36.2,
+        "change_percent": 8.33,
+        "volume": 94272533,
+        "market_cap": 691408018.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.6倍，估值偏低",
+          "PB仅1.96倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600250",
+        "name": "股票600250",
+        "market_type": "A",
+        "current_price": 21.83,
+        "change_percent": -8.63,
+        "volume": 5351826,
+        "market_cap": 1660423309.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.3倍，估值偏低",
+          "PB仅1.62倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600275",
+        "name": "股票600275",
+        "market_type": "A",
+        "current_price": 38.94,
+        "change_percent": -2.57,
+        "volume": 39784001,
+        "market_cap": 1711599094.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅13.1倍，估值偏低",
+          "PB仅1.64倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600299",
+        "name": "股票600299",
+        "market_type": "A",
+        "current_price": 20.75,
+        "change_percent": 7.89,
+        "volume": 91409841,
+        "market_cap": 1670083898.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.9倍，估值偏低",
+          "PB仅0.53倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600310",
+        "name": "股票600310",
+        "market_type": "A",
+        "current_price": 29.35,
+        "change_percent": -4.26,
+        "volume": 79052756,
+        "market_cap": 2101065741.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.1倍，估值偏低",
+          "PB仅1.02倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600315",
+        "name": "股票600315",
+        "market_type": "A",
+        "current_price": 22.86,
+        "change_percent": 1.68,
+        "volume": 6802718,
+        "market_cap": 264615061.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.6倍，估值偏低",
+          "PB仅0.53倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600316",
+        "name": "股票600316",
+        "market_type": "A",
+        "current_price": 5.21,
+        "change_percent": -3.63,
+        "volume": 1576545,
+        "market_cap": 162951461.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.4倍，估值偏低",
+          "PB仅0.53倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600317",
+        "name": "股票600317",
+        "market_type": "A",
+        "current_price": 25.26,
+        "change_percent": -5.99,
+        "volume": 74841451,
+        "market_cap": 1540554177.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.8倍，估值偏低",
+          "PB仅1.27倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600323",
+        "name": "股票600323",
+        "market_type": "A",
+        "current_price": 37.72,
+        "change_percent": -3.84,
+        "volume": 73003668,
+        "market_cap": 3408671869.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.0倍，估值偏低",
+          "PB仅0.77倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600331",
+        "name": "股票600331",
+        "market_type": "A",
+        "current_price": 42.44,
+        "change_percent": 7.41,
+        "volume": 84911619,
+        "market_cap": 631664907.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.5倍，估值偏低",
+          "PB仅0.84倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600405",
+        "name": "股票600405",
+        "market_type": "A",
+        "current_price": 6.0,
+        "change_percent": 6.65,
+        "volume": 92670788,
+        "market_cap": 499394748.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.6倍，估值偏低",
+          "PB仅1.94倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600428",
+        "name": "股票600428",
+        "market_type": "A",
+        "current_price": 15.73,
+        "change_percent": 7.73,
+        "volume": 33755523,
+        "market_cap": 565586260.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.6倍，估值偏低",
+          "PB仅1.41倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600442",
+        "name": "股票600442",
+        "market_type": "A",
+        "current_price": 20.85,
+        "change_percent": -1.54,
+        "volume": 63900381,
+        "market_cap": 1093747319.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.9倍，估值偏低",
+          "PB仅1.4倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600466",
+        "name": "股票600466",
+        "market_type": "A",
+        "current_price": 45.36,
+        "change_percent": 9.7,
+        "volume": 20143742,
+        "market_cap": 857638984.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.4倍，估值偏低",
+          "PB仅0.88倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600499",
+        "name": "股票600499",
+        "market_type": "A",
+        "current_price": 9.23,
+        "change_percent": 1.72,
+        "volume": 36492183,
+        "market_cap": 680325440.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.3倍，估值偏低",
+          "PB仅1.5倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600518",
+        "name": "股票600518",
+        "market_type": "A",
+        "current_price": 47.2,
+        "change_percent": -4.89,
+        "volume": 34571769,
+        "market_cap": 3304654522.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅13.1倍，估值偏低",
+          "PB仅1.54倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600523",
+        "name": "股票600523",
+        "market_type": "A",
+        "current_price": 48.93,
+        "change_percent": 0.5,
+        "volume": 21211664,
+        "market_cap": 3136747437.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.5倍，估值偏低",
+          "PB仅1.07倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600526",
+        "name": "股票600526",
+        "market_type": "A",
+        "current_price": 49.92,
+        "change_percent": -2.31,
+        "volume": 53627813,
+        "market_cap": 3270789900.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.3倍，估值偏低",
+          "PB仅0.61倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600538",
+        "name": "股票600538",
+        "market_type": "A",
+        "current_price": 16.46,
+        "change_percent": -6.72,
+        "volume": 43399275,
+        "market_cap": 1206331031.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.5倍，估值偏低",
+          "PB仅1.3倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600601",
+        "name": "股票600601",
+        "market_type": "A",
+        "current_price": 12.86,
+        "change_percent": -7.82,
+        "volume": 97998486,
+        "market_cap": 665458601.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅10.2倍，估值偏低",
+          "PB仅1.97倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600646",
+        "name": "股票600646",
+        "market_type": "A",
+        "current_price": 30.34,
+        "change_percent": 0.54,
+        "volume": 27260458,
+        "market_cap": 2941184843.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅10.5倍，估值偏低",
+          "PB仅1.15倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600668",
+        "name": "股票600668",
+        "market_type": "A",
+        "current_price": 25.25,
+        "change_percent": 9.8,
+        "volume": 73704367,
+        "market_cap": 111087451.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.2倍，估值偏低",
+          "PB仅0.83倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600678",
+        "name": "股票600678",
+        "market_type": "A",
+        "current_price": 9.05,
+        "change_percent": -9.88,
+        "volume": 63806605,
+        "market_cap": 872359465.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.5倍，估值偏低",
+          "PB仅1.16倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600685",
+        "name": "股票600685",
+        "market_type": "A",
+        "current_price": 17.69,
+        "change_percent": -3.98,
+        "volume": 2100534,
+        "market_cap": 360228245.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.2倍，估值偏低",
+          "PB仅0.99倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600690",
+        "name": "股票600690",
+        "market_type": "A",
+        "current_price": 19.02,
+        "change_percent": 4.4,
+        "volume": 8808425,
+        "market_cap": 358985021.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅9.1倍，估值偏低",
+          "PB仅0.86倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600696",
+        "name": "股票600696",
+        "market_type": "A",
+        "current_price": 11.71,
+        "change_percent": 2.45,
+        "volume": 33286888,
+        "market_cap": 474851706.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.6倍，估值偏低",
+          "PB仅1.4倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600709",
+        "name": "股票600709",
+        "market_type": "A",
+        "current_price": 28.57,
+        "change_percent": -6.56,
+        "volume": 66729361,
+        "market_cap": 1477354071.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.0倍，估值偏低",
+          "PB仅1.0倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600714",
+        "name": "股票600714",
+        "market_type": "A",
+        "current_price": 39.58,
+        "change_percent": -3.91,
+        "volume": 98544722,
+        "market_cap": 450579076.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.8倍，估值偏低",
+          "PB仅1.14倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600761",
+        "name": "股票600761",
+        "market_type": "A",
+        "current_price": 14.35,
+        "change_percent": -4.85,
+        "volume": 42713060,
+        "market_cap": 227476630.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.6倍，估值偏低",
+          "PB仅0.94倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600763",
+        "name": "股票600763",
+        "market_type": "A",
+        "current_price": 32.56,
+        "change_percent": -8.94,
+        "volume": 69205495,
+        "market_cap": 483756553.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.7倍，估值偏低",
+          "PB仅0.74倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600800",
+        "name": "股票600800",
+        "market_type": "A",
+        "current_price": 34.88,
+        "change_percent": -0.94,
+        "volume": 68656102,
+        "market_cap": 1504004812.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.4倍，估值偏低",
+          "PB仅0.59倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600816",
+        "name": "股票600816",
+        "market_type": "A",
+        "current_price": 11.37,
+        "change_percent": -8.2,
+        "volume": 41769792,
+        "market_cap": 580325892.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.2倍，估值偏低",
+          "PB仅1.32倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600829",
+        "name": "股票600829",
+        "market_type": "A",
+        "current_price": 13.49,
+        "change_percent": 8.69,
+        "volume": 2685606,
+        "market_cap": 559435790.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅9.2倍，估值偏低",
+          "PB仅0.88倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600847",
+        "name": "股票600847",
+        "market_type": "A",
+        "current_price": 21.92,
+        "change_percent": 6.9,
+        "volume": 76981122,
+        "market_cap": 922416243.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅13.3倍，估值偏低",
+          "PB仅0.86倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600853",
+        "name": "股票600853",
+        "market_type": "A",
+        "current_price": 22.62,
+        "change_percent": -3.07,
+        "volume": 13727675,
+        "market_cap": 532005322.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅13.5倍，估值偏低",
+          "PB仅1.99倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600855",
+        "name": "股票600855",
+        "market_type": "A",
+        "current_price": 15.46,
+        "change_percent": 4.85,
+        "volume": 16738911,
+        "market_cap": 221716993.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.4倍，估值偏低",
+          "PB仅0.82倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600863",
+        "name": "股票600863",
+        "market_type": "A",
+        "current_price": 30.75,
+        "change_percent": 9.21,
+        "volume": 57887569,
+        "market_cap": 2704152356.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅13.4倍，估值偏低",
+          "PB仅1.58倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600867",
+        "name": "股票600867",
+        "market_type": "A",
+        "current_price": 41.89,
+        "change_percent": 6.8,
+        "volume": 47207758,
+        "market_cap": 1197890587.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.4倍，估值偏低",
+          "PB仅1.78倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600869",
+        "name": "股票600869",
+        "market_type": "A",
+        "current_price": 23.03,
+        "change_percent": -0.86,
+        "volume": 72053697,
+        "market_cap": 67399068.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.4倍，估值偏低",
+          "PB仅1.73倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600881",
+        "name": "股票600881",
+        "market_type": "A",
+        "current_price": 34.8,
+        "change_percent": 8.04,
+        "volume": 96724131,
+        "market_cap": 683463752.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.9倍，估值偏低",
+          "PB仅1.4倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600913",
+        "name": "股票600913",
+        "market_type": "A",
+        "current_price": 8.35,
+        "change_percent": 9.9,
+        "volume": 91227693,
+        "market_cap": 377498148.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅9.3倍，估值偏低",
+          "PB仅1.98倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600931",
+        "name": "股票600931",
+        "market_type": "A",
+        "current_price": 41.08,
+        "change_percent": 7.03,
+        "volume": 59040421,
+        "market_cap": 1272909769.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.3倍，估值偏低",
+          "PB仅1.62倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600940",
+        "name": "股票600940",
+        "market_type": "A",
+        "current_price": 20.5,
+        "change_percent": -3.76,
+        "volume": 95160808,
+        "market_cap": 1715316795.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.0倍，估值偏低",
+          "PB仅0.74倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600956",
+        "name": "股票600956",
+        "market_type": "A",
+        "current_price": 35.43,
+        "change_percent": -0.85,
+        "volume": 96476592,
+        "market_cap": 3182061268.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.6倍，估值偏低",
+          "PB仅1.98倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600962",
+        "name": "股票600962",
+        "market_type": "A",
+        "current_price": 15.65,
+        "change_percent": -7.36,
+        "volume": 27276340,
+        "market_cap": 730010276.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.2倍，估值偏低",
+          "PB仅1.38倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600971",
+        "name": "股票600971",
+        "market_type": "A",
+        "current_price": 16.1,
+        "change_percent": -6.85,
+        "volume": 8629073,
+        "market_cap": 386763039.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.9倍，估值偏低",
+          "PB仅1.89倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "600998",
+        "name": "股票600998",
+        "market_type": "A",
+        "current_price": 11.58,
+        "change_percent": -0.45,
+        "volume": 25858661,
+        "market_cap": 876528391.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.5倍，估值偏低",
+          "PB仅1.57倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601011",
+        "name": "股票601011",
+        "market_type": "A",
+        "current_price": 20.88,
+        "change_percent": -1.16,
+        "volume": 91694127,
+        "market_cap": 1261458832.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.3倍，估值偏低",
+          "PB仅0.85倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601025",
+        "name": "股票601025",
+        "market_type": "A",
+        "current_price": 13.65,
+        "change_percent": -5.42,
+        "volume": 90945354,
+        "market_cap": 471014762.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.5倍，估值偏低",
+          "PB仅1.19倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601081",
+        "name": "股票601081",
+        "market_type": "A",
+        "current_price": 25.83,
+        "change_percent": -8.66,
+        "volume": 26844849,
+        "market_cap": 1716933919.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.3倍，估值偏低",
+          "PB仅1.5倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601089",
+        "name": "股票601089",
+        "market_type": "A",
+        "current_price": 18.38,
+        "change_percent": 9.95,
+        "volume": 46002717,
+        "market_cap": 351677774.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅9.1倍，估值偏低",
+          "PB仅1.71倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601105",
+        "name": "股票601105",
+        "market_type": "A",
+        "current_price": 39.15,
+        "change_percent": -7.6,
+        "volume": 20687834,
+        "market_cap": 3466100188.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.0倍，估值偏低",
+          "PB仅1.56倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601111",
+        "name": "股票601111",
+        "market_type": "A",
+        "current_price": 14.01,
+        "change_percent": -2.72,
+        "volume": 11319147,
+        "market_cap": 1383477861.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.8倍，估值偏低",
+          "PB仅1.78倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601112",
+        "name": "股票601112",
+        "market_type": "A",
+        "current_price": 16.95,
+        "change_percent": -9.37,
+        "volume": 9241095,
+        "market_cap": 1669571695.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.8倍，估值偏低",
+          "PB仅2.0倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601116",
+        "name": "股票601116",
+        "market_type": "A",
+        "current_price": 41.05,
+        "change_percent": -9.89,
+        "volume": 19131451,
+        "market_cap": 3052855783.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.8倍，估值偏低",
+          "PB仅1.93倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601128",
+        "name": "股票601128",
+        "market_type": "A",
+        "current_price": 7.44,
+        "change_percent": 1.66,
+        "volume": 15771261,
+        "market_cap": 319362394.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.4倍，估值偏低",
+          "PB仅0.73倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601135",
+        "name": "股票601135",
+        "market_type": "A",
+        "current_price": 29.05,
+        "change_percent": -6.14,
+        "volume": 64455476,
+        "market_cap": 1289212710.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.6倍，估值偏低",
+          "PB仅1.67倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601146",
+        "name": "股票601146",
+        "market_type": "A",
+        "current_price": 36.91,
+        "change_percent": 6.37,
+        "volume": 54813293,
+        "market_cap": 1919177011.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.7倍，估值偏低",
+          "PB仅1.94倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601159",
+        "name": "股票601159",
+        "market_type": "A",
+        "current_price": 12.67,
+        "change_percent": 8.14,
+        "volume": 46060890,
+        "market_cap": 1050201793.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.1倍，估值偏低",
+          "PB仅1.48倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601166",
+        "name": "股票601166",
+        "market_type": "A",
+        "current_price": 34.08,
+        "change_percent": -9.39,
+        "volume": 45544858,
+        "market_cap": 1177067377.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅14.5倍，估值偏低",
+          "PB仅1.61倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601173",
+        "name": "股票601173",
+        "market_type": "A",
+        "current_price": 23.19,
+        "change_percent": 4.4,
+        "volume": 27160489,
+        "market_cap": 1098706627.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.9倍，估值偏低",
+          "PB仅1.27倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601210",
+        "name": "股票601210",
+        "market_type": "A",
+        "current_price": 7.38,
+        "change_percent": -9.45,
+        "volume": 9517403,
+        "market_cap": 88465558.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅9.3倍，估值偏低",
+          "PB仅0.62倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601211",
+        "name": "股票601211",
+        "market_type": "A",
+        "current_price": 17.43,
+        "change_percent": -4.87,
+        "volume": 94167185,
+        "market_cap": 238248422.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.0倍，估值偏低",
+          "PB仅1.44倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601216",
+        "name": "股票601216",
+        "market_type": "A",
+        "current_price": 28.44,
+        "change_percent": 1.2,
+        "volume": 7044362,
+        "market_cap": 793365681.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.5倍，估值偏低",
+          "PB仅0.63倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601219",
+        "name": "股票601219",
+        "market_type": "A",
+        "current_price": 43.52,
+        "change_percent": 6.23,
+        "volume": 72278215,
+        "market_cap": 576364388.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅9.8倍，估值偏低",
+          "PB仅1.27倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601226",
+        "name": "股票601226",
+        "market_type": "A",
+        "current_price": 25.01,
+        "change_percent": 0.27,
+        "volume": 64917129,
+        "market_cap": 2193408062.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.3倍，估值偏低",
+          "PB仅1.06倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601231",
+        "name": "股票601231",
+        "market_type": "A",
+        "current_price": 21.42,
+        "change_percent": -2.12,
+        "volume": 69285606,
+        "market_cap": 545744522.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.8倍，估值偏低",
+          "PB仅1.33倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601245",
+        "name": "股票601245",
+        "market_type": "A",
+        "current_price": 28.75,
+        "change_percent": 7.09,
+        "volume": 46144813,
+        "market_cap": 1380616429.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅5.7倍，估值偏低",
+          "PB仅1.74倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601252",
+        "name": "股票601252",
+        "market_type": "A",
+        "current_price": 40.32,
+        "change_percent": 4.1,
+        "volume": 89097718,
+        "market_cap": 427111937.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.3倍，估值偏低",
+          "PB仅1.44倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601283",
+        "name": "股票601283",
+        "market_type": "A",
+        "current_price": 19.04,
+        "change_percent": -1.23,
+        "volume": 15925577,
+        "market_cap": 149694612.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅4.1倍，估值偏低",
+          "PB仅1.99倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601301",
+        "name": "股票601301",
+        "market_type": "A",
+        "current_price": 42.49,
+        "change_percent": -7.55,
+        "volume": 2449639,
+        "market_cap": 1517784738.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅9.5倍，估值偏低",
+          "PB仅1.14倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601317",
+        "name": "股票601317",
+        "market_type": "A",
+        "current_price": 32.41,
+        "change_percent": 8.12,
+        "volume": 12361427,
+        "market_cap": 660390049.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅7.5倍，估值偏低",
+          "PB仅0.86倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601321",
+        "name": "股票601321",
+        "market_type": "A",
+        "current_price": 28.55,
+        "change_percent": -4.12,
+        "volume": 58116700,
+        "market_cap": 798574448.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.9倍，估值偏低",
+          "PB仅0.96倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601341",
+        "name": "股票601341",
+        "market_type": "A",
+        "current_price": 24.84,
+        "change_percent": 7.07,
+        "volume": 49989277,
+        "market_cap": 2402976342.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅10.3倍，估值偏低",
+          "PB仅1.13倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601342",
+        "name": "股票601342",
+        "market_type": "A",
+        "current_price": 42.72,
+        "change_percent": -1.37,
+        "volume": 28779332,
+        "market_cap": 3772985971.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅13.9倍，估值偏低",
+          "PB仅1.51倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601343",
+        "name": "股票601343",
+        "market_type": "A",
+        "current_price": 19.37,
+        "change_percent": 5.1,
+        "volume": 70852491,
+        "market_cap": 238988028.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅6.3倍，估值偏低",
+          "PB仅0.87倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601346",
+        "name": "股票601346",
+        "market_type": "A",
+        "current_price": 17.76,
+        "change_percent": -8.6,
+        "volume": 35180455,
+        "market_cap": 966545021.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅11.4倍，估值偏低",
+          "PB仅1.88倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601347",
+        "name": "股票601347",
+        "market_type": "A",
+        "current_price": 48.82,
+        "change_percent": -9.13,
+        "volume": 31500967,
+        "market_cap": 1528204844.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅12.0倍，估值偏低",
+          "PB仅0.94倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    },
+    {
+      "basic_info": {
+        "code": "601348",
+        "name": "股票601348",
+        "market_type": "A",
+        "current_price": 49.36,
+        "change_percent": -5.42,
+        "volume": 81456312,
+        "market_cap": 838087093.0,
+        "industry": "银行",
+        "update_time": "2025-08-24 14:58:19"
+      },
+      "laoliu_evaluation": {
+        "laoliu_score": 100,
+        "analysis_points": [
+          "PE仅8.3倍，估值偏低",
+          "PB仅0.93倍，账面价值安全",
+          "银行业符合老刘投资偏好"
+        ],
+        "risk_warnings": [],
+        "investment_advice": "强烈推荐：基本面优秀，符合老刘理念"
+      },
+      "investment_summary": {
+        "comprehensive_score": 100,
+        "recommendation": "strong_buy"
+      }
+    }
+  ]
+}

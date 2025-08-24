@@ -42,18 +42,18 @@ class DataGenerator:
         
         try:
             # 1. 获取股票数据
-            print("📈 正在获取股票数据...")
+            print("正在获取股票数据...")
             a_stocks = self.fetcher.fetch_a_stocks()
             hk_stocks = self.fetcher.fetch_hk_stocks()
             market_data = self.fetcher.fetch_market_data()
             
             # 2. 分析股票（集成老刘理念）
-            print("🔍 正在分析股票...")
+            print("正在分析股票...")
             analyzed_a_stocks = self.analyzer.analyze_stocks(a_stocks, market_type='A')
             analyzed_hk_stocks = self.analyzer.analyze_stocks(hk_stocks, market_type='HK')
             
             # 使用老刘分析器进行深度分析
-            print("📊 正在进行老刘风格分析...")
+            print("正在进行老刘风格分析...")
             laoliu_a_analysis = [self.laoliu_analyzer.analyze_stock_laoliu_style(stock) for stock in analyzed_a_stocks]
             laoliu_hk_analysis = [self.laoliu_analyzer.analyze_stock_laoliu_style(stock) for stock in analyzed_hk_stocks]
             
@@ -64,36 +64,36 @@ class DataGenerator:
                 stock.update(laoliu_hk_analysis[i])
             
             # 3. 生成推荐（基于老刘标准）
-            print("⭐ 正在生成推荐...")
+            print("正在生成推荐...")
             a_recommendations = self.generate_laoliu_recommendations(analyzed_a_stocks, 'A')
             hk_recommendations = self.generate_laoliu_recommendations(analyzed_hk_stocks, 'HK')
             
             # 4. 市场择时分析（融入老刘逆向思维）
-            print("⏰ 正在分析市场择时...")
+            print("正在分析市场择时...")
             timing_analysis = self.generate_enhanced_timing_analysis(market_data, analyzed_a_stocks, analyzed_hk_stocks)
             
             # 5. 生成汇总数据
-            print("📊 正在生成汇总数据...")
+            print("正在生成汇总数据...")
             summary_data = self.generate_summary(a_recommendations, hk_recommendations, timing_analysis)
             
             # 6. 生成配置数据
-            print("⚙️ 正在生成配置数据...")
+            print("正在生成配置数据...")
             config_data = self.generate_config()
             
             # 7. 保存所有数据
-            print("💾 正在保存数据文件...")
+            print("正在保存数据文件...")
             self.save_data(summary_data, a_recommendations, hk_recommendations, timing_analysis, config_data)
             
             print("=" * 60)
-            print("✅ 数据生成完成！")
-            print(f"📁 文件保存位置: {self.output_dir}")
-            print(f"📈 A股推荐: {len(a_recommendations['stocks'])}只")
-            print(f"🌏 港股推荐: {len(hk_recommendations['stocks'])}只")
-            print(f"⏰ 更新时间: {summary_data['update_time']}")
+            print("数据生成完成！")
+            print(f"文件保存位置: {self.output_dir}")
+            print(f"A股推荐: {len(a_recommendations['stocks'])}只")
+            print(f"港股推荐: {len(hk_recommendations['stocks'])}只")
+            print(f"更新时间: {summary_data['update_time']}")
             print("=" * 60)
             
         except Exception as e:
-            print(f"❌ 数据生成失败: {str(e)}")
+            print(f"数据生成失败: {str(e)}")
             import traceback
             traceback.print_exc()
     
@@ -388,21 +388,21 @@ class DataGenerator:
             filepath = os.path.join(self.output_dir, filename)
             with open(filepath, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
-            print(f"✅ 已保存: {filename}")
+            print(f"已保存: {filename}")
         
         # 同时复制到根目录以供GitHub Pages访问
         root_dir = os.path.dirname(os.path.dirname(__file__))
-        print(f"📁 同时复制文件到根目录: {root_dir}")
+        print(f"同时复制文件到根目录: {root_dir}")
         
         for filename, data in files_to_save:
             root_filepath = os.path.join(root_dir, filename)
             with open(root_filepath, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
-            print(f"✅ 已复制到根目录: {filename}")
+            print(f"已复制到根目录: {filename}")
 
 if __name__ == "__main__":
-    print("🚀 启动老刘投资决策数据生成器")
-    print("📊 集成真实股票数据源...")
-    print("🔄 支持多数据源自动切换...")
+    print("启动老刘投资决策数据生成器...")
+    print("集成真实股票数据源...")
+    print("支持多数据源自动切换...")
     generator = DataGenerator()
     generator.generate_all_data()
