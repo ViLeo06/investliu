@@ -5,9 +5,9 @@ App({
   globalData: {
     // 全局数据
     userInfo: null,
-    // TODO: 请将此URL更改为您自己的GitHub Pages地址
+    // ✅ 已配置为当前GitHub Pages地址
     // 格式: https://你的用户名.github.io/investliu
-    apiBaseUrl: 'https://your-username.github.io/investliu',
+    apiBaseUrl: 'https://ViLeo06.github.io/investliu',
     updateTime: '',
     cacheTime: 3600000, // 缓存1小时
     systemInfo: null,

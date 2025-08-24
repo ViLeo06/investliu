@@ -1,6 +1,6 @@
 {
   "api_endpoints": {
-    "base_url": "https://your_username.github.io/investliu",
+            "base_url": "https://ViLeo06.github.io/investliu",
     "summary": "/static_data/summary.json",
     "market_timing": "/static_data/market_timing.json",
     "a_stocks_recommendations": "/static_data/stocks_a_recommendations.json",
