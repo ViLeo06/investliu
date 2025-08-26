@@ -96,15 +96,46 @@
     <!-- 股票列表 -->
     <view class="stock-list">
       <view wx:if="{{loading}}" class="loading">
+        <view class="loading-spinner"></view>
         <text>加载中...</text>
+      </view>
+      
+      <view wx:elif="{{error}}" class="empty">
+        <view class="empty-icon">📊</view>
+        <text class="empty-text">{{errorMessage || '暂无股票数据'}}</text>
+        <button class="btn btn-primary import-btn" bindtap="importLatestData">
+          <text class="btn-icon">⬇️</text>
+          <text>一键导入股票数据</text>
+        </button>
+        <view class="import-tips">
+          <text>• 实时获取最新股价和财务数据</text>
+          <text>• 包含老刘评分和投资建议</text>
+          <text>• 支持A股和港股市场</text>
+        </view>
       </view>
       
       <view wx:elif="{{stockList.length === 0}}" class="empty">
         <view class="empty-icon">📊</view>
-        <text>暂无数据</text>
+        <text class="empty-text">当前筛选条件下暂无数据</text>
+        <button class="btn btn-secondary" bindtap="clearFilters">清除筛选</button>
+        <button class="btn btn-primary import-btn" bindtap="importLatestData">
+          <text class="btn-icon">⬇️</text>
+          <text>导入更多数据</text>
+        </button>
       </view>
       
       <view wx:else>
+        <!-- 数据操作栏 -->
+        <view class="data-actions">
+          <view class="data-summary">
+            <text class="summary-text">已加载 {{stockList.length}} / {{totalCount}} 只股票</text>
+          </view>
+          <button class="btn btn-outline refresh-btn" bindtap="importLatestData">
+            <text class="btn-icon">🔄</text>
+            <text>刷新数据</text>
+          </button>
+        </view>
+
         <view class="stock-item" wx:for="{{stockList}}" wx:key="code" bindtap="viewStockDetail" data-stock="{{item}}">
           <view class="stock-info">
             <view class="stock-name-row">

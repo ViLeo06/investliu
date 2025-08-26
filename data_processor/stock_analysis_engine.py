@@ -31,6 +31,101 @@ class StockAnalysisEngine:
             '公用事业': {'weight': 1.05, 'keywords': ['电力', '水务', '燃气']}
         }
     
+    def quick_analysis(self, stock_code: str, market: str = 'A') -> Dict:
+        """快速分析（用于批量处理）"""
+        try:
+            # 获取基本信息
+            basic_info = self.get_stock_basic_info(stock_code, market)
+            if not basic_info:
+                return {}
+            
+            # 简单的老刘评分逻辑
+            laoliu_score = self._calculate_quick_score(basic_info)
+            
+            # 生成简单建议
+            if laoliu_score >= 80:
+                recommendation = 'strong_buy'
+                advice = '强烈推荐：基本面优秀，符合老刘理念'
+            elif laoliu_score >= 60:
+                recommendation = 'buy'
+                advice = '推荐：基本面良好，可适当配置'
+            elif laoliu_score >= 40:
+                recommendation = 'hold'
+                advice = '谨慎观望：基本面一般，需要关注'
+            else:
+                recommendation = 'sell'
+                advice = '不推荐：基本面较差，建议回避'
+            
+            # 简单分析要点
+            analysis_points = []
+            if basic_info.get('pe_ratio', 0) > 0 and basic_info.get('pe_ratio', 999) < 20:
+                analysis_points.append(f"PE仅{basic_info.get('pe_ratio', 0):.1f}倍，估值偏低")
+            if basic_info.get('pb_ratio', 0) > 0 and basic_info.get('pb_ratio', 999) < 2:
+                analysis_points.append(f"PB仅{basic_info.get('pb_ratio', 0):.1f}倍，账面价值安全")
+            
+            industry = basic_info.get('industry', '')
+            for pref_industry, config in self.preferred_industries.items():
+                if any(keyword in industry for keyword in config['keywords']):
+                    analysis_points.append(f"{pref_industry}行业符合老刘投资偏好")
+                    break
+            
+            return {
+                'laoliu_score': laoliu_score,
+                'recommendation': recommendation,
+                'investment_advice': advice,
+                'analysis_points': analysis_points,
+                'risk_warnings': []
+            }
+            
+        except Exception as e:
+            print(f"快速分析失败 {stock_code}: {e}")
+            return {}
+    
+    def _calculate_quick_score(self, basic_info: Dict) -> int:
+        """计算快速评分"""
+        score = 50  # 基础分数
+        
+        try:
+            # PE估值评分
+            pe = basic_info.get('pe_ratio', 0)
+            if 0 < pe < 10:
+                score += 20
+            elif 10 <= pe < 15:
+                score += 15
+            elif 15 <= pe < 25:
+                score += 10
+            elif pe >= 50:
+                score -= 15
+            
+            # PB估值评分  
+            pb = basic_info.get('pb_ratio', 0)
+            if 0 < pb < 1.5:
+                score += 15
+            elif 1.5 <= pb < 3:
+                score += 10
+            elif pb >= 5:
+                score -= 10
+            
+            # 行业偏好评分
+            industry = basic_info.get('industry', '')
+            for pref_industry, config in self.preferred_industries.items():
+                if any(keyword in industry for keyword in config['keywords']):
+                    score += int((config['weight'] - 1) * 20)
+                    break
+            
+            # 市值评分（偏好大市值）
+            market_cap = basic_info.get('market_cap', 0)
+            if market_cap > 100000000000:  # > 1000亿
+                score += 10
+            elif market_cap > 50000000000:   # > 500亿
+                score += 5
+            
+            return max(0, min(100, score))
+            
+        except Exception as e:
+            print(f"计算评分失败: {e}")
+            return 50
+    
     def get_stock_basic_info(self, stock_code: str, market: str = 'A') -> Dict:
         """获取股票基本信息"""
         try:

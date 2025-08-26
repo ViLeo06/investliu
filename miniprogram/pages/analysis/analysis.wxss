@@ -1,3 +1,897 @@
+/* 分析页面样式 */
 .container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20rpx;
+  box-sizing: border-box;
+}
+
+/* 搜索栏样式 */
+.search-bar {
+  display: flex;
+  margin-bottom: 20rpx;
+  gap: 20rpx;
+}
+
+.search-input-container {
+  flex: 1;
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50rpx;
+  padding: 20rpx 60rpx 20rpx 30rpx;
+  backdrop-filter: blur(10rpx);
+}
+
+.search-input {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.search-icon {
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32rpx;
+  color: #999;
+}
+
+.filter-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  border-radius: 50rpx;
+  padding: 20rpx 30rpx;
+  color: white;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(10rpx);
+  transition: all 0.3s ease;
+}
+
+.filter-button.active {
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+}
+
+/* 筛选面板 */
+.filters-panel {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  padding: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10rpx);
+}
+
+.filters-panel.show {
+  max-height: 500rpx;
+  opacity: 1;
+  padding: 30rpx;
+}
+
+.filter-row {
+  margin-bottom: 30rpx;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.filter-tags {
+  display: flex;
+  gap: 20rpx;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  background: #f5f5f5;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 40rpx;
+  padding: 15rpx 30rpx;
+  font-size: 24rpx;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.filter-tag.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+  transform: scale(1.05);
+}
+
+.score-range {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.score-slider {
+  flex: 1;
+}
+
+.score-text {
+  font-size: 24rpx;
+  color: #666;
+  min-width: 120rpx;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx;
+  color: white;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 错误状态 */
+.error-message {
+  background: rgba(231, 76, 60, 0.1);
+  border: 2rpx solid rgba(231, 76, 60, 0.3);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  text-align: center;
+  color: #e74c3c;
+  margin: 40rpx 0;
+}
+
+.retry-btn {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+  border-radius: 50rpx;
+  padding: 20rpx 40rpx;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  display: inline-block;
+}
+
+/* 分析卡片 */
+.analysis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+  margin-bottom: 120rpx; /* 为底部操作栏留出空间 */
+}
+
+.analysis-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  backdrop-filter: blur(10rpx);
+  border: 2rpx solid rgba(255, 255, 255, 0.2);
+  animation: slideUp 0.5s ease-out;
+  transition: all 0.3s ease;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.08);
+}
+
+.analysis-card:active {
+  transform: translateY(-5rpx);
+  box-shadow: 0 15rpx 35rpx rgba(0, 0, 0, 0.12);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 股票头部信息 */
+.stock-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+
+.stock-avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.stock-info {
+  flex: 1;
+}
+
+.stock-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.stock-code {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.stock-price {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.price {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.change {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  font-weight: bold;
+}
+
+.change.positive {
+  background: #d4edda;
+  color: #27ae60;
+}
+
+.change.negative {
+  background: #f8d7da;
+  color: #e74c3c;
+}
+
+/* 推荐徽章 */
+.recommendation-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  font-weight: bold;
+  color: white;
+}
+
+.recommendation-badge.strong_buy {
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+
+.recommendation-badge.buy {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+}
+
+.recommendation-badge.hold {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.recommendation-badge.sell {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+
+/* 分析汇总 */
+.analysis-summary {
+  margin-bottom: 30rpx;
+}
+
+.score-section {
+  display: flex;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.score-circle {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.score-circle::before {
+  content: '';
+  position: absolute;
+  inset: -2rpx;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.score-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.score-label {
+  font-size: 20rpx;
+  color: #666;
+  margin-top: 4rpx;
+}
+
+.metrics-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.metric-item {
+  background: #f8f9fa;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  text-align: center;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.metric-item:hover {
+  background: #fff;
+  border-color: #667eea;
+  transform: scale(1.02);
+}
+
+.metric-label {
+  display: block;
+  font-size: 22rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.metric-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 分析要点 */
+.analysis-points {
+  margin-bottom: 30rpx;
+}
+
+.points-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.point-item {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+  padding-left: 10rpx;
+}
+
+/* 投资建议 */
+.investment-advice {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 15rpx;
+  padding: 25rpx;
+  border-left: 6rpx solid #667eea;
+}
+
+.advice-text {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.position-suggestion {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 底部操作栏 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10rpx);
+  padding: 20rpx 30rpx;
+  display: flex;
+  gap: 20rpx;
+  z-index: 100;
+}
+
+.action-btn {
+  flex: 1;
+  background: rgba(102, 126, 234, 0.1);
+  border: 2rpx solid rgba(102, 126, 234, 0.3);
+  border-radius: 50rpx;
+  padding: 25rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #667eea;
+  transition: all 0.3s ease;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+/* 详情弹窗 */
+.detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.detail-content {
+  background: white;
+  border-radius: 20rpx;
+  width: 90%;
+  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease;
+}
+
+.detail-header {
+  padding: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.detail-body {
+  flex: 1;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.analysis-content {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 30rpx;
+}
+
+/* 老刘分析样式 */
+.laoliu-analysis {
+  margin-bottom: 30rpx;
+}
+
+.analysis-point {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 12rpx;
+  padding: 15rpx 20rpx;
+  background: #f8f9fa;
+  border-radius: 10rpx;
+  border-left: 4rpx solid #667eea;
+}
+
+.risk-section {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 10rpx;
+  border-left: 4rpx solid #e74c3c;
+}
+
+.risk-title {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.risk-item {
+  font-size: 24rpx;
+  color: #e74c3c;
+  line-height: 1.5;
+  margin-bottom: 8rpx;
+}
+
+.detail-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.detail-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 15rpx;
+}
+
+.detail-metric .label {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.detail-metric .value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.target-prices {
+  display: flex;
+  gap: 20rpx;
+}
+
+.price-item {
+  flex: 1;
+  background: #f8f9fa;
+  border-radius: 15rpx;
+  padding: 25rpx;
+  text-align: center;
+}
+
+.price-item .label {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.price-item .value {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.price-item .value.positive {
+  color: #27ae60;
+}
+
+.price-item .value.negative {
+  color: #e74c3c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* 实时分析模态框 */
+.realtime-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.realtime-content {
+  background: white;
+  border-radius: 20rpx;
+  width: 90%;
+  max-height: 80%;
+  max-width: 600rpx;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease;
+}
+
+.realtime-header {
+  padding: 30rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.realtime-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.realtime-body {
+  flex: 1;
+  padding: 30rpx;
+  overflow-y: auto;
+}
+
+.search-section {
+  margin-bottom: 30rpx;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+  margin-bottom: 15rpx;
+}
+
+.realtime-search-input {
+  flex: 1;
+  height: 80rpx;
+  background: #f5f5f5;
+  border-radius: 40rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.realtime-search-input:focus {
+  background: white;
+  border-color: #667eea;
+}
+
+.search-btn {
+  height: 80rpx;
+  padding: 0 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  min-width: 120rpx;
+}
+
+.search-tips {
+  padding: 15rpx 20rpx;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 15rpx;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: #667eea;
+}
+
+/* 分析历史 */
+.history-section {
+  border-top: 2rpx solid #f0f0f0;
+  padding-top: 20rpx;
+}
+
+.history-header {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.history-list {
+  max-height: 300rpx;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 15rpx;
+  margin-bottom: 10rpx;
+  transition: all 0.3s ease;
+}
+
+.history-item:active {
+  transform: scale(0.98);
+  background: #e9ecef;
+}
+
+.history-info {
+  flex: 1;
+}
+
+.history-name {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5rpx;
+}
+
+.history-meta {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.history-score {
+  font-size: 22rpx;
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+  padding: 4rpx 12rpx;
+  border-radius: 10rpx;
+}
+
+.history-time {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.delete-btn {
+  font-size: 24rpx;
+  color: #e74c3c;
+  padding: 10rpx 15rpx;
+}
+
+/* 分析加载状态 */
+.analyzing-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.analyzing-content {
+  background: white;
+  border-radius: 20rpx;
+  padding: 60rpx 40rpx;
+  text-align: center;
+  min-width: 300rpx;
+}
+
+.analyzing-spinner {
+  width: 80rpx;
+  height: 80rpx;
+  border: 6rpx solid #f0f0f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 30rpx;
+}
+
+.analyzing-text {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.analyzing-tips {
+  display: block;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 响应式调整 */
+@media (max-width: 750rpx) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .target-prices {
+    flex-direction: column;
+  }
+  
+  .score-section {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .realtime-content {
+    width: 95%;
+  }
+  
+  .search-input-wrapper {
+    flex-direction: column;
+    gap: 15rpx;
+  }
+  
+  .realtime-search-input, .search-btn {
+    width: 100%;
+  }
 }

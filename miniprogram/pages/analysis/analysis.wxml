@@ -1,8 +1,259 @@
 <view class="container">
-  <view wx:if="{{loading}}" class="loading">
-    <text>加载中...</text>
+  <!-- 搜索和筛选栏 -->
+  <view class="search-bar">
+    <view class="search-input-container">
+      <input class="search-input" placeholder="搜索股票代码或名称" value="{{searchQuery}}" bindinput="onSearchInput" />
+      <view class="search-icon">🔍</view>
+    </view>
+    <view class="filter-button {{showFilters ? 'active' : ''}}" bindtap="toggleFilters">
+      筛选
+    </view>
   </view>
-  <view wx:else>
-    <text>股票分析页面 - {{stockCode}}</text>
+
+  <!-- 筛选面板 -->
+  <view class="filters-panel {{showFilters ? 'show' : ''}}">
+    <view class="filter-row">
+      <text class="filter-label">推荐等级</text>
+      <view class="filter-tags">
+        <view class="filter-tag {{recommendationFilter === '' ? 'active' : ''}}" data-value="" bindtap="onRecommendationFilter">全部</view>
+        <view class="filter-tag {{recommendationFilter === 'strong_buy' ? 'active' : ''}}" data-value="strong_buy" bindtap="onRecommendationFilter">强烈买入</view>
+        <view class="filter-tag {{recommendationFilter === 'buy' ? 'active' : ''}}" data-value="buy" bindtap="onRecommendationFilter">买入</view>
+        <view class="filter-tag {{recommendationFilter === 'hold' ? 'active' : ''}}" data-value="hold" bindtap="onRecommendationFilter">持有</view>
+      </view>
+    </view>
+    <view class="filter-row">
+      <text class="filter-label">评分范围</text>
+      <view class="score-range">
+        <slider class="score-slider" min="0" max="100" value="{{minScore}}" bindchange="onMinScoreChange" />
+        <text class="score-text">{{minScore}}分以上</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分析结果列表 -->
+  <view wx:if="{{loading}}" class="loading">
+    <view class="loading-spinner"></view>
+    <text>加载分析数据中...</text>
+  </view>
+  <view wx:elif="{{error}}" class="error-message">
+    <text>{{errorMessage}}</text>
+    <view class="retry-btn" bindtap="loadAnalysisData">重新加载</view>
+  </view>
+  <view wx:else class="analysis-list">
+    <view wx:for="{{filteredAnalysisList}}" wx:key="*this" class="analysis-card" bindtap="viewDetail" data-code="{{item.basic_info.code}}">
+      <!-- 股票基本信息 -->
+      <view class="stock-header">
+        <view class="stock-avatar" style="background: {{item.basic_info.industry === '银行' ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : item.basic_info.industry === '食品饮料' ? 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' : 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'}}">
+          {{item.basic_info.name.substring(0, 2)}}
+        </view>
+        <view class="stock-info">
+          <view class="stock-name">{{item.basic_info.name}}</view>
+          <view class="stock-code">{{item.basic_info.code}} · {{item.basic_info.industry}}</view>
+          <view class="stock-price">
+            <text class="price">￥{{item.basic_info.current_price}}</text>
+            <text class="change {{item.basic_info.change_percent >= 0 ? 'positive' : 'negative'}}">
+              {{item.basic_info.change_percent >= 0 ? '+' : ''}}{{item.basic_info.change_percent}}%
+            </text>
+          </view>
+        </view>
+        <view class="recommendation-badge {{item.investment_summary.recommendation}}">
+          {{item.investment_summary.recommendation === 'strong_buy' ? '强烈买入' : item.investment_summary.recommendation === 'buy' ? '买入' : item.investment_summary.recommendation === 'hold' ? '持有' : '观望'}}
+        </view>
+      </view>
+
+      <!-- 老刘评分和关键指标 -->
+      <view class="analysis-summary">
+        <view class="score-section">
+          <view class="score-circle" style="background: conic-gradient({{item.laoliu_evaluation.laoliu_score >= 80 ? '#27ae60' : item.laoliu_evaluation.laoliu_score >= 60 ? '#f39c12' : '#e74c3c'}} {{item.laoliu_evaluation.laoliu_score * 3.6}}deg, #f0f0f0 0deg)">
+            <text class="score-text">{{item.laoliu_evaluation.laoliu_score}}</text>
+            <text class="score-label">老刘评分</text>
+          </view>
+          <view class="metrics-grid">
+            <view class="metric-item">
+              <text class="metric-label">PE</text>
+              <text class="metric-value">{{item.valuation_metrics ? item.valuation_metrics.pe_ratio : 'N/A'}}</text>
+            </view>
+            <view class="metric-item">
+              <text class="metric-label">PB</text>
+              <text class="metric-value">{{item.valuation_metrics ? item.valuation_metrics.pb_ratio : 'N/A'}}</text>
+            </view>
+            <view class="metric-item">
+              <text class="metric-label">ROE</text>
+              <text class="metric-value">{{item.financial_metrics ? item.financial_metrics.roe + '%' : 'N/A'}}</text>
+            </view>
+            <view class="metric-item">
+              <text class="metric-label">置信度</text>
+              <text class="metric-value">{{item.ai_insights ? item.ai_insights.confidence_level : '高'}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 分析要点 -->
+      <view class="analysis-points">
+        <view class="points-title">核心观点</view>
+        <view wx:for="{{item.laoliu_evaluation.analysis_points}}" wx:for-item="point" wx:for-index="pointIndex" wx:key="pointIndex" class="point-item">
+          • {{point}}
+        </view>
+      </view>
+
+      <!-- 投资建议 -->
+      <view class="investment-advice">
+        <text class="advice-text">{{item.laoliu_evaluation.investment_advice}}</text>
+        <view class="position-suggestion" wx:if="{{item.investment_summary.position_suggestion}}">建议仓位: {{item.investment_summary.position_suggestion}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-actions">
+    <view class="action-btn" bindtap="exportData">
+      <text>导出数据</text>
+    </view>
+    <view class="action-btn" bindtap="showRealtimeAnalysis">
+      <text>实时分析</text>
+    </view>
+    <view class="action-btn primary" bindtap="refreshData">
+      <text>刷新数据</text>
+    </view>
+  </view>
+
+  <!-- 实时股票分析弹窗 -->
+  <view wx:if="{{showRealtimeSearch}}" class="realtime-modal" bindtap="hideRealtimeAnalysis">
+    <view class="realtime-content" catchtap="">
+      <view class="realtime-header">
+        <text class="realtime-title">实时股票分析</text>
+        <view class="close-btn" bindtap="hideRealtimeAnalysis">✕</view>
+      </view>
+      
+      <view class="realtime-body">
+        <view class="search-section">
+          <view class="search-input-wrapper">
+            <input 
+              class="realtime-search-input" 
+              placeholder="输入股票代码或名称（如：000001 或 平安银行）" 
+              value="{{realtimeSearchQuery}}"
+              bindinput="onRealtimeSearchInput"
+              bindconfirm="searchAndAnalyzeStock"
+            />
+            <view class="search-btn" bindtap="searchAndAnalyzeStock">
+              {{isAnalyzing ? '分析中...' : '分析'}}
+            </view>
+          </view>
+          
+          <view class="search-tips">
+            <text class="tip-text">💡 支持A股6位代码或股票名称</text>
+          </view>
+        </view>
+
+        <!-- 分析历史 -->
+        <view wx:if="{{analysisHistory.length > 0}}" class="history-section">
+          <view class="history-header">
+            <text>最近分析</text>
+          </view>
+          <scroll-view class="history-list" scroll-y>
+            <view 
+              wx:for="{{analysisHistory.slice(0, 5)}}" 
+              wx:key="*this" 
+              class="history-item"
+              data-key="{{item.key}}"
+              bindtap="viewHistoryAnalysis"
+            >
+              <view class="history-info">
+                <view class="history-name">{{item.name}} ({{item.code}})</view>
+                <view class="history-meta">
+                  <text class="history-score">{{item.score}}分</text>
+                  <text class="history-time">{{item.time}}</text>
+                </view>
+              </view>
+              <view class="history-actions">
+                <text 
+                  class="delete-btn" 
+                  data-key="{{item.key}}" 
+                  data-code="{{item.code}}"
+                  bindtap="deleteHistoryAnalysis"
+                  catchtap=""
+                >删除</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分析加载状态 -->
+  <view wx:if="{{isAnalyzing}}" class="analyzing-overlay">
+    <view class="analyzing-content">
+      <view class="analyzing-spinner"></view>
+      <text class="analyzing-text">正在分析股票...</text>
+      <text class="analyzing-tips">获取实时数据并进行老刘投资理念分析</text>
+    </view>
+  </view>
+
+  <!-- 股票详情弹窗 -->
+  <view wx:if="{{showDetail}}" class="detail-modal" bindtap="closeDetail">
+    <view class="detail-content" catchtap="">
+      <view class="detail-header">
+        <text class="detail-title">{{selectedStock.basic_info.name}} 详细分析</text>
+        <view class="close-btn" bindtap="closeDetail">✕</view>
+      </view>
+      <scroll-view class="detail-body" scroll-y>
+        <!-- 完整的AI分析内容 -->
+        <view class="ai-analysis" wx:if="{{selectedStock.ai_insights && selectedStock.ai_insights.analysis_content}}">
+          <text class="section-title">AI智能分析</text>
+          <text class="analysis-content">{{selectedStock.ai_insights.analysis_content}}</text>
+        </view>
+        <!-- 老刘分析要点 -->
+        <view class="laoliu-analysis" wx:if="{{selectedStock.laoliu_evaluation.analysis_points}}">
+          <text class="section-title">老刘分析要点</text>
+          <view wx:for="{{selectedStock.laoliu_evaluation.analysis_points}}" wx:for-item="point" wx:key="index" class="analysis-point">
+            • {{point}}
+          </view>
+          <view wx:if="{{selectedStock.laoliu_evaluation.risk_warnings && selectedStock.laoliu_evaluation.risk_warnings.length > 0}}" class="risk-section">
+            <text class="risk-title">风险提示：</text>
+            <view wx:for="{{selectedStock.laoliu_evaluation.risk_warnings}}" wx:for-item="warning" wx:key="index" class="risk-item">
+              ⚠️ {{warning}}
+            </view>
+          </view>
+        </view>
+        <!-- 财务指标详情 -->
+        <view class="financial-details" wx:if="{{selectedStock.financial_metrics}}">
+          <text class="section-title">详细财务指标</text>
+          <view class="detail-metrics">
+            <view class="detail-metric" wx:if="{{selectedStock.financial_metrics.roe}}">
+              <text class="label">净资产收益率(ROE)</text>
+              <text class="value">{{selectedStock.financial_metrics.roe}}%</text>
+            </view>
+            <view class="detail-metric" wx:if="{{selectedStock.financial_metrics.roa}}">
+              <text class="label">资产收益率(ROA)</text>
+              <text class="value">{{selectedStock.financial_metrics.roa}}%</text>
+            </view>
+            <view class="detail-metric" wx:if="{{selectedStock.financial_metrics.debt_ratio}}">
+              <text class="label">负债率</text>
+              <text class="value">{{selectedStock.financial_metrics.debt_ratio * 100}}%</text>
+            </view>
+            <view class="detail-metric" wx:if="{{selectedStock.financial_metrics.revenue_growth}}">
+              <text class="label">营收增长</text>
+              <text class="value">{{selectedStock.financial_metrics.revenue_growth}}%</text>
+            </view>
+          </view>
+        </view>
+        <!-- 目标价格和止损 -->
+        <view class="price-targets" wx:if="{{selectedStock.investment_summary.target_price || selectedStock.investment_summary.stop_loss}}">
+          <text class="section-title">价格建议</text>
+          <view class="target-prices">
+            <view class="price-item" wx:if="{{selectedStock.investment_summary.target_price}}">
+              <text class="label">目标价格</text>
+              <text class="value positive">￥{{selectedStock.investment_summary.target_price}}</text>
+            </view>
+            <view class="price-item" wx:if="{{selectedStock.investment_summary.stop_loss}}">
+              <text class="label">止损价格</text>
+              <text class="value negative">￥{{selectedStock.investment_summary.stop_loss}}</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
   </view>
 </view>

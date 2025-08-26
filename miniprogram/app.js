@@ -1,5 +1,6 @@
 // 小程序入口文件
 const mockData = require('./utils/mockData_light.js');
+const mockDataFixed = require('./utils/mockData_fixed.js');
 
 App({
   globalData: {
@@ -189,18 +190,31 @@ App({
       '/laoliu_quotes.json': mockData.laoliu_quotes,
       '/stocks_a.json': mockData.stocks_a,
       '/stocks_hk.json': mockData.stocks_hk,
-      '/analysis_samples.json': mockData.analysis_samples,
+      '/analysis_samples.json': mockDataFixed['/analysis_samples.json'],
       '/stocks_a_recommendations.json': mockData.stocks_a_recommendations,
       '/stocks_hk_recommendations.json': mockData.stocks_hk_recommendations
     };
     
     const result = urlToDataMap[url] || null;
-    console.log('getMockData:', {
-      url: url,
-      存在映射: !!result,
-      数据类型: typeof result,
-      股票数量: result && result.stocks ? result.stocks.length : (result && Array.isArray(result) ? result.length : '无stocks字段')
-    });
+    
+    // 特别针对analysis_samples.json添加详细日志
+    if (url === '/analysis_samples.json') {
+      console.log('analysis_samples详细信息:', {
+        url: url,
+        存在映射: !!result,
+        数据类型: typeof result,
+        total_count: result ? result.total_count : '无数据',
+        analysis_results数量: result && result.analysis_results ? result.analysis_results.length : '无analysis_results',
+        第一条数据有valuation_metrics: result && result.analysis_results && result.analysis_results[0] ? !!result.analysis_results[0].valuation_metrics : '无法检查'
+      });
+    } else {
+      console.log('getMockData:', {
+        url: url,
+        存在映射: !!result,
+        数据类型: typeof result,
+        股票数量: result && result.stocks ? result.stocks.length : (result && Array.isArray(result) ? result.length : '无stocks字段')
+      });
+    }
     
     return result;
   },
